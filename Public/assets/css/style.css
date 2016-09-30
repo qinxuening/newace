@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+.jumppage_bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+    background-color: #000000;
+    z-index: 205;
+}
+/*==============================弹出框================================*/
+.jumppage{width:360px;height:250px;float:left;border-radius:8px;z-index:210;background-color:#f6f6f6;position:fixed;top:50%;margin-top:-150px;left:50%;margin-left:-200px;}
+.jumppage .t_1{width:360px;padding-left:20px;height:30px;float:left;background-color:#429ddd;border-radius:8px 8px 0px 0px;color:#ffffff;font-size:20px;line-height:30px;text-align:left;}
+
+.jumppage .tx1{width:360px;float:left;font-size:26px;padding:40px 0px 40px 0px;text-align:center;font-size:16px;}
+
+.jumppage .btn1{width:260px;height:30px;float:left;border-radius:4px;background-color:#56aeec;line-height:40px;margin:0px auto 0px 70px;color:#ffffff;font-size:16px;}
+.jumppage .btn2{width:90px;height:30px;float:left;border-radius:4px;background-color:#757575;line-height:30px;margin:0px auto 0px 70px;color:#ffffff;font-size:16px;text-align:center;cursor:pointer;border:0px}
+.jumppage .btn3{width:90px;height:30px;float:right;border-radius:4px;background-color:#56aeec;line-height:30px;margin:0px 70px 0px auto;color:#ffffff;font-size:16px;text-align:center;cursor:pointer;border:0px;z-index:211;}
+
+.jumppage_lang{width:440px;height:320px;float:left;border-radius:10px;z-index:210;background-color:#eeeeee;position:fixed;top:50%;margin-top:-160px;left:50%;margin-left:-220px;color:#000000;font-size:24px;text-align:left;}
+.jumppage_lang .til_{width:300px;float:left;margin:30px auto auto 30px;}
+.jumppage_lang .btn1{width:260px;height:50px;float:left;margin:50px auto auto 90px;border-radius:8px;z-index:210;border-bottom:#666666 1px solid;line-height:50px;background:#ffffff url("images/lang_v2_16.jpg") no-repeat 50px 10px;text-indent:125px;}
+.jumppage_lang .btn2{width:260px;height:50px;float:left;margin:30px auto auto 90px;border-radius:8px;z-index:210;border-bottom:#666666 1px solid;line-height:50px;background:#ffffff url("images/lang_v2_17.jpg") no-repeat 50px 10px;text-indent:125px;}
+
+.jumppage_bg{width:100%;height:100%;position:fixed;top:0px;left:0px;filter:alpha(opacity=70);opacity:0.7;background-color:#000000;z-index:205;}
+
+
+.jumppage_su{width:100%;height:80%;z-index:220;position:fixed;top:10%;left:0px;overflow-y:auto;text-align:left;font-size:30px;}
+.jumppage_su .btn2{width:470px;height:70px;padding:0px 10px 0px 20px;float:left;margin:10px auto 10px 70px;background-color:#ffffff;color:#666666;line-height:70px;border-radius:8px;}
+.jumppage_su .btn2_a{width:470px;height:70px;padding:0px 10px 0px 20px;float:left;margin:10px auto 10px 70px;background-color:#83ccff;color:#ffffff;line-height:70px;border-radius:8px;}
