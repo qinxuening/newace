@@ -14,7 +14,10 @@ namespace Admin\Controller;
  * @author huajie <banhuajie@163.com>
  */
 class AttributeController extends AdminController {
-
+	public function _initialize(){
+		parent::_initialize();
+		$this->assign('Model_active','active open');
+	}
     /**
      * 属性列表
      * @author huajie <banhuajie@163.com>
@@ -89,25 +92,42 @@ class AttributeController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function remove(){
+    	//print_r(I('id'));die();
         $id = I('id');
         empty($id) && $this->error('参数错误！');
-
         $Model = D('Attribute');
-
-        $info = $Model->getById($id);
-        empty($info) && $this->error('该字段不存在！');
-
-        //删除属性数据
-        $res = $Model->delete($id);
-
-        //删除表字段
-        $Model->deleteField($info);
-        if(!$res){
-            $this->error(D('Attribute')->getError());
-        }else{
-            //记录行为
-            action_log('update_attribute', 'attribute', $id, UID);
-            $this->success('删除成功', U('index','model_id='.$info['model_id']));
-        }
+		if(is_array($id)){
+			foreach ($id as $k => $v){
+		        $info = $Model->getById($v);
+		        empty($info) && $this->error('该字段不存在！');
+		        //删除属性数据
+		        $res = $Model->delete($v);
+		        //删除表字段
+		        $Model->deleteField($info);
+		        if(!$res){
+		        	$this->error(D('Attribute')->getError());
+		        }else{
+		        	//记录行为
+		        	action_log('update_attribute', 'attribute', $v, UID);
+		        }
+			}
+			$this->success('删除成功', U('index','model_id='.$info['model_id']));
+			
+		}else{
+			$info = $Model->getById($id);
+			empty($info) && $this->error('该字段不存在！');
+			//删除属性数据
+			$res = $Model->delete($id);
+			//删除表字段
+			$Model->deleteField($info);
+			if(!$res){
+				$this->error(D('Attribute')->getError());
+			}else{
+				//记录行为
+				action_log('update_attribute', 'attribute', $id, UID);
+				$this->success('删除成功', U('index','model_id='.$info['model_id']));
+			}
+		}
+		//print_r($info);die();
     }
 }

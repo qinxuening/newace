@@ -24,6 +24,7 @@ class ModelController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function index(){
+    	//echo phpinfo();
         $map = array('status'=>array('gt',-1));
         $list = $this->lists('Model',$map);
         int_to_string($list);
@@ -31,6 +32,7 @@ class ModelController extends AdminController {
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign('Model_index','active');
         $this->assign('_list', $list);
+        //print_r($list);
         $this->meta_title = '模型列表';
         $this->display();
     }
@@ -93,7 +95,7 @@ class ModelController extends AdminController {
         
         // 模型字段列表排序
         $fields = list_sort_by($fields,"sort");
-        
+        //echo count($fields);
         $this->assign('fields', $fields);
         $this->assign('info', $data);
         $this->meta_title = '编辑模型';
@@ -148,7 +150,7 @@ class ModelController extends AdminController {
         if(!IS_POST){
             //获取所有的数据表
             $tables = D('Model')->getTables();
-
+			//print_r($tables);
             $this->assign('tables', $tables);
             $this->meta_title = '生成模型';
             $this->display();

@@ -206,8 +206,8 @@ class AdminController extends Controller {
      * 设置一条或者多条数据的状态
      */
     public function setStatus($Model=CONTROLLER_NAME){
-
         $ids    =   I('request.ids');
+        //print_r($ids);die();
         $status =   I('request.status');
         if(empty($ids)){
             $this->error('请选择要操作的数据');

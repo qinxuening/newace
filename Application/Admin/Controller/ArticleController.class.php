@@ -485,7 +485,8 @@ class ArticleController extends AdminController {
                 $v['username']      =   get_nickname($v['uid']);
             }
         }
-
+        $this->assign('form_active','');
+        $this->assign('recycle','active');
         $this->assign('list', $list);
         $this->meta_title       =   '回收站';
         $this->display();
@@ -574,7 +575,7 @@ class ArticleController extends AdminController {
         if(empty($ids)){
             $this->error('请选择要操作的数据');
         }
-
+		
         /*拼接参数并修改状态*/
         $Model  =   'Document';
         $map    =   array();

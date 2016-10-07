@@ -24,19 +24,20 @@ class ThinkController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function lists($model = null, $p = 0){
-    	//print_r(I('get.'));
+    	//print_r(I('get.'));die();
         $model || $this->error('模型名标识必须！');
         $page = intval($p);
         $page = $page ? $page : 1; //默认显示第一页数据
 
         //获取模型信息
         $model = M('Model')->getByName($model);
+        //print_r($model);die();
         $model || $this->error('模型不存在！');
-		//print_r($model);
+		//print_r($model);die();
         //解析列表规则
         $fields = array();
         $grids  = preg_split('/[;\r\n]+/s', trim($model['list_grid']));
-        //print_r($grids);
+        //print_r($grids);die();
         foreach ($grids as &$value) {
         	if(trim($value) === ''){
         		continue;
@@ -65,11 +66,13 @@ class ThinkController extends AdminController {
                 $fields[] = $array[0];
             }
         }
+        //echo 11;die();
         // 过滤重复字段信息
         $fields =   array_unique($fields);
-        //print_r($fields);
+        //print_r($fields);die();
         // 关键字搜索
         $map	=	array();
+        $map['status'] = 1;
         $key	=	$model['search_key']?$model['search_key']:'title';
         if(isset($_REQUEST[$key])){
         	//echo $_REQUEST[$key];die();
@@ -85,11 +88,11 @@ class ThinkController extends AdminController {
             }
         }
         $row    = empty($model['list_row']) ? 10 : $model['list_row'];
-
+        //echo 11;die();
         //读取模型数据列表
         if($model['extend']){
             $name   = get_table_name($model['id']);
-            //echo $name;
+            //echo $name;die();
             $parent = get_table_name($model['extend']);
             $fix    = C("DB_PREFIX");
 
@@ -100,7 +103,11 @@ class ThinkController extends AdminController {
                 $fields[$key] = "{$fix}{$parent}.id as id";
                 //print_r($fields);
             }
-
+            $tables = D('Model')->getTables();
+            if(!in_array(C("DB_PREFIX").get_table_name($model['id']),$tables)){
+            	$this->error('模型不存在！');
+            }
+            //echo get_table_name($model['id']);die();
             /* 查询记录数 */
             $count = M($parent)->join("INNER JOIN {$fix}{$name} ON {$fix}{$parent}.id = {$fix}{$name}.id")->where($map)->count();
             //echo M()->getLastSql();
@@ -121,8 +128,12 @@ class ThinkController extends AdminController {
             if($model['need_pk']){
                 in_array('id', $fields) || array_push($fields, 'id');
             }
-            $name = parse_name(get_table_name($model['id']), true);
-            //echo get_table_name($model['id']);
+            $name = parse_name(get_table_name($model['id']), true);    
+            $tables = D('Model')->getTables(); 
+            if(!in_array(C("DB_PREFIX").get_table_name($model['id']),$tables)){
+            	$this->error('模型不存在！');
+            }    
+            //echo get_table_name($model['id']);die();
             $data = M($name)
                 /* 查询指定字段，不指定则查询所有字段 */
                 ->field(empty($fields) ? true : $fields)
@@ -134,7 +145,7 @@ class ThinkController extends AdminController {
                 ->page($page, $row)
                 /* 执行查询 */
                 ->select();
-
+            //echo 11;die();
             /* 查询记录总数 */
             $count = M($name)->where($map)->count();
         }
@@ -188,13 +199,19 @@ class ThinkController extends AdminController {
         $model || $this->error('模型不存在！');
 
         if(IS_POST){
+        	//echo get_table_name($model['id']);
             $Model  =   D(parse_name(get_table_name($model['id']),1));
+            //echo parse_name(get_table_name($model['id']),1);
             // 获取模型的字段信息
             $Model  =   $this->checkAttr($Model,$model['id']);
+            //print_r($Model);die();
+            //print_r($Model->create());
+            //echo $Model->save();
             if($Model->create() && $Model->save()){
                 $this->success('保存'.$model['title'].'成功！', U('lists?model='.$model['name']));
             } else {
                 $this->error($Model->getError());
+            	//$this->error('模型不存在！');
             }
         } else {
             $fields     = get_model_attribute($model['id']);
