@@ -184,6 +184,7 @@ class DocumentModel extends Model{
         $name  = parse_name(get_document_model($model, 'name'), 1);
         $class = is_file(MODULE_PATH . 'Logic/' . $name . 'Logic' . EXT) ? $name : 'Base';
         $class = MODULE_NAME . '\\Logic\\' . $class . 'Logic';
+        //echo $class;die();
         return new $class($name);
     }
 
@@ -271,11 +272,13 @@ class DocumentModel extends Model{
             $map = array('status'=>-1,'category_id'=>array( 'IN',trim(implode(',',$cate_ids),',') ));
         }
         $base_list = $this->where($map)->field('id,model_id')->select();
+        //print_r($base_list);
         //删除扩展模型数据
         $base_ids = array_column($base_list,'id');
+        //print_r($base_ids);
         //孤儿数据
         $orphan   = get_stemma( $base_ids,$this, 'id,model_id');
-
+		//print_r($orphan);die();
         $all_list  = array_merge( $base_list,$orphan );
         foreach ($all_list as $key=>$value){
             $logic = $this->logic($value['model_id']);
@@ -290,7 +293,44 @@ class DocumentModel extends Model{
 
         return $res;
     }
-
+    
+    /**
+     * @author qxn
+     * @return Ambigous <\Think\mixed, boolean, unknown>
+     */
+    public function removeall($ids){
+    	//查询假删除的基础数据
+    	if ( is_administrator() ) {
+    		$map = array('status'=>-1);
+    	}else{
+    		$cate_ids = AuthGroupModel::getAuthCategories(UID);
+    		$map = array('status'=>-1,'category_id'=>array( 'IN',trim(implode(',',$cate_ids),',') ));
+    	}
+    	$map['id'] = array('in' , $ids);
+    	$base_list = $this->where($map)->field('id,model_id')->select();
+    	//print_r($base_list);die();
+    	//删除扩展模型数据
+    	//$base_ids = array_column($base_list,'id');
+    	$base_ids = $ids;
+    	//print_r($base_ids);die();
+    	//孤儿数据
+    	$orphan   = get_stemma( $base_ids,$this, 'id,model_id');
+    	//print_r($orphan);die();
+    	$all_list  = array_merge( $base_list,$orphan );
+    	foreach ($all_list as $key=>$value){
+    		$logic = $this->logic($value['model_id']);
+    		$logic->delete($value['id']);
+    	}
+    
+    	//删除基础数据
+    	$ids1 = array_merge( $base_ids, (array)array_column($orphan,'id') );
+    	if(!empty($ids1)){
+    		$res = $this->where( array( 'id'=>array( 'IN',trim(implode(',',$ids1),',') ) ) )->delete();
+    	}
+    
+    	return $res;
+    }
+    
     /**
      * 获取链接id
      * @return int 链接对应的id

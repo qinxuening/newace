@@ -575,7 +575,9 @@ class ArticleController extends AdminController {
         if(empty($ids)){
             $this->error('请选择要操作的数据');
         }
-		
+        //$a = 0;
+        //echo empty($a);die();
+		//echo $ids;die();
         /*拼接参数并修改状态*/
         $Model  =   'Document';
         $map    =   array();
@@ -592,7 +594,12 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function clear(){
-        $res = D('Document')->remove();
+    	//print_r(I('ids'));die();
+    	$ids = I('ids');
+    	if(empty($ids)){
+    		$this->error('请选择要清空的数据');
+    	}
+        $res = D('Document')->removeall($ids);
         if($res !== false){
             $this->success('清空回收站成功！');
         }else{
