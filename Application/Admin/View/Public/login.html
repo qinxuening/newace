@@ -1,130 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>欢迎您登录OneThink</title>
-        <link rel="stylesheet" type="text/css" href="__CSS__/login.css" media="all">
-       	<link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css" media="all">
-    </head>
-    <body id="login-page">
-        <div id="main-content">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="Keywords" content="瓯宝，瓯宝官网，物联网，智能家居，智能插座，智能遥控器，智能开关" />
+		<meta name="description" content="瓯宝安防科技股份有限公司，始创于1987年，致力于不断提升智能化处理技术和生物识别技术在门控行业的应用，面向全球提供智能门控、专业的行业解决方案与优质的服务，为客户持续创造更大价值" />
+		<title>瓯宝智能家居</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="__ASSETS_IMAGES__/favicon.ico" type="image/x-icon" />
+		<!-- basic styles -->
+		<link rel="shortcut icon" href="__ASSETS_IMAGES__/favicon.ico" type="image/x-icon" />
+		<link href="__ASSETS_CSS__/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__ASSETS_CSS__/font-awesome.min.css" />
 
-            <!-- 主体 -->
-            <div class="login-body">
-                <div class="login-main pr">
-                    <form action="{:U('login')}" method="post" class="login-form">
-                        <h3 class="welcome"><i class="login-logo"></i>OneThink管理平台</h3>
-                        <div id="itemBox" class="item-box">
-                            <div class="item">
-                                <i class="icon-login-user"></i>
-                                <input type="text" name="username" placeholder="请填写用户名" autocomplete="off" />
-                            </div>
-                            <span class="placeholder_copy placeholder_un">请填写用户名</span>
-                            <div class="item b0">
-                                <i class="icon-login-pwd"></i>
-                                <input type="password" name="password" placeholder="请填写密码" autocomplete="off" />
-                            </div>
-                            <span class="placeholder_copy placeholder_pwd">请填写密码</span>
-                            <div class="item verifycode">
-                                <i class="icon-login-verifycode"></i>
-                                <input type="text" name="verify" placeholder="请填写验证码" autocomplete="off">
-                                <a class="reloadverify" title="换一张" href="javascript:void(0)">换一张？</a>
-                            </div>
-                            <span class="placeholder_copy placeholder_check">请填写验证码</span>
-                            <div>
-                                <img class="verifyimg reloadverify" alt="点击切换" src="{:U('Public/verify')}">
-                            </div>
-                        </div>
-                        <div class="login_btn_panel">
-                            <button class="login-btn" type="submit">
-                                <span class="in"><i class="icon-loading"></i>登 录 中 ...</span>
-                                <span class="on">登 录</span>
-                            </button>
-                            <div class="check-tips"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-	<!--[if lt IE 9]>
-    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
-    <![endif]-->
-    <!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
-    <!--<![endif]-->
-    <script type="text/javascript">
-    	/* 登陆表单获取焦点变色 */
-    	$(".login-form").on("focus", "input", function(){
-            $(this).closest('.item').addClass('focus');
-        }).on("blur","input",function(){
-            $(this).closest('.item').removeClass('focus');
-        });
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__ASSETS_CSS__/font-awesome-ie7.min.css" />
+		<![endif]-->
 
-    	//表单提交
-    	$(document)
-	    	.ajaxStart(function(){
-	    		$("button:submit").addClass("log-in").attr("disabled", true);
-	    	})
-	    	.ajaxStop(function(){
-	    		$("button:submit").removeClass("log-in").attr("disabled", false);
-	    	});
+		<!-- page specific plugin styles -->
 
-    	$("form").submit(function(){
-    		var self = $(this);
-    		$.post(self.attr("action"), self.serialize(), success, "json");
-    		return false;
 
-    		function success(data){
-    			if(data.status){
-    				window.location.href = data.url;
-    			} else {
-    				self.find(".check-tips").text(data.info);
-    				//刷新验证码
-    				$(".reloadverify").click();
-    			}
-    		}
-    	});
+		<!-- ace styles -->
 
+		<link rel="stylesheet" href="__ASSETS_CSS__/ace.min.css" />
+		<link rel="stylesheet" href="__ASSETS_CSS__/ace-rtl.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__ASSETS_CSS__/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="login-layout">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												<i class="icon-coffee green"></i>
+												后台管理
+											</h4>
+
+											<div class="space-6"></div>
+
+											<form action="{:U('login')}" method="post" class="login-form">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="username" class="form-control" placeholder="Username" />
+															<i class="icon-user"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" name="password" class="form-control" placeholder="Password" />
+															<i class="icon-lock"></i>
+														</span>
+													</label>
+
+												    <div class="check-tips" style="color:red;padding:10px 0;"></div>
+													
+													<div class="clearfix">
+														<button type="submit" class="width-100 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>
+															Login
+														</button>
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+
+											<div class="social-login center">
+												<a class="btn btn-primary">
+													<i class="icon-facebook"></i>
+												</a>
+
+												<a class="btn btn-info">
+													<i class="icon-twitter"></i>
+												</a>
+
+												<a class="btn btn-danger">
+													<i class="icon-google-plus"></i>
+												</a>
+											</div>
+										</div><!-- /widget-main -->
+									</div><!-- /widget-body -->
+								</div><!-- /login-box -->
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+		
+		<!---footer-->
+		<include file="Public/footer"/>
+		<!---footer-->
+ 		<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
 		$(function(){
-			//初始化选中用户名输入框
-			$("#itemBox").find("input[name=username]").focus();
-			//刷新验证码
-			var verifyimg = $(".verifyimg").attr("src");
-            $(".reloadverify").click(function(){
-                if( verifyimg.indexOf('?')>0){
-                    $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
-                }else{
-                    $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
-                }
-            });
-
-            //placeholder兼容性
-                //如果支持 
-            function isPlaceholer(){
-                var input = document.createElement('input');
-                return "placeholder" in input;
-            }
-                //如果不支持
-            if(!isPlaceholer()){
-                $(".placeholder_copy").css({
-                    display:'block'
-                })
-                $("#itemBox input").keydown(function(){
-                    $(this).parents(".item").next(".placeholder_copy").css({
-                        display:'none'
-                    })                    
-                })
-                $("#itemBox input").blur(function(){
-                    if($(this).val()==""){
-                        $(this).parents(".item").next(".placeholder_copy").css({
-                            display:'block'
-                        })                      
-                    }
-                })
-                
-                
-            }
+				$("form").submit(function(){
+	    		var self = $(this);
+	    		$.post(self.attr("action"), self.serialize(), success, "json");
+	    		return false;
+	    		function success(data){
+	    			if(data.status){
+	    				window.location.href = data.url;
+	    			} else {
+	    				self.find(".check-tips").text(data.info);
+	    				//刷新验证码
+	    				//$(".reloadverify").click();
+	    			}
+	    		}
+	    	});
 		});
-    </script>
+		</script>
 </body>
 </html>
