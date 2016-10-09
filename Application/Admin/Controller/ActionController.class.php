@@ -14,7 +14,10 @@ namespace Admin\Controller;
  * @author huajie <banhuajie@163.com>
  */
 class ActionController extends AdminController {
-
+	public function _initialize(){
+		parent::_initialize();
+		$this->assign('User_active','active open');
+	}
     /**
      * 行为日志列表
      * @author huajie <banhuajie@163.com>
@@ -29,6 +32,7 @@ class ActionController extends AdminController {
             $list[$key]['model_id']    =   $model_id ? $model_id : 0;
         }
         $this->assign('_list', $list);
+        $this->assign('action_log','active');
         $this->meta_title = '行为日志';
         $this->display();
     }
