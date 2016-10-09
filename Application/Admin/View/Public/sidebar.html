@@ -282,7 +282,31 @@
 									</a>
 								</li>								
 							</ul>
-						</li>										
+						</li>		
+						
+						<li class="{$Addons_active}">
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-group"></i>
+								<span class="menu-text"> 扩展 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li class="{$index_active}">
+									<a href="{:U('Addons/index')}">
+										<i class="icon-double-angle-right"></i>
+										插件管理
+									</a>
+								</li>			
+								<li class="{$hooks_active}">
+									<a href="{:U('Addons/hooks')}">
+										<i class="icon-double-angle-right"></i>
+										钩子管理
+									</a>
+								</li>								
+							</ul>
+						</li>															
 					</ul><!-- /.nav-list -->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">

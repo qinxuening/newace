@@ -20,6 +20,7 @@ class AddonsController extends AdminController {
             '已装插件后台'=> D('Addons')->getAdminList(),
         ));
         parent::_initialize();
+        $this->assign('Addons_active','active open');
     }
 
     //创建向导首页
@@ -240,6 +241,7 @@ str;
         $page       =   new \Think\Page($total, $listRows, $request);
         $voList     =   array_slice($list, $page->firstRow, $page->listRows);
         $p          =   $page->show();
+        $this->assign('index_active','active');
         $this->assign('_list', $voList);
         $this->assign('_page', $p? $p: '');
         // 记录当前列表页的cookie
@@ -544,6 +546,7 @@ str;
         int_to_string($list, array('type'=>C('HOOKS_TYPE')));
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
+        $this->assign('hooks_active','active');
         $this->assign('list', $list );
         $this->display();
     }
