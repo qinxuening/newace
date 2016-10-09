@@ -233,6 +233,31 @@
 								</li>								
 							</ul>
 						</li>
+						
+						<li class="{$Database_active}">
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-cloud"></i>
+								<span class="menu-text"> 数据备份 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li class="{$export}">
+									<a href="{:U('Database/index/type/export')}">
+										<i class="icon-double-angle-right"></i>
+										备份数据库
+									</a>
+								</li>
+								
+								<li class="{$import}">
+									<a href="{:U('Database/index/type/import')}">
+										<i class="icon-double-angle-right"></i>
+										还原数据库
+									</a>
+								</li>								
+							</ul>
+						</li>						
 					</ul><!-- /.nav-list -->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">

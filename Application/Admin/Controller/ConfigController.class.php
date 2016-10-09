@@ -14,7 +14,12 @@ namespace Admin\Controller;
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 class ConfigController extends AdminController {
-
+	protected  $Config;
+	public function _initialize(){
+		parent::_initialize();
+		$this->Config =  D('Config');
+		$this->assign('config_active','active open');
+	}
     /**
      * 配置管理
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
@@ -37,6 +42,7 @@ class ConfigController extends AdminController {
         $this->assign('group',C('CONFIG_GROUP_LIST'));
         $this->assign('group_id',I('get.group',0));
         $this->assign('list', $list);
+        $this->assign('Config_index','active');
         $this->meta_title = '配置管理';
         $this->display();
     }
@@ -121,8 +127,10 @@ class ConfigController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function del(){
-        $id = array_unique((array)I('id',0));
-
+        //$id = array_unique((array)I('id',0));
+        //$id = array_unique((array)I('id'));
+        $id = I('id');
+		//print_r($id);die();
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
@@ -131,7 +139,9 @@ class ConfigController extends AdminController {
         if(M('Config')->where($map)->delete()){
             S('DB_CONFIG_DATA',null);
             //记录行为
-            action_log('update_config','config',$id,UID);
+            foreach ($id as $k => $v){
+        	    action_log('update_config','config',$v,UID);        	
+            }
             $this->success('删除成功');
         } else {
             $this->error('删除失败！');
@@ -143,10 +153,12 @@ class ConfigController extends AdminController {
         $id     =   I('get.id',1);
         $type   =   C('CONFIG_GROUP_LIST');
         $list   =   M("Config")->where(array('status'=>1,'group'=>$id))->field('id,name,title,extra,value,remark,type')->order('sort')->select();
+        //print_r($list);
         if($list) {
             $this->assign('list',$list);
         }
         $this->assign('id',$id);
+        $this->assign('group','active');
         $this->meta_title = $type[$id].'设置';
         $this->display();
     }
@@ -186,4 +198,17 @@ class ConfigController extends AdminController {
             $this->error('非法请求！');
         }
     }
+    
+    /**
+     * 排序
+     */
+    public function listorders() {
+    	$status = parent::_listorders($this->Config);
+    	if ($status) {
+    		$this->success("排序更新成功！");
+    	} else {
+    		$this->error("排序更新失败！");
+    	}
+    }
+        
 }

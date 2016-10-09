@@ -56,6 +56,7 @@
 													</tr>
 												</thead>
 												<tbody>		
+												<notempty name="list">
 													<volist name="list" id="vo">
 													<tr>
 											            <td class="center"><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
@@ -69,6 +70,9 @@
 											                </td>
 													</tr>
 													</volist>
+													<else/>
+													  <td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+													</notempty>
 												</tbody>
 											</table>
 											<div class="badoo">

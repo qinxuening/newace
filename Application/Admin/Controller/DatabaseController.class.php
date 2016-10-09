@@ -16,7 +16,12 @@ use OT\Database;
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 class DatabaseController extends AdminController{
-
+	//protected  $Database;
+	public function _initialize(){
+		parent::_initialize();
+		//$this->Database =  M('Database');
+		$this->assign('Database_active','active open');
+	}
     /**
      * 数据库备份/还原列表
      * @param  String $type import-还原，export-备份
@@ -60,6 +65,7 @@ class DatabaseController extends AdminController{
                     }
                 }
                 $title = '数据还原';
+                $this->assign('import','active');
                 break;
 
             /* 数据备份 */
@@ -68,6 +74,7 @@ class DatabaseController extends AdminController{
                 $list  = $Db->query('SHOW TABLE STATUS');
                 $list  = array_map('array_change_key_case', $list);
                 $title = '数据备份';
+                $this->assign('export','active');
                 break;
 
             default:

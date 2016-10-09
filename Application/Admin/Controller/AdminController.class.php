@@ -134,12 +134,14 @@ class AdminController extends Controller {
         $id    = is_array($id) ? implode(',',$id) : $id;
         //如存在id字段，则加入该条件
         $fields = M($model)->getDbFields();
+        //print_r($where);die();
         if(in_array('id',$fields) && !empty($id)){
             $where = array_merge( array('id' => array('in', $id )) ,(array)$where );
         }
 
         $msg   = array_merge( array( 'success'=>'操作成功！', 'error'=>'操作失败！', 'url'=>'' ,'ajax'=>IS_AJAX) , (array)$msg );
         if( M($model)->where($where)->save($data)!==false ) {
+        	//echo M($model)->getLastSql();die();
             $this->success($msg['success'],$msg['url'],$msg['ajax']);
         }else{
             $this->error($msg['error'],$msg['url'],$msg['ajax']);
