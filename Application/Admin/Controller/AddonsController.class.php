@@ -521,6 +521,7 @@ str;
         session('addons_uninstall_error',null);
         $addons =   new $class;
         $uninstall_flag =   $addons->uninstall();
+        //echo $uninstall_flag;die();
         if(!$uninstall_flag)
             $this->error('执行插件预卸载操作失败'.session('addons_uninstall_error'));
         $hooks_update   =   D('Hooks')->removeHooks($db_addons['name']);
@@ -543,6 +544,8 @@ str;
         $this->meta_title   =   '钩子列表';
         $map    =   $fields =   array();
         $list   =   $this->lists(D("Hooks")->field($fields),$map);
+        //print_r($list);
+        //print_r(C('HOOKS_TYPE'));
         int_to_string($list, array('type'=>C('HOOKS_TYPE')));
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
