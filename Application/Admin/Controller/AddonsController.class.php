@@ -359,13 +359,20 @@ str;
         if(!class_exists($addon_class))
             trace("插件{$addon['name']}无法实例化,",'ADDONS','ERR');
         $data  =   new $addon_class;
+        //print_r($data);die();
         $addon['addon_path'] = $data->addon_path;
+        //echo $addon['addon_path'];die();
         $addon['custom_config'] = $data->custom_config;
+        //echo $addon['custom_config'];die();
+        //print_r($data->info);die();
         $this->meta_title   =   '设置插件-'.$data->info['title'];
         $db_config = $addon['config'];
         $addon['config'] = include $data->config_file;
+        //print_r($addon['config']);
         if($db_config){
             $db_config = json_decode($db_config, true);
+            //print_r($db_config);
+            //print_r($addon['config']);
             foreach ($addon['config'] as $key => $value) {
                 if($value['type'] != 'group'){
                     $addon['config'][$key]['value'] = $db_config[$key];
@@ -378,6 +385,7 @@ str;
                 }
             }
         }
+        print_r($addon);
         $this->assign('data',$addon);
         if($addon['custom_config'])
             $this->assign('custom_config', $this->fetch($addon['addon_path'].$addon['custom_config']));
