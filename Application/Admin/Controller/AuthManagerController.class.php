@@ -17,7 +17,10 @@ use Admin\Model\AuthGroupModel;
  * @author 朱亚杰 <zhuyajie@topthink.net>
  */
 class AuthManagerController extends AdminController{
-
+	public function _initialize(){
+		parent::_initialize();
+		$this->assign('User_index_active','active open');
+	}
     /**
      * 后台节点配置的url作为规则存入auth_rule
      * 执行新节点的插入,已有节点的更新,无效规则的删除三项任务
@@ -94,6 +97,7 @@ class AuthManagerController extends AdminController{
         $list = int_to_string($list);
         $this->assign( '_list', $list );
         $this->assign( '_use_tip', true );
+        $this->assign('AuthManager_index','active');
         $this->meta_title = '权限管理';
         $this->display();
     }
@@ -131,6 +135,7 @@ class AuthManagerController extends AdminController{
         $this->updateRules();
         $auth_group = M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
                                     ->getfield('id,id,title,rules');
+        //print_r($auth_group);
         $node_list   = $this->returnNodes();
         $map         = array('module'=>'admin','type'=>AuthRuleModel::RULE_MAIN,'status'=>1);
         $main_rules  = M('AuthRule')->where($map)->getField('name,id');

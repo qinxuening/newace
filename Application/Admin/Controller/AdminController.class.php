@@ -139,7 +139,7 @@ class AdminController extends Controller {
             $where = array_merge( array('id' => array('in', $id )) ,(array)$where );
         }
 
-        $msg   = array_merge( array( 'success'=>'操作成功！', 'error'=>'操作失败！', 'url'=>'' ,'ajax'=>IS_AJAX) , (array)$msg );
+        $msg   = array_merge( array( 'success'=>'操作成功！', 'error'=>'操作失败！', 'url'=>'' ,'ajax'=>IS_AJAX) , (array)$msg );//如果两个或更多个数组元素有相同的键名，则最后的元素会覆盖其他元素。
         if( M($model)->where($where)->save($data)!==false ) {
         	//echo M($model)->getLastSql();die();
             $this->success($msg['success'],$msg['url'],$msg['ajax']);

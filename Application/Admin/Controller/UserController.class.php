@@ -18,6 +18,7 @@ class UserController extends AdminController {
 	public function _initialize(){
 		parent::_initialize();
 		$this->assign('User_active','active open');
+		$this->assign('User_index_active','active open');
 	}
     /**
      * 用户管理首页
@@ -34,6 +35,9 @@ class UserController extends AdminController {
 
         $list   = $this->lists('Member', $map);
         int_to_string($list);
+        //print_r($list);
+        $this->assign('User_index','active');
+        $this->assign('User_active','');
         $this->assign('_list', $list);
         $this->meta_title = '用户信息';
         $this->display();
@@ -132,6 +136,7 @@ class UserController extends AdminController {
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign('action_active','active');
+        $this->assign('User_index_active','');
         $this->assign('_list', $list);
         $this->meta_title = '用户行为';
         $this->display();
@@ -188,6 +193,7 @@ class UserController extends AdminController {
             $this->error('请选择要操作的数据!');
         }
         $map['uid'] =   array('in',$id);
+        //print_r($map);die();
         switch ( strtolower($method) ){
             case 'forbiduser':
                 $this->forbid('Member', $map );
@@ -224,6 +230,7 @@ class UserController extends AdminController {
                 $this->error($this->showRegError($uid));
             }
         } else {
+        	$this->assign('User_active','');
             $this->meta_title = '新增用户';
             $this->display();
         }
