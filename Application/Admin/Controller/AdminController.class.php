@@ -337,18 +337,23 @@ class AdminController extends Controller {
         }
         if((int)$tree){
             $list = M('Menu')->field('id,pid,title,url,tip,hide')->order('sort asc')->select();
+            //print_r($list);
+            //echo MODULE_NAME;
             foreach ($list as $key => $value) {
-                if( stripos($value['url'],MODULE_NAME)!==0 ){
+                if( stripos($value['url'],MODULE_NAME)!==0 ){//stripos() 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）
                     $list[$key]['url'] = MODULE_NAME.'/'.$value['url'];
                 }
             }
+            //print_r($list);
             $nodes = list_to_tree($list,$pk='id',$pid='pid',$child='operator',$root=0);
+            //print_r($nodes);
             foreach ($nodes as $key => $value) {
                 if(!empty($value['operator'])){
                     $nodes[$key]['child'] = $value['operator'];
                     unset($nodes[$key]['operator']);
                 }
             }
+            //print_r($nodes);
         }else{
             $nodes = M('Menu')->field('title,url,tip,pid')->order('sort asc')->select();
             foreach ($nodes as $key => $value) {
