@@ -137,11 +137,12 @@ class AuthManagerController extends AdminController{
                                     ->getfield('id,id,title,rules');
         //print_r($auth_group);
         $node_list   = $this->returnNodes();
+        //print_r($node_list);
         $map         = array('module'=>'admin','type'=>AuthRuleModel::RULE_MAIN,'status'=>1);
         $main_rules  = M('AuthRule')->where($map)->getField('name,id');
         $map         = array('module'=>'admin','type'=>AuthRuleModel::RULE_URL,'status'=>1);
         $child_rules = M('AuthRule')->where($map)->getField('name,id');
-
+        //print_r($main_rules);
         $this->assign('main_rules', $main_rules);
         $this->assign('auth_rules', $child_rules);
         $this->assign('node_list',  $node_list);
