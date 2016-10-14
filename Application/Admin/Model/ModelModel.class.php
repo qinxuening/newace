@@ -120,9 +120,8 @@ class ModelModel extends Model{
 
         //新增属性
         $fields = M()->query('SHOW FULL COLUMNS FROM '.$table);
-        //print_r($fields);die();
         foreach ($fields as $key=>$value){
-            $value  =   array_change_key_case($value);//将数组的所有的键转换为小写字母
+            $value  =   array_change_key_case($value);
             //不新增id字段
             if(strcmp($value['field'], 'id') == 0){
                 continue;
@@ -139,7 +138,6 @@ class ModelModel extends Model{
             $data['value'] = $value['default'] == null ? '' : $value['default'];
             $data['model_id'] = $res;
             $_POST = $data;		//便于自动验证
-            //print_r($data);die();
             D('Attribute')->update($data, false);
         }
         return $res;
@@ -161,20 +159,16 @@ class ModelModel extends Model{
             $this->error = '只支持删除文档模型和独立模型';
             return false;
         }
-		//echo $table_name;die();
+
         //删除属性数据
         M('Attribute')->where(array('model_id'=>$id))->delete();
         //删除模型数据
-        $result = $this->delete($id);
-        if(in_array($table_name, $this->getTables())){
+        $this->delete($id);
         //删除该表
         $sql = <<<sql
                 DROP TABLE {$table_name};
 sql;
         $res = M()->execute($sql);
-        }else{
-        	return $result;
-        }
         return $res !== false;
     }
 }

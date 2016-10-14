@@ -49,13 +49,15 @@ class HooksModel extends Model {
      */
     public function updateHooks($addons_name){
         $addons_class = get_addon_class($addons_name);//获取插件名
+        //echo $addons_class;die();
         if(!class_exists($addons_class)){
             $this->error = "未实现{$addons_name}插件的入口文件";
             return false;
         }
         $methods = get_class_methods($addons_class);
         $hooks = $this->getField('name', true);
-        $common = array_intersect($hooks, $methods);
+        $common = array_intersect($hooks, $methods);//比较两个数组的键值，并返回交集
+        //print_r($common);die();
         if(!empty($common)){
             foreach ($common as $hook) {
                 $flag = $this->updateAddons($hook, array($addons_name));
@@ -96,9 +98,10 @@ class HooksModel extends Model {
         if(!class_exists($addons_class)){
             return false;
         }
-        $methods = get_class_methods($addons_class);
+        $methods = get_class_methods($addons_class);// 返回由类的方法名组成的数组
         $hooks = $this->getField('name', true);
-        $common = array_intersect($hooks, $methods);
+        $common = array_intersect($hooks, $methods);//array_intersect() 函数用于比较两个（或更多个）数组的键值，并返回交集。
+        //print_r($common);die();
         if($common){
             foreach ($common as $hook) {
                 $flag = $this->removeAddons($hook, array($addons_name));
@@ -116,8 +119,10 @@ class HooksModel extends Model {
     public function removeAddons($hook_name, $addons_name){
         $o_addons = $this->where("name='{$hook_name}'")->getField('addons');
         $o_addons = str2arr($o_addons);
+        //print_r($o_addons);die();
         if($o_addons){
             $addons = array_diff($o_addons, $addons_name);
+            //print_r($addons);die();
         }else{
             return true;
         }

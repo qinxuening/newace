@@ -60,9 +60,11 @@ class AuthGroupModel extends Model {
             //为单个用户批量添加用户组时,先删除旧数据
             $del = $Access->where( array('uid'=>array('in',$uid)) )->delete();
         }
-
         $uid_arr = explode(',',$uid);
-		$uid_arr = array_diff($uid_arr,array(C('USER_ADMINISTRATOR')));
+        //print_r($uid_arr);die();
+		$uid_arr = array_diff($uid_arr,array(C('USER_ADMINISTRATOR')));//比较两个数组的键值，并返回差集：
+		//print_r(array(C('USER_ADMINISTRATOR')));
+		//print_r($uid_arr);die();
         $add = array();
         if( $del!==false ){
             foreach ($uid_arr as $u){
@@ -73,11 +75,16 @@ class AuthGroupModel extends Model {
             	}
                 foreach ($gid as $g){
                     if( is_numeric($u) && is_numeric($g) ){
+                    	if($Access->where(array('group_id'=>$g,'uid'=>$u))->find()){//
+                    		$this->error = "不能重复添加UID为".$u."的用户";//
+                    		return false;//
+                    	}//
                         $add[] = array('group_id'=>$g,'uid'=>$u);
                     }
                 }
             }
-            $Access->addAll($add);
+            //print_r($add);die();
+            $Access->addAll($add);//可以
         }
         if ($Access->getDbError()) {
             if( count($uid_arr)==1 && count($gid)==1 ){
@@ -286,8 +293,9 @@ class AuthGroupModel extends Model {
             $count = count($mid);
             $ids   = $mid;
         }
-
+		//print_r(array('id'=>array('IN',$ids)));die();
         $s = M($modelname)->where(array('id'=>array('IN',$ids)))->getField('id',true);
+        //print_r($s);die();
         if(count($s)===$count){
             return true;
         }else{

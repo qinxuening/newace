@@ -214,7 +214,8 @@ class AuthManagerController extends AdminController{
         }
 
         $auth_group = M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
-            ->getfield('id,id,title,rules');
+            ->getfield('id,title,rules');
+        //print_r($auth_group);
         $prefix   = C('DB_PREFIX');
         $l_table  = $prefix.(AuthGroupModel::MEMBER);
         $r_table  = $prefix.(AuthGroupModel::AUTH_GROUP_ACCESS);
@@ -290,7 +291,6 @@ class AuthManagerController extends AdminController{
                 $this->error('用户不存在');
             }
         }
-
         if( $gid && !$AuthGroup->checkGroupId($gid)){
             $this->error($AuthGroup->error);
         }
