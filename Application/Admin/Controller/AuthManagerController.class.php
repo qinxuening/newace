@@ -238,11 +238,16 @@ class AuthManagerController extends AdminController{
         $auth_group     =   M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
             ->getfield('id,id,title,rules');
         $group_list     =   D('Category')->getTree();
+        //print_r($auth_group[(int)$_GET['group_id']]);
         $authed_group   =   AuthGroupModel::getCategoryOfGroup(I('group_id'));
+        $list_count = count($group_list);
+        $this_count = count($authed_group);
         $this->assign('authed_group',   implode(',',(array)$authed_group));
         $this->assign('group_list',     $group_list);
         $this->assign('auth_group',     $auth_group);
         $this->assign('this_group',     $auth_group[(int)$_GET['group_id']]);
+        $this->assign('list_count', $list_count);
+        $this->assign('this_count', $this_count);
         $this->meta_title = '分类授权';
         $this->display();
     }
