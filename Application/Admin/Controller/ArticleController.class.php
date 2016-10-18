@@ -228,7 +228,6 @@ class ArticleController extends AdminController {
         // 列表显示处理
         $list   =   $this->parseDocumentList($list,$model_id);
         
-        $this->assign('form_elements' , 'active');
         $this->assign('model_id',$model_id);
 		$this->assign('group_id',$group_id);
         $this->assign('position',$position);
@@ -412,7 +411,7 @@ class ArticleController extends AdminController {
 
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
-
+        $this->assign('mydocument' , 'active');
         $this->meta_title   =   '编辑文档';
         $this->display();
     }
@@ -555,10 +554,12 @@ class ArticleController extends AdminController {
         //只查询pid为0的文章
         $map['pid'] = 0;
         $list = $this->lists($Document,$map,'update_time desc');
+        int_to_string($list);
         $list = $this->parseDocumentList($list,1);
-
+		//print_r($list);
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
+        $this->assign('mydocument' , 'active');
         $this->assign('status', $status);
         $this->assign('list', $list);
         $this->meta_title = '我的文档';

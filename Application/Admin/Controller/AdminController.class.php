@@ -211,6 +211,7 @@ class AdminController extends Controller {
         $ids    =   I('request.ids');
         //print_r($ids);die();
         $status =   I('request.status');
+        //echo $status;die();
         if(empty($ids)){
             $this->error('请选择要操作的数据');
         }
@@ -444,6 +445,7 @@ class AdminController extends Controller {
     protected function parseDocumentList($list,$model_id=null){
         $model_id = $model_id ? $model_id : 1;
         $attrList = get_model_attribute($model_id,false,'id,name,type,extra');
+        //print_r($list);
         // 对列表数据进行显示处理
         if(is_array($list)){
             foreach ($list as $k=>$data){
@@ -454,7 +456,9 @@ class AdminController extends Controller {
                         if('select'== $type || 'checkbox' == $type || 'radio' == $type || 'bool' == $type) {
                             // 枚举/多选/单选/布尔型
                             $options    =   parse_field_attr($extra);
-                            if($options && array_key_exists($val,$options)) {
+                            //print_r($options);
+                            if($options && array_key_exists($val,$options)) {//该函数是判断某个数组array中是否存在指定的 key，如果该 key 存在，则返回 true，否则返回 false
+                            	if($key == 'status') continue;//qxn
                                 $data[$key]    =   $options[$val];
                             }
                         }elseif('date'==$type){ // 日期型
@@ -462,10 +466,13 @@ class AdminController extends Controller {
                         }elseif('datetime' == $type){ // 时间型
                             $data[$key]    =   date('Y-m-d H:i',$val);
                         }
+                        //$data[$key]['status'] = $list[$k][$key]['status'];
                     }
+                   
                 }
                 $data['model_id'] = $model_id;
                 $list[$k]   =   $data;
+                print_r($list);
             }
         }
         return $list;
