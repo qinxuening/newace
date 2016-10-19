@@ -148,6 +148,8 @@ class UserController extends AdminController {
      */
     public function addAction(){
         $this->meta_title = '新增行为';
+        $this->assign('action_active','active');
+        $this->assign('User_index_active','');
         $this->assign('data',null);
         $this->display('editaction');
     }
@@ -163,6 +165,8 @@ class UserController extends AdminController {
 
         $this->assign('data',$data);
         $this->meta_title = '编辑行为';
+        $this->assign('action_active','active');
+        $this->assign('User_index_active','');
         $this->display('editaction');
     }
 
@@ -231,6 +235,7 @@ class UserController extends AdminController {
             }
         } else {
         	$this->assign('User_active','');
+        	$this->assign('User_index','active');
             $this->meta_title = '新增用户';
             $this->display();
         }

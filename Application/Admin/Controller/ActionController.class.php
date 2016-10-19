@@ -47,6 +47,7 @@ class ActionController extends AdminController {
         $info = M('ActionLog')->field(true)->find($id);
 
         $this->assign('info', $info);
+		$this->assign('action_log','active');
         $this->meta_title = '查看行为日志';
         $this->display();
     }

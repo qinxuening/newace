@@ -67,6 +67,7 @@ class ConfigController extends AdminController {
             }
         } else {
             $this->meta_title = '新增配置';
+            $this->assign('Config_index','active');
             $this->assign('info',null);
             $this->display('edit');
         }

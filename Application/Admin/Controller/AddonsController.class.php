@@ -30,6 +30,7 @@ class AddonsController extends AdminController {
 
         $hooks = M('Hooks')->field('name,description')->select();
         $this->assign('Hooks',$hooks);
+        $this->assign('index_active','active');
         $this->meta_title = '创建向导';
         $this->display('create');
     }
@@ -386,6 +387,7 @@ str;
             }
         }
         $this->assign('data',$addon);
+        $this->assign('index_active','active');
         if($addon['custom_config'])
             $this->assign('custom_config', $this->fetch($addon['addon_path'].$addon['custom_config']));
         $this->display();
@@ -564,6 +566,7 @@ str;
     public function addhook(){
         $this->assign('data', null);
         $this->meta_title = '新增钩子';
+        $this->assign('hooks_active','active');
         $this->display('edithook');
     }
 
@@ -572,6 +575,7 @@ str;
         $hook = M('Hooks')->field(true)->find($id);
         $this->assign('data',$hook);
         $this->meta_title = '编辑钩子';
+        $this->assign('hooks_active','active');
         $this->display('edithook');
     }
 

@@ -456,7 +456,6 @@ class AdminController extends Controller {
                         if('select'== $type || 'checkbox' == $type || 'radio' == $type || 'bool' == $type) {
                             // 枚举/多选/单选/布尔型
                             $options    =   parse_field_attr($extra);
-                            //print_r($options);
                             if($options && array_key_exists($val,$options)) {//该函数是判断某个数组array中是否存在指定的 key，如果该 key 存在，则返回 true，否则返回 false
                             	if($key == 'status') continue;//qxn
                                 $data[$key]    =   $options[$val];
@@ -472,7 +471,7 @@ class AdminController extends Controller {
                 }
                 $data['model_id'] = $model_id;
                 $list[$k]   =   $data;
-                print_r($list);
+                //print_r($list);
             }
         }
         return $list;

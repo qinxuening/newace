@@ -33,7 +33,7 @@ class ModelController extends AdminController {
         $this->assign('Model_index','active');
         $this->assign('_list', $list);
         //print_r($list);
-        $this->meta_title = '模型列表';
+        $this->meta_title = '频道列表';
         $this->display();
     }
 
@@ -46,7 +46,7 @@ class ModelController extends AdminController {
         $models = M('Model')->where(array('extend'=>0))->field('id,title')->select();
         $this->assign('Model_add','active');
         $this->assign('models', $models);
-        $this->meta_title = '新增模型';
+        $this->meta_title = '新增频道';
         $this->display();
     }
 
@@ -96,9 +96,10 @@ class ModelController extends AdminController {
         // 模型字段列表排序
         $fields = list_sort_by($fields,"sort");
         //echo count($fields);
+        $this->assign('Model_index','active');
         $this->assign('fields', $fields);
         $this->assign('info', $data);
-        $this->meta_title = '编辑模型';
+        $this->meta_title = '编辑频道';
         $this->display();
     }
 
@@ -124,7 +125,7 @@ class ModelController extends AdminController {
         if(!$res){
             $this->error(D('Model')->getError());
         }else{
-            $this->success('删除模型成功！');
+            $this->success('删除频道成功！');
         }
     }
 
@@ -151,15 +152,16 @@ class ModelController extends AdminController {
             //获取所有的数据表
             $tables = D('Model')->getTables();
 			//print_r($tables);
+            $this->assign('Model_index','active');
             $this->assign('tables', $tables);
-            $this->meta_title = '生成模型';
+            $this->meta_title = '生成频道';
             $this->display();
         }else{
             $table = I('post.table');
             empty($table) && $this->error('请选择要生成的数据表！');
             $res = D('Model')->generate($table,I('post.name'),I('post.title'));
             if($res){
-                $this->success('生成模型成功！', U('index'));
+                $this->success('生成频道成功！', U('index'));
             }else{
                 $this->error(D('Model')->getError());
             }

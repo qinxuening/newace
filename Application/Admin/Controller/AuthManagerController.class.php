@@ -111,6 +111,7 @@ class AuthManagerController extends AdminController{
             $this->assign('auth_group',array('title'=>null,'id'=>null,'description'=>null,'rules'=>null,));//排除notice信息
         }
         $this->meta_title = '新增用户组';
+        $this->assign('AuthManager_index','active');
         $this->display('editgroup');
     }
 
@@ -148,6 +149,7 @@ class AuthManagerController extends AdminController{
         $this->assign('node_list',  $node_list);
         $this->assign('auth_group', $auth_group);
         $this->assign('this_group', $auth_group[(int)$_GET['group_id']]);
+        $this->assign('AuthManager_index','active');
         $this->meta_title = '访问授权';
         $this->display('managergroup');
     }
@@ -226,6 +228,7 @@ class AuthManagerController extends AdminController{
         $this->assign( '_list',     $list );
         $this->assign('auth_group', $auth_group);
         $this->assign('this_group', $auth_group[(int)$_GET['group_id']]);
+        $this->assign('AuthManager_index','active');
         $this->meta_title = '成员授权';
         $this->display();
     }
@@ -248,6 +251,7 @@ class AuthManagerController extends AdminController{
         $this->assign('this_group',     $auth_group[(int)$_GET['group_id']]);
         $this->assign('list_count', $list_count);
         $this->assign('this_count', $this_count);
+        $this->assign('AuthManager_index','active');
         $this->meta_title = '分类授权';
         $this->display();
     }
@@ -274,6 +278,7 @@ class AuthManagerController extends AdminController{
         $this->assign('auth_groups',$auth_groups);
         $this->assign('user_groups',implode(',',$ids));
         $this->meta_title = '用户组授权';
+        $this->assign('User_index','active');
         $this->display();
     }
 

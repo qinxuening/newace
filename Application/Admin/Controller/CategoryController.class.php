@@ -68,6 +68,7 @@ class CategoryController extends AdminController {
             /* 获取分类信息 */
             $info = $id ? $Category->info($id) : '';
             //print_r($info);
+            $this->assign('table_index','active');
             $this->assign('info',       $info);
             $this->assign('category',   $cate);
             $this->meta_title = '编辑栏目';
