@@ -61,10 +61,16 @@ class AdminController extends Controller {
                 }
             }
         }        
-
         $this->assign('__MENU__', $this->getMenus());
+        $this->assign('getModel', $this->getModel());
     }
 
+    final protected function getModel(){
+    	$map = array('status'=>array('gt',-1), 'extend'=>array('gt', 0));
+		$list = M('model')->field('id, title, name')->where($map)->select();
+		return $list;
+    }
+    
     /**
      * 权限检测
      * @param string  $rule    检测的规则

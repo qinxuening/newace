@@ -169,13 +169,32 @@
 										内容管理
 									</a>
 								</li>
-
-								<li class="{$form_wizard}">
-									<a href="{:U('Article/add')}">
-										<i class="icon-double-angle-right"></i>
-										添加内容
-									</a>
-								</li>
+								<volist name="getModel" id="Model">
+									<li class="{$Model.name}_index">
+											<a href="#" class="dropdown-toggle">
+												<i class="icon-pencil"></i>
+													{$Model.title}管理
+												<b class="arrow icon-angle-down"></b>
+											</a>
+											<ul class="submenu">
+												<li>
+													<a href="#">
+														<i class="icon-plus"></i>
+														添加{$Model.title}
+													</a>
+												</li>
+												<script type="text/javascript">
+												</script>
+												<li class="">
+													<a href="{:U('Article/listsModel?model='.$Model['name'])}">
+													<!--<a href="{:U('Article/index?model_id='.$Model['id'])}">-->
+														<i class="icon-eye-open"></i>
+														{$Model.title}列表
+													</a>
+												</li>
+											</ul>
+									</li>
+								</volist>
 							</ul>
 						</li>
 						<li class="{$Model_active}">
@@ -193,11 +212,10 @@
 										频道列表
 									</a>
 								</li>
-
 								<li class="{$Model_add}">
 									<a href="{:U('Model/add')}">
 										<i class="icon-double-angle-right"></i>
-										添加模型
+										新增频道
 									</a>
 								</li>
 							</ul>
@@ -358,3 +376,4 @@
 								<a href="{:U('index')}">{$meta_title}</a>
 							</li>
 						</ul><!-- .breadcrumb -->
+						

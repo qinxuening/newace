@@ -25,6 +25,151 @@ class ArticleController extends AdminController {
     	parent::_initialize();
     	$this->assign('form_active','active open');
     }
+    
+    public function listsModel($model = null, $p = 0){
+    	//print_r(I('get.'));die();
+    	$model || $this->error('模型名标识必须！');
+    	$page = intval($p);
+    	$page = $page ? $page : 1; //默认显示第一页数据
+    
+    	//获取模型信息
+    	$model = M('Model')->getByName($model);
+    	//print_r($model);die();
+    	$model || $this->error('模型不存在！');
+    	//print_r($model);die();
+    	//解析列表规则
+    	$fields = array();
+    	$grids  = preg_split('/[;\r\n]+/s', trim($model['list_grid']));
+    	//print_r($grids);die();
+    	foreach ($grids as &$value) {
+    		if(trim($value) === ''){
+    			continue;
+    		}
+    		// 字段:标题:链接
+    		$val      = explode(':', $value);
+    		//print_r($val);
+    		// 支持多个字段显示
+    		$field   = explode(',', $val[0]);
+    		//print_r($field);
+    		$value    = array('field' => $field, 'title' => $val[1]);
+    		//print_r($value);
+    		if(isset($val[2])){
+    			// 链接信息
+    			$value['href']	=	$val[2];
+    			//print_r($val[2]);
+    			// 搜索链接信息中的字段信息
+    			preg_replace_callback('/\[([a-z_]+)\]/', function($match) use(&$fields){$fields[]=$match[1];}, $value['href']);
+    		}
+    		if(strpos($val[1],'|')){
+    			// 显示格式定义
+    			list($value['title'],$value['format'])    =   explode('|',$val[1]);
+    		}
+    		foreach($field as $val){
+    			$array	=	explode('|',$val);
+    			$fields[] = $array[0];
+    		}
+    	}
+    	//echo 11;die();
+    	// 过滤重复字段信息
+    	$fields =   array_unique($fields);
+    	//print_r($fields);die();
+    	// 关键字搜索
+    	$map	=	array();
+    	$map['status'] = 1;
+    	$key	=	$model['search_key']?$model['search_key']:'title';
+    	if(isset($_REQUEST[$key])){
+    		//echo $_REQUEST[$key];die();
+    		$map[$key]	=	array('like','%'.$_GET[$key].'%');
+    		unset($_REQUEST[$key]);
+    		//print_r($map);die();
+    	}
+    	//print_r($_REQUEST);
+    	// 条件搜索
+    	foreach($_REQUEST as $name=>$val){
+    		if(in_array($name,$fields)){
+    			$map[$name]	=	$val;
+    		}
+    	}
+    	$row    = empty($model['list_row']) ? 10 : $model['list_row'];
+    	//echo 11;die();
+    	//读取模型数据列表
+    	if($model['extend']){
+    		$name   = get_table_name($model['id']);
+    		//echo $name;die();
+    		$parent = get_table_name($model['extend']);
+    		$fix    = C("DB_PREFIX");
+    
+    		$key = array_search('id', $fields);
+    		if(false === $key){
+    			array_push($fields, "{$fix}{$parent}.id as id");
+    		} else {
+    			$fields[$key] = "{$fix}{$parent}.id as id";
+    			//print_r($fields);
+    		}
+    		$tables = D('Model')->getTables();
+    		if(!in_array(C("DB_PREFIX").get_table_name($model['id']),$tables)){
+    			$this->error('模型不存在！');
+    		}
+    		//echo get_table_name($model['id']);die();
+    		/* 查询记录数 */
+    		$count = M($parent)->join("INNER JOIN {$fix}{$name} ON {$fix}{$parent}.id = {$fix}{$name}.id")->where($map)->count();
+    		//echo M()->getLastSql();
+    		// 查询数据
+    		$data   = M($parent)
+    		->join("INNER JOIN {$fix}{$name} ON {$fix}{$parent}.id = {$fix}{$name}.id")
+    		/* 查询指定字段，不指定则查询所有字段 */
+    		->field(empty($fields) ? true : $fields)
+    		// 查询条件
+    		->where($map)
+    		/* 默认通过id逆序排列 */
+    		->order("{$fix}{$parent}.id DESC")
+    		/* 数据分页 */
+    		->page($page, $row)
+    		/* 执行查询 */
+    		->select();
+    	} else {
+    		if($model['need_pk']){
+    			in_array('id', $fields) || array_push($fields, 'id');
+    		}
+    		$name = parse_name(get_table_name($model['id']), true);
+    		$tables = D('Model')->getTables();
+    		if(!in_array(C("DB_PREFIX").get_table_name($model['id']),$tables)){
+    			$this->error('模型不存在！');
+    		}
+    		//echo get_table_name($model['id']);die();
+    		$data = M($name)
+    		/* 查询指定字段，不指定则查询所有字段 */
+    		->field(empty($fields) ? true : $fields)
+    		// 查询条件
+    		->where($map)
+    		/* 默认通过id逆序排列 */
+    		->order($model['need_pk']?'id DESC':'')
+    		/* 数据分页 */
+    		->page($page, $row)
+    		/* 执行查询 */
+    		->select();
+    		//echo 11;die();
+    		/* 查询记录总数 */
+    		$count = M($name)->where($map)->count();
+    	}
+    
+    	//分页
+    	if($count > $row){
+    		$page = new \Think\Page($count, $row);
+    		$page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+    		$this->assign('_page', $page->show());
+    	}
+    
+    	$data   =   $this->parseDocumentList($data,$model['id']);
+    	$this->assign('model', $model);
+    	$this->assign('list_grids', $grids);
+    	$this->assign('list_data', $data);
+    	$this->assign("$model.'_index'",'active open');
+    	$this->assign("$model",'active');
+    	$this->meta_title = $model['title'].'列表';
+    	$this->display($model['template_list']);
+    }
+    
     /**
      * 检测需要动态判断的文档类目有关的权限
      *
