@@ -170,7 +170,7 @@
 									</a>
 								</li>
 								<volist name="getModel" id="Model">
-									<li class="{$Model.name}_index">
+									<li class="<present  name="$Model.name">active open</present>">
 											<a href="#" class="dropdown-toggle">
 												<i class="icon-pencil"></i>
 													{$Model.title}管理
@@ -185,7 +185,7 @@
 												</li>
 												<script type="text/javascript">
 												</script>
-												<li class="">
+												<li class="<present  name="$Model.name">active</present>">
 													<a href="{:U('Article/listsModel?model='.$Model['name'])}">
 													<!--<a href="{:U('Article/index?model_id='.$Model['id'])}">-->
 														<i class="icon-eye-open"></i>

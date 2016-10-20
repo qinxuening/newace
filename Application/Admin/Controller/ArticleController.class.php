@@ -27,6 +27,7 @@ class ArticleController extends AdminController {
     }
     
     public function listsModel($model = null, $p = 0){
+    	$modelView = $model;
     	//print_r(I('get.'));die();
     	$model || $this->error('模型名标识必须！');
     	$page = intval($p);
@@ -164,8 +165,8 @@ class ArticleController extends AdminController {
     	$this->assign('model', $model);
     	$this->assign('list_grids', $grids);
     	$this->assign('list_data', $data);
-    	$this->assign("$model.'_index'",'active open');
-    	$this->assign("$model",'active');
+    	$this->assign("$modelView.'_index'",'active open');
+    	$this->assign("$modelView",'active');
     	$this->meta_title = $model['title'].'列表';
     	$this->display($model['template_list']);
     }
