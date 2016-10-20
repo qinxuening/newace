@@ -221,6 +221,8 @@
     }).blur(function(){
         $(this).closest(".textarea").removeClass("focus");
     });
+	
+	
 });
 
 /* 上传图片预览弹出层 */

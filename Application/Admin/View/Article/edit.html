@@ -65,7 +65,7 @@
 									<li <eq name="key" value="1">class="active"</eq>><a href="#tab{$key}" data-toggle="tab">{$group}</a></li>
 								</volist>
 						    </ul>
-							<form class="form-horizontal" action="{:U('update')}" method="post" id="form">
+							<form id="form" action="{:U('update')}" method="post" class="form-horizontal">
 								<div class="tabbable">
 							        <div class="tab-content">
 							        <volist name=":parse_config_attr($model['field_group'])" id="group">
@@ -267,10 +267,10 @@
 			</a>
 		</div><!-- /.main-container -->
 
+
 		<!---footer-->
 		<include file="Public/footer"/>
 		<!---footer-->
-
 		<!-- page specific plugin scripts -->
 		<!-- ace scripts -->
 
@@ -287,11 +287,11 @@
 		
 		Think.setValue("type", {$data.type|default='""'});
 		Think.setValue("display", {$data.display|default=0});
-		
+		/*
 		$('#submit').click(function(){
 			$('#form').submit();
 		});
-		
+		*/
 		$(function(){
 		    $('.date').datetimepicker({
 		        format: 'yyyy-mm-dd',
@@ -361,7 +361,7 @@
 		
 			</if>
 
-});
+		});
 </script>
 </body>
 </html>

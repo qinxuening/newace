@@ -339,7 +339,7 @@
 .datetimepicker table tr td span.active:hover[disabled],
 .datetimepicker table tr td span.active.disabled[disabled],
 .datetimepicker table tr td span.active.disabled:hover[disabled] {
-  background-color: #4BBD00;
+  background-color: #0b7ebf;
 }
 .datetimepicker table tr td span.active:active,
 .datetimepicker table tr td span.active:hover:active,

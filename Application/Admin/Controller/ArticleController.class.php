@@ -529,6 +529,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function edit(){
+    	//print_r(I(''));
         //获取左边菜单
         $this->getMenu();
 
