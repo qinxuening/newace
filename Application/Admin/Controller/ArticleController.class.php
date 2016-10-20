@@ -25,7 +25,12 @@ class ArticleController extends AdminController {
     	parent::_initialize();
     	$this->assign('form_active','active open');
     }
-    
+
+    /**
+     * 内容分类
+     * @param string $model
+     * @param number $p
+     */
     public function listsModel($model = null, $p = 0){
     	$modelView = $model;
     	//print_r(I('get.'));die();
@@ -514,6 +519,7 @@ class ArticleController extends AdminController {
         $this->assign('tree', $tree);
         $this->assign('type_list',  get_type_bycate($cate_id));
         $this->assign('model',      $model);
+        $this->assign($model['name'],'active');
         $this->meta_title = '新增'.$model['title'];
         $this->display();
     }
@@ -567,13 +573,18 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function update(){
-        $document   =   D('Document');
-        $res = $document->update();
-        if(!$res){
-            $this->error($document->getError());
-        }else{
-            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
-        }
+    	if(IS_POST){
+	        $document   =   D('Document');
+	        $res = $document->update();
+	        //echo $res;die();
+	        if(!$res){
+	            $this->error($document->getError());
+	        }else{
+	            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
+	        }
+    	}else{
+    		$this->error('系统繁忙');
+    	}
     }
 
     /**

@@ -177,15 +177,15 @@
 												<b class="arrow icon-angle-down"></b>
 											</a>
 											<ul class="submenu">
-												<li>
-													<a href="#">
+												<li class="<present  name="$Model.name"></present>">
+													<a href="{:U('Article/add?',array('model_id'=>$Model['id'],'pid'=>I('pid',0)))}">
 														<i class="icon-plus"></i>
 														添加{$Model.title}
 													</a>
 												</li>
 												<script type="text/javascript">
 												</script>
-												<li class="<present  name="$Model.name">active</present>">
+												<li class="<present  name="$Model.name"></present>">
 													<a href="{:U('Article/listsModel?model='.$Model['name'])}">
 													<!--<a href="{:U('Article/index?model_id='.$Model['id'])}">-->
 														<i class="icon-eye-open"></i>
