@@ -53,11 +53,11 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 							<ul class="nav nav-tabs">
-									<volist name=":parse_config_attr($model['field_group'])" id="group">
-										<li <eq name="key" value="1">class="active"</eq>><a href="#tab{$key}" data-toggle="tab">{$group}</a></li>
-									</volist>
-						    </ul>
-							<form class="form-horizontal js-ajax-form" action="{:U('edit?model='.$model['id'])}" method="post" role="form">
+								<volist name=":parse_config_attr($model['field_group'])" id="group">
+									<li <eq name="key" value="1">class="active"</eq>><a href="#tab{$key}" data-toggle="tab">{$group}</a></li>
+								</volist>
+						    </ul>							
+							<form id="form" action="{:U('edit?model='.$model['id'])}" method="post" class="form-horizontal">
 								<div class="tabbable">
 							        <div class="tab-content">
 							        <volist name=":parse_config_attr($model['field_group'])" id="group">
@@ -266,9 +266,9 @@
 		<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 		<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 		<script type="text/javascript">
-		$('#submit').click(function(){
+		/*$('#submit').click(function(){
 		    $('#form').submit();
-		});
+		});*/
 		
 		$(function(){
 			$('.time').datetimepicker({
