@@ -520,6 +520,10 @@ class ArticleController extends AdminController {
         $this->assign('type_list',  get_type_bycate($cate_id));
         $this->assign('model',      $model);
         $this->assign($model['name'],'active');
+        
+        $this->assign("mydocument",'0');
+        $this->assign("add",'1');
+        
         $this->meta_title = '新增'.$model['title'];
         $this->display();
     }
@@ -557,15 +561,21 @@ class ArticleController extends AdminController {
         $this->assign('model_id', $data['model_id']);
         $this->assign('model',      $model);
 
+        $modelView = $model['name'];
+        $this->assign("$modelView.'_index'",'active open');
+        $this->assign("$modelView",'active');
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
         //print_r($fields);
         $this->assign('fields',     $fields);
-
+		
 		//print_r(get_type_bycate($data['category_id']));
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
-        $this->assign('mydocument' , 'active');
+        
+        $this->assign("mydocument",'1');
+        $this->assign("add",'0');
+        
         $this->meta_title   =   '编辑文档';
         $this->display();
     }
@@ -612,7 +622,7 @@ class ArticleController extends AdminController {
                 $v['username']      =   get_nickname($v['uid']);
             }
         }
-
+        $this->assign('examine', 'active');
         $this->assign('list', $list);
         $this->meta_title       =   '待审核';
         $this->display();
@@ -677,9 +687,11 @@ class ArticleController extends AdminController {
         $Document   =   D('Document');
         $map        =   array('status'=>3,'uid'=>UID);
         $list       =   $this->lists($Document,$map);
+        //print_r($list);
         //获取状态文字
-        //int_to_string($list);
-
+        int_to_string($list);
+        //print_r($list);
+        $this->assign('draftBox', 'active');
         $this->assign('list', $list);
         $this->meta_title = '草稿箱';
         $this->display();
@@ -730,7 +742,8 @@ class ArticleController extends AdminController {
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign("$modelView.'_index'",'active open');
         $this->assign("$modelView",'active');
-        
+        $this->assign("mydocument",'1');
+        $this->assign("add",'0');
         $this->assign('status', $status);
         $this->assign('list', $list);
         $this->meta_title = '我的文档';

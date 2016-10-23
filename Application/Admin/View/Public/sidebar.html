@@ -40,95 +40,6 @@
 								<span class="menu-text"> 控制台 </span>
 							</a>
 						</li>
-						<li class="{$element_active}">
-							<a href="#" class="dropdown-toggle">
-								<i class="icon-desktop"></i>
-								<span class="menu-text"> UI 组件 </span>
-
-								<b class="arrow icon-angle-down"></b>
-							</a>
-
-							<ul class="submenu">
-								<li class="{$index}">
-									<a href="{:U('Elements/index')}">
-										<i class="icon-double-angle-right"></i>
-										组件
-									</a>
-								</li>
-
-								<li class="{$buttons}">
-									<a href="{:U('Elements/buttons')}">
-										<i class="icon-double-angle-right"></i>
-										按钮 &amp; 图表
-									</a>
-								</li>
-
-								<li class="{$treeview}">
-									<a href="{:U('Elements/treeview')}">
-										<i class="icon-double-angle-right"></i>
-										树菜单
-									</a>
-								</li>
-
-								<li class="{$jqueryui}">
-									<a href="{:U('Elements/jqueryui')}">
-										<i class="icon-double-angle-right"></i>
-										jQuery UI
-									</a>
-								</li>
-
-								<li class="{$nestable}">
-									<a href="{:U('Elements/nestable')}">
-										<i class="icon-double-angle-right"></i>
-										可拖拽列表
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="dropdown-toggle">
-										<i class="icon-double-angle-right"></i>
-
-										三级菜单
-										<b class="arrow icon-angle-down"></b>
-									</a>
-
-									<ul class="submenu">
-										<li>
-											<a href="#">
-												<i class="icon-leaf"></i>
-												第一级
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="dropdown-toggle">
-												<i class="icon-pencil"></i>
-
-												第四级
-												<b class="arrow icon-angle-down"></b>
-											</a>
-
-											<ul class="submenu">
-												<li>
-													<a href="#">
-														<i class="icon-plus"></i>
-														添加产品
-													</a>
-												</li>
-
-												<li>
-													<a href="#">
-														<i class="icon-eye-open"></i>
-														查看商品
-													</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-
 						<li class="{$table_active}">
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-list"></i>
@@ -163,12 +74,12 @@
 							</a>
 
 							<ul class="submenu">
-								<li class="{$mydocument}">
+								<!--<li class="{$mydocument}">
 									<a href="{:U('Article/mydocument')}">
 										<i class="icon-double-angle-right"></i>
 										内容管理
 									</a>
-								</li>
+								</li>-->
 								<volist name="getModel" id="Model">
 									<li class="<present  name="$Model.name">active open</present>">
 											<a href="#" class="dropdown-toggle">
@@ -177,7 +88,7 @@
 												<b class="arrow icon-angle-down"></b>
 											</a>
 											<ul class="submenu">
-												<li class="<present  name="$Model.name"></present>">
+												<li class="<if condition="$Model.name AND $add">active</if>">
 													<a href="{:U('Article/add?',array('model_id'=>$Model['id'],'pid'=>I('pid',0)))}">
 														<i class="icon-plus"></i>
 														添加{$Model.title}
@@ -185,7 +96,7 @@
 												</li>
 												<script type="text/javascript">
 												</script>
-												<li class="<present  name="$Model.name"></present>">
+												<li class="<if condition="$Model.name AND $mydocument">active</if>">
 													<a href="{:U('Article/mydocument?model_id='.$Model['id'])}">
 													<!--<a href="{:U('Article/index?model_id='.$Model['id'])}">-->
 														<i class="icon-eye-open"></i>
@@ -195,6 +106,18 @@
 											</ul>
 									</li>
 								</volist>
+								<li class="{$draftBox}">
+									<a href="{:U('Article/draftBox')}">
+										<i class="icon-double-angle-right"></i>
+										草稿箱
+									</a>
+								</li>
+								<li class="{$examine}">
+									<a href="{:U('Article/examine')}">
+										<i class="icon-double-angle-right"></i>
+										待审核
+									</a>
+								</li>
 							</ul>
 						</li>
 						<li class="{$Model_active}">
