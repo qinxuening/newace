@@ -70,9 +70,9 @@
 							        <div class="tab-content">
 							        <volist name=":parse_config_attr($model['field_group'])" id="group">
 							          <div class="tab-pane <eq name="key" value="1">active</eq>" id="tab{$key}">
+									  <fieldset>
 							          	<volist name="fields[$key]" id="field">
-							          		<if condition="$field['is_show'] == 1 || $field['is_show'] == 3">
-											<fieldset>
+							          		<if condition="$field['is_show'] == 1 || $field['is_show'] == 3">											
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right">{$field['title']}：</label>
 													<div class="col-sm-9">
@@ -226,9 +226,9 @@
 														</notempty>
 													</div>
 												</div>							
-											</fieldset>
 											</if>
-										 </volist>
+										  </volist>
+										 </fieldset>
 							          </div>
 									 </volist>
 							        </div>

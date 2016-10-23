@@ -552,16 +552,17 @@ class ArticleController extends AdminController {
         }
         // 获取当前的模型信息
         $model    =   get_document_model($data['model_id']);
-
+		//print_r($data);
         $this->assign('data', $data);
         $this->assign('model_id', $data['model_id']);
         $this->assign('model',      $model);
 
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
+        //print_r($fields);
         $this->assign('fields',     $fields);
 
-
+		//print_r(get_type_bycate($data['category_id']));
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
         $this->assign('mydocument' , 'active');
@@ -575,9 +576,9 @@ class ArticleController extends AdminController {
      */
     public function update(){
     	if(IS_POST){
+    		//print_r(I(''));
 	        $document   =   D('Document');
 	        $res = $document->update();
-	        //echo $res;die();
 	        if(!$res){
 	            $this->error($document->getError());
 	        }else{
@@ -688,7 +689,8 @@ class ArticleController extends AdminController {
      * 我的文档
      * @author huajie <banhuajie@163.com>
      */
-    public function mydocument($status = null, $title = null){
+    public function mydocument($status = null, $title = null, $model_id = null){
+    	//print_r(I(''));
         //获取左边菜单
         $this->getMenu();
 
@@ -709,6 +711,15 @@ class ArticleController extends AdminController {
         if ( isset($_GET['time-end']) ) {
             $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
         }
+        if ($model_id) {
+        	$map['model_id'] = $model_id;
+        	$modelView = get_document_model($model_id)['name'];
+        	$this->assign('mydocument' , '');
+        }else{
+        	$this->assign('mydocument' , 'active');
+        }
+        
+        //print_r($map);
         //只查询pid为0的文章
         $map['pid'] = 0;
         $list = $this->lists($Document,$map,'update_time desc');
@@ -717,7 +728,9 @@ class ArticleController extends AdminController {
 		//print_r($list);
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
-        $this->assign('mydocument' , 'active');
+        $this->assign("$modelView.'_index'",'active open');
+        $this->assign("$modelView",'active');
+        
         $this->assign('status', $status);
         $this->assign('list', $list);
         $this->meta_title = '我的文档';

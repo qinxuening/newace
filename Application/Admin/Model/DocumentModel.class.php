@@ -65,12 +65,12 @@ class DocumentModel extends Model{
         /* 获取模型数据 */
         $logic  = $this->logic($info['model_id']);
         $detail = $logic->detail($id); //获取指定ID的数据
+
         if(!$detail){
             $this->error = $logic->getError();
             return false;
         }
         $info = array_merge($info, $detail);
-
         return $info;
     }
 
@@ -90,6 +90,7 @@ class DocumentModel extends Model{
 
         /* 获取数据对象 */
         $data = $this->token(false)->create($data);
+        //print_r($data);die();
         if(empty($data)){
             return false;
         }
@@ -184,7 +185,6 @@ class DocumentModel extends Model{
         $name  = parse_name(get_document_model($model, 'name'), 1);
         $class = is_file(MODULE_PATH . 'Logic/' . $name . 'Logic' . EXT) ? $name : 'Base';
         $class = MODULE_NAME . '\\Logic\\' . $class . 'Logic';
-        //echo $class;die();
         return new $class($name);
     }
 

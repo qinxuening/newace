@@ -63,7 +63,7 @@
 								        <div class="form-group">
 											<label class="col-sm-3 control-label no-padding-right">所属栏目：</label>
 											<div class="col-sm-9">
-												<select class="col-xs-10 col-sm-5" name="cate_id">
+												<select class="col-xs-10 col-sm-5" name="category_id">
 												<volist name="tree" id="list">
 													  <option value="{$list.id}">{$list.html}{$list.space}{$list.title}</option>
 												 </volist>
@@ -80,58 +80,58 @@
 													<div class="col-sm-9">
 														<switch name="field.type">
 															   <case value="num">
-                   									             <input type="text" class="text input-mid" name="{$field.name}" value="{$data[$field['name']]}">
+                   									             <input type="text" class="text input-mid" name="{$field.name}" value="{$field.value}">
                      										   </case>
 										                        <case value="string">
-									                                <input type="text" class="text input-large col-xs-10 col-sm-5" name="{$field.name}" value="{$data[$field['name']]}">
+									                                <input type="text" class="text input-large col-xs-10 col-sm-5" name="{$field.name}" value="{$field.value}">
 									                            </case>
 									                            <case value="textarea">
-									                                <textarea name="{$field.name}" rows="5" class="col-xs-10 col-sm-5">{$data[$field['name']]}</textarea>
+									                                <textarea name="{$field.name}" rows="5" class="col-xs-10 col-sm-5">{$field.value}</textarea>
 									                            </case>
 									                            <case value="date">
-									                                <input type="text" name="{$field.name}" class="text input-mid date" value="{$data[$field['name']]|date='Y-m-d',###}" placeholder="请选择日期" />
+									                                <input type="text" name="{$field.name}" class="text input-mid date" value="" placeholder="请选择日期" />
 									                            </case>
 									                            <case value="datetime">
-									                                <input type="text" name="{$field.name}" class="text input-mid time" value="{$data[$field['name']]|date='Y-m-d H:i',###}" placeholder="请选择时间" />
+									                                <input type="text" name="{$field.name}" class="text input-mid time" value="" placeholder="请选择时间" />
 									                            </case>			
 												                <case value="bool">
 									                                <select name="{$field.name}">
 									                                    <volist name=":parse_field_attr($field['extra'])" id="vo">
-									                                        <option value="{$key}" <eq name="data[$field['name']]" value="$key">selected</eq>>{$vo}</option>
+									                                        <option value="{$key}" <eq name="field.value" value="$key">selected</eq>>{$vo}</option>
 									                                    </volist>
 									                                </select>
 									                            </case>		
 						                          				  <case value="select">
 										                                <select name="{$field.name}" class="col-xs-10 col-sm-5">
 										                                    <volist name=":parse_field_attr($field['extra'])" id="vo">
-										                                        <option value="{$key}" <eq name="data[$field['name']]" value="$key">selected</eq>>{$vo}</option>
+										                                        <option value="{$key}" <eq name="field.value" value="$key">selected</eq>>{$vo}</option>
 										                                    </volist>
 										                                </select>
 										                            </case>
 										                            <case value="radio">
 										                                <volist name=":parse_field_attr($field['extra'])" id="vo">
 										                                	<label class="radio radio-inline">
-										                                    <input type="radio" value="{$key}" name="{$field.name}" <eq name="data[$field['name']]" value="$key">checked="checked"</eq>>{$vo}
+										                                    <input type="radio" value="{$key}" name="{$field.name}" <eq name="field.value" value="$key">checked="checked"</eq>>{$vo}
 										                                	</label>
 										                                </volist>
 										                            </case>
 										                            <case value="checkbox">
 										                                <volist name=":parse_field_attr($field['extra'])" id="vo">
 										                                	<label class="checkbox checkbox-inline">
-										                                    <input type="checkbox" value="{$key}" name="{$field.name}[]" <in name="key" value="$data[$field['name']]" >checked="checked"</in>>{$vo}
+										                                    <input type="checkbox" value="{$key}" name="{$field.name}[]" <in name="key" value="field.value" >checked="checked"</in>>{$vo}
 										                                	</label>
 										                                </volist>
 										                            </case>			
 												                <case value="editor">
 									                                <label class="textarea">
-									                                <textarea name="{$field.name}">{$data[$field['name']]}</textarea>
-									                                {:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$data[$field['name']]))}
+									                                <textarea name="{$field.name}">{$field.value}</textarea>
+									                                {:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']))}
 									                                </label>
 									                            </case>
 									                            <case value="picture">
 									                                <div class="controls">
 																		<input type="file" id="upload_picture_{$field.name}">
-																		<input type="hidden" name="{$field.name}" id="cover_id_{$field.name}" value="{$data[$field['name']]}"/>
+																		<input type="hidden" name="{$field.name}" id="cover_id_{$field.name}"/>
 																		<div class="upload-img-box">
 																		<notempty name="data[$field['name']]">
 																			<div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
@@ -151,16 +151,16 @@
 																        'removeTimeout'	  : 1,
 																        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
 																        "onUploadSuccess" : uploadPicture{$field.name},
-									                                    'onFallback' : function() {
-									                                        alert('未检测到兼容版本的Flash.');
-									                                    }
+																        'onFallback' : function() {
+																            alert('未检测到兼容版本的Flash.');
+																        }
 																    });
 																	function uploadPicture{$field.name}(file, data){
 																    	var data = $.parseJSON(data);
 																    	var src = '';
 																        if(data.status){
 																        	$("#cover_id_{$field.name}").val(data.id);
-																        	src = data.url || '__ROOT__' + data.path;
+																        	src = data.url || '__ROOT__' + data.path
 																        	$("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
 																        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
 																        	);
@@ -219,7 +219,7 @@
 																	</script>
 									                            </case>																							   
 															 <default/>
-														<input type="text" class="text input-large col-xs-10 col-sm-5" name="{$field.name}" value="{$data[$field['name']]}">
+														<input type="text" class="text input-large col-xs-10 col-sm-5" name="{$field.name}" value="{$field.value}">
 														</switch>
 														<notempty name="field['remark']">
 															<span class="help-inline">
@@ -244,11 +244,11 @@
 										存草稿
 									</button>
 									</if>
-									<input type="hidden" name="id" value="{$data.id|default=''}"/>
-									<input type="hidden" name="pid" value="{$data.pid|default=''}"/>
-									<input type="hidden" name="model_id" value="{$data.model_id|default=''}"/>
-									<input type="hidden" name="group_id" value="{$data.group_id|default=''}"/>
-									<input type="hidden" name="category_id" value="{$data.category_id|default=''}">
+									<input type="hidden" name="id" value="{$info.id|default=''}"/>
+									<input type="hidden" name="pid" value="{$info.pid|default=''}"/>
+									<input type="hidden" name="model_id" value="{$info.model_id|default=''}"/>
+									<input type="hidden" name="group_id" value="{$info.group_id|default=''}"/>
+									<!--<input type="hidden" name="category_id" value="{$info.category_id|default=''}">-->
 							    </div>
 							</form>
 
@@ -287,8 +287,8 @@
 		<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 		<script type="text/javascript">
 		
-		Think.setValue("type", {$data.type|default='""'});
-		Think.setValue("display", {$data.display|default=0});
+		//Think.setValue("type", {$data.type|default='""'});
+		//Think.setValue("display", {$data.display|default=0});
 		/*
 		$('#submit').click(function(){
 			$('#form').submit();

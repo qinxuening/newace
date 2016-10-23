@@ -795,14 +795,13 @@ function get_model_attribute($model_id, $group = true,$fields=true){
     if(!isset($list[$model_id])){
         $map = array('model_id'=>$model_id);
         $extend = M('Model')->getFieldById($model_id,'extend');
-
         if($extend){
             $map = array('model_id'=> array("in", array($model_id, $extend)));
         }
         $info = M('Attribute')->where($map)->field($fields)->select();
         $list[$model_id] = $info;
     }
-
+	//print_r($list);
     $attr = array();
     if($group){
         foreach ($list[$model_id] as $value) {
@@ -814,15 +813,17 @@ function get_model_attribute($model_id, $group = true,$fields=true){
             $group = array(1 => array_merge($attr));
         } else {
             $group = json_decode($model['field_sort'], true);
-
-            $keys = array_keys($group);
+            //print_r($group);
+            $keys = array_keys($group);//返回包含数组中所有键名的一个新数组
+            //print_r($keys);
             foreach ($group as &$value) {
                 foreach ($value as $key => $val) {
                     $value[$key] = $attr[$val];
                     unset($attr[$val]);
                 }
             }
-
+			//print_r($group);
+			//print_r($attr);
             if (!empty($attr)) {
                 foreach ($attr as $key => $val) {
                     if (!in_array($val['id'], $attribute)) {

@@ -326,8 +326,9 @@ function get_cate($cate_id = null){
 
  // 分析枚举类型配置值 格式 a:名称1,b:名称2
 function parse_config_attr($string) {
-    $array = preg_split('/[,;\r\n]+/', trim($string, ",;\r\n"));
-    if(strpos($string,':')){
+    $array = preg_split('/[,;\r\n]+/', trim($string, ",;\r\n"));// 通过一个正则表达式分隔字符串
+    //print_r($array);
+    if(strpos($string,':')){//stripos() 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）。
         $value  =   array();
         foreach ($array as $val) {
             list($k, $v) = explode(':', $val);
@@ -336,6 +337,7 @@ function parse_config_attr($string) {
     }else{
         $value  =   $array;
     }
+    //print_r($value);
     return $value;
 }
 
@@ -350,6 +352,7 @@ function get_subdocument_count($id=0){
  // 暂时和 parse_config_attr功能相同
  // 但请不要互相使用，后期会调整
 function parse_field_attr($string) {
+	//print_r($string);
     if(0 === strpos($string,':')){
         // 采用函数定义
         return   eval('return '.substr($string,1).';');
@@ -368,6 +371,7 @@ function parse_field_attr($string) {
     }else{
         $value  =   $array;
     }
+    //print_r($value);
     return $value;
 }
 
