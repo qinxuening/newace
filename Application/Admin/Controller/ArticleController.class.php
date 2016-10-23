@@ -556,11 +556,13 @@ class ArticleController extends AdminController {
         }
         // 获取当前的模型信息
         $model    =   get_document_model($data['model_id']);
+        $tree = D('Category')->getTree(0,'id,title,pid');
 		//print_r($data);
         $this->assign('data', $data);
         $this->assign('model_id', $data['model_id']);
         $this->assign('model',      $model);
-
+        $this->assign('tree', $tree);
+        
         $modelView = $model['name'];
         $this->assign("$modelView.'_index'",'active open');
         $this->assign("$modelView",'active');
