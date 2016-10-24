@@ -143,37 +143,6 @@
 								</li>
 							</ul>
 						</li>
-						<li class="{$recycle}">
-							<a href="{:U('Article/recycle')}">
-								<i class="icon-trash"></i>
-								<span class="menu-text">回收站 </span>
-							</a>
-						</li>
-
-						<li class="{$config_active}">
-							<a href="#" class="dropdown-toggle">
-								<i class="icon-cogs"></i>
-								<span class="menu-text"> 设置 </span>
-
-								<b class="arrow icon-angle-down"></b>
-							</a>
-
-							<ul class="submenu">
-								<li class="{$group}">
-									<a href="{:U('Config/group')}">
-										<i class="icon-double-angle-right"></i>
-										系统设置
-									</a>
-								</li>
-								
-								<li class="{$Config_index}">
-									<a href="{:U('Config/index')}">
-										<i class="icon-double-angle-right"></i>
-										配置管理
-									</a>
-								</li>								
-							</ul>
-						</li>
 						
 						<li class="{$Database_active}">
 							<a href="#" class="dropdown-toggle">
@@ -249,6 +218,44 @@
 								</li>								
 							</ul>
 						</li>								
+	
+						<li class="{$recycle}">
+							<a href="{:U('Article/recycle')}">
+								<i class="icon-trash"></i>
+								<span class="menu-text">回收站 </span>
+							</a>
+						</li>
+	
+						<li class="{$config_active}">
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-cogs"></i>
+								<span class="menu-text"> 设置 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li class="{$group}">
+									<a href="{:U('Config/group')}">
+										<i class="icon-double-angle-right"></i>
+										系统设置
+									</a>
+								</li>
+								
+								<li class="{$Config_index}">
+									<a href="{:U('Config/index')}">
+										<i class="icon-double-angle-right"></i>
+										配置管理
+									</a>
+								</li>			
+								<li class="{$Menu_index}">
+									<a href="{:U('Menu/index')}">
+										<i class="icon-double-angle-right"></i>
+										菜单管理
+									</a>
+								</li>					
+							</ul>
+						</li>
 						
 						<li class="{$Addons_active}">
 							<a href="#" class="dropdown-toggle">

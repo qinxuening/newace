@@ -14,7 +14,10 @@ namespace Admin\Controller;
  * @author yangweijie <yangweijiester@gmail.com>
  */
 class MenuController extends AdminController {
-
+	public function _initialize(){
+		parent::_initialize();
+		$this->assign('config_active','active open');
+	}
     /**
      * 后台菜单首页
      * @return none
@@ -43,7 +46,7 @@ class MenuController extends AdminController {
         }
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
+		$this->assign('Menu_index', 'active');
         $this->meta_title = '菜单列表';
         $this->display();
     }
@@ -74,6 +77,7 @@ class MenuController extends AdminController {
             $menus = M('Menu')->field(true)->select();
             $menus = D('Common/Tree')->toFormatTree($menus);
             $menus = array_merge(array(0=>array('id'=>0,'title_show'=>'顶级菜单')), $menus);
+            $this->assign('Menu_index', 'active');
             $this->assign('Menus', $menus);
             $this->meta_title = '新增菜单';
             $this->display('edit');
@@ -112,6 +116,7 @@ class MenuController extends AdminController {
             if(false === $info){
                 $this->error('获取后台菜单信息错误');
             }
+            $this->assign('Menu_index', 'active');
             $this->assign('info', $info);
             $this->meta_title = '编辑后台菜单';
             $this->display();
@@ -176,6 +181,9 @@ class MenuController extends AdminController {
     public function import(){
         if(IS_POST){
             $tree = I('post.tree');
+            if(!$tree){
+            	$this->error('请添加导入内容');
+            }
             $lists = explode(PHP_EOL, $tree);
             $menuModel = M('Menu');
             if($lists == array()){
@@ -214,7 +222,7 @@ class MenuController extends AdminController {
      * 菜单排序
      * @author huajie <banhuajie@163.com>
      */
-    public function sort(){
+    /*public function sort(){
         if(IS_GET){
             $ids = I('get.ids');
             $pid = I('get.pid');
@@ -248,5 +256,18 @@ class MenuController extends AdminController {
         }else{
             $this->error('非法请求！');
         }
+    }*/
+	
+    /**
+     * @author qxn
+     * 排序
+     */
+    public function listorders() {
+    	$status = parent::_listorders(M('Menu'));
+    	if ($status) {
+    		$this->success("排序更新成功！");
+    	} else {
+    		$this->error("排序更新失败！");
+    	}
     }
 }

@@ -1,50 +1,115 @@
-<extend name="Public/base" />
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!---head-->
+		<include file="Public/head"/>
+		<!---head-->
+	</head>
+<style>
+	.upload-img-box .upload-pre-item {
+	    padding: 1px;
+	    width: 120px;
+	    max-height: 120px;
+	    overflow: hidden;
+	    text-align: center;
+	    cursor: pointer;
+	    border: 1px solid #ccc;
+	    transition: all .3s linear;
+	}
+	img {
+	    max-width: 100%;
+	    border: 0 none;
+	}	
+</style>
+	<body>
+		
+		<!---nav-->
+		<include file="Public/nav"/>
+		<!---nav-->
+		<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
 
-<block name="body">
-	<div class="main-title cf">
-		<h2>
-			批量导入 [{$data.title|default='顶级菜单'}]
-		</h2>
-	</div>
-	<!-- 标签页导航 -->
-<div class="tab-wrap">
-	<div class="tab-content">
-	<!-- 表单 -->
-	<form id="form" action="{:U('import')}" method="post" class="form-horizontal">
-		<!-- 基础文档模型 -->
-		<div id="tab1" class="tab-pane in tab1">
-			<div class="form-item cf">
-				<label class="item-label">导入的内容<span class="check-tips">（请按照导入格式输入）</span></label>
-				<div class="controls">
-					<label class="textarea input-large">
-						<textarea name="tree"></textarea>
-					</label>
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				<!---sidebar-->
+					<include file="Public/sidebar"/>
+				<!---sidebar-->
 				</div>
-				<span class="check-tips">导入格式：标题|url(回车键)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标题|url</span>
-			</div>
-		</div>
-		<div class="form-item cf">
-			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-			<a class="btn btn-return" href="{:U('index?pid='.$pid)}">返 回</a>
-			<input type="hidden" name="pid" value="{$pid}"/>
-			<input type="hidden" name="cate_id" value="{$cate_id|default=0}">
-		</div>
-	</form>
-	</div>
-</div>
-</block>
+				<!--top-alert-->
+					<include file="Public/top-alert"/>
+				<!--top-alert-->
+					<div class="page-content">
+						<div class="page-header">
+							<h1>批量导入 [{$data.title|default='顶级菜单'}]</h1>
+						</div><!-- /.page-header -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+							<form class="form-horizontal"  id="form"  action="{:U('')}" method="post" role="form">
+								<div class="tabbable">
+							        <div class="tab-content">
+							          <div class="tab-pane active" id="A">
+											<fieldset>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right">导入的内容：</label>
+													<div class="col-sm-9">
+														<textarea name="tree"  rows="5" class="col-xs-10 col-sm-5">{$data.log}</textarea>
+														<span class="help-inline">
+															<span class="middle"><code>（请按照导入格式输入）</code></span>
+															<span class="middle"><code>（导入格式：标题|url(回车键)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标题|url）</code></span>
+														</span>
+													</div>
+												</div>																											
+											</fieldset>
+							          </div>
+							        </div>
+							    </div>
+							    <div class="form-actions text-center">
+							    	<button class="btn submit-btn ajax-post btn-primary btn-sm" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+									<button class="btn btn-primary btn-sm btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+									<input type="hidden" name="pid" value="{$pid}"/>
+									<input type="hidden" name="cate_id" value="{$cate_id|default=0}">
+							    </div>
+							</form>
 
-<block name="script">
-<script type="text/javascript">
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
 
-$('#submit').click(function(){
-	$('#form').submit();
-});
+				<!-- /#ace-settings-container -->
+				<include file="Public/setting"/>
+				<!-- /#ace-settings-container -->
+				
+			</div><!-- /.main-container-inner -->
 
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
 
-$(function(){
-	//导航高亮
-	highlight_subnav('{:U('index')}');
-});
-</script>
-</block>
+		<!---footer-->
+		<include file="Public/footer"/>
+		<!---footer-->
+
+		<!-- page specific plugin scripts -->
+		<!-- ace scripts -->
+
+		<script src="__ASSETS_JS__/ace-elements.min.js"></script>
+		<script src="__ASSETS_JS__/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript" charset="utf-8">
+	        Think.setValue("pid", {$info.pid|default = 0});
+	        Think.setValue("hide", {$info.hide|default = 0});
+	        Think.setValue("is_dev", {$info.is_dev|default = 0});
+		</script>
+</body>
+</html>
