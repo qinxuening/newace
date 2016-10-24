@@ -6,6 +6,6 @@ class EmptyController extends AdminController{
 		parent::_initialize();
 	}
     public function _empty(){
-    	$this->error(CONTROLLER_NAME.'控制器不存在');
+    	$this->error('['.CONTROLLER_NAME.']'.'控制器不存在');
     }
 }
