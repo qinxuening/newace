@@ -65,6 +65,10 @@ class AdminController extends Controller {
         $this->assign('getModel', $this->getModel());
     }
 
+    public function _empty(){
+    	$this->error(ACTION_NAME.'方法不存在');
+    }
+    
     final protected function getModel(){
     	$map = array('status'=>array('gt',-1), 'extend'=>array('gt', 0));
 		$list = M('model')->field('id, title, name')->where($map)->select();
