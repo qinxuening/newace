@@ -60,26 +60,28 @@ class FileController extends AdminController {
         //TODO: 用户登录检测
 
         /* 返回标准数据 */
-       // $return  = array('status' => 1, 'info' => '上传成功', 'data' => '');
-
+        $return  = array('status' => 1, 'info' => '上传成功', 'data' => '');
+		//print_r($return);die();
         /* 调用文件上传组件上传文件 */
-       /* $Picture = D('Picture');
+        $Picture = D('Picture');
         $pic_driver = C('PICTURE_UPLOAD_DRIVER');
+        //print_r($_FILES);die();
         $info = $Picture->upload(
             $_FILES,
             C('PICTURE_UPLOAD'),
             C('PICTURE_UPLOAD_DRIVER'),
             C("UPLOAD_{$pic_driver}_CONFIG")
         ); //TODO:上传到远程服务器
+        //print_r($info);die();
         /* 记录图片信息 */
-       /* if($info){
+        if($info){
             $return['status'] = 1;
             $return = array_merge($info['download'], $return);
         } else {
             $return['status'] = 0;
             $return['info']   = $Picture->getError();
-        }*/
-    	$upload = new \Think\Upload();// 实例化上传类
+        }
+    	/*$upload = new \Think\Upload();// 实例化上传类
     	$upload->maxSize   =     3145728 ;// 设置附件上传大小
     	$upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
     	$upload->rootPath  =      './Uploads/Picture/'; // 设置附件上传根目录
@@ -92,7 +94,7 @@ class FileController extends AdminController {
     		foreach($info as $file){
     			$return = '/Uploads/Picture/'.$file['savepath'].$file['savename'];
     		}
-    	}
+    	}*/
 
         /* 返回JSON数据 */
         $this->ajaxReturn($return);

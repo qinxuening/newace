@@ -66,7 +66,7 @@ class AdminController extends Controller {
     }
 
     public function _empty(){
-    	$this->error(ACTION_NAME.'方法不存在');
+    	$this->error(ACTION_NAME.'()方法不存在');
     }
     
     final protected function getModel(){

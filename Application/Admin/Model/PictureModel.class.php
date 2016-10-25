@@ -36,11 +36,12 @@ class PictureModel extends Model{
      */
     public function upload($files, $setting, $driver = 'Local', $config = null){
         /* 上传文件 */
-        $setting['callback'] = array($this, 'isFile');
-		$setting['removeTrash'] = array($this, 'removeTrash');
+        //$setting['callback'] = array($this, 'isFile');
+		//$setting['removeTrash'] = array($this, 'removeTrash');
+		//print_r($setting);die();
         $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
-
+		//print_r($info);die();
         if($info){ //文件上传成功，记录文件信息
             foreach ($info as $key => &$value) {
                 /* 已经存在文件记录 */
@@ -57,6 +58,7 @@ class PictureModel extends Model{
                     unset($info[$key]);
                 }
             }
+            //print_r($info);die();
             return $info; //文件上传成功
         } else {
             $this->error = $Upload->getError();
