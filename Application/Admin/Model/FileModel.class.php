@@ -42,33 +42,39 @@ class FileModel extends Model{
      * @return array           文件上传成功后的信息
      */
     public function upload($files, $setting, $driver = 'Local', $config = null){
+    	//md5索引问题
         /* 上传文件 */
-        $setting['callback'] = array($this, 'isFile');
-		$setting['removeTrash'] = array($this, 'removeTrash');
-		//print_r($files);die();
-        $Upload = new Upload();
+        //$setting['callback'] = array($this, 'isFile');
+		//$setting['removeTrash'] = array($this, 'removeTrash');
+        $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
-		//print_r($info);
+		//print_r($info);die();
         /* 设置文件保存位置 */
 		$this->_auto[] = array('location', 'ftp' === strtolower($driver) ? 1 : 0, self::MODEL_INSERT);
-
+		//print_r($this->_auto);die();
+		//print_r($info);die();
         if($info){ //文件上传成功，记录文件信息
             foreach ($info as $key => &$value) {
                 /* 已经存在文件记录 */
                 if(isset($value['id']) && is_numeric($value['id'])){
+                	//echo 11;die();
                     $value['path'] = substr($setting['rootPath'], 1).$value['savepath'].$value['savename']; //在模板里的url路径
+                    //print_r($value);die();
                     continue;
                 }
-
                 $value['path'] = substr($setting['rootPath'], 1).$value['savepath'].$value['savename']; //在模板里的url路径
+                //print_r($this->create($value));die();
                 /* 记录文件信息 */
                 if($this->create($value) && ($id = $this->add())){
+                	//echo $id;die();
                     $value['id'] = $id;
                 } else {
+                	//echo $this->getError();
                     //TODO: 文件上传成功，但是记录文件信息失败，需记录日志
                     unset($info[$key]);
                 }
             }
+            //print_r($info);die();
             return $info; //文件上传成功
         } else {
             $this->error = $Upload->getError();

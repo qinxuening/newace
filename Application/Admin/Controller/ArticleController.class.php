@@ -557,6 +557,10 @@ class ArticleController extends AdminController {
         // 获取当前的模型信息
         $model    =   get_document_model($data['model_id']);
         $tree = D('Category')->getTree(0,'id,title,pid');
+        if($data['file_id']){
+        	//echo $data['file_id'];
+        	//$data['file_id'] = think_encrypt(json_encode($data['file_id']));
+        }
 		//print_r($data);
         $this->assign('data', $data);
         $this->assign('model_id', $data['model_id']);
@@ -588,7 +592,7 @@ class ArticleController extends AdminController {
      */
     public function update(){
     	if(IS_POST){
-    		//print_r(I(''));
+    		//print_r(I(''));die();
 	        $document   =   D('Document');
 	        $res = $document->update();
 	        if(!$res){

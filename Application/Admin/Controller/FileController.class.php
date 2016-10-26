@@ -15,6 +15,7 @@ class FileController extends AdminController {
 
     /* 文件上传 */
     public function upload(){
+    	//print_r(I(''));die();
 		$return  = array('status' => 1, 'info' => '上传成功', 'data' => '');
 		/* 调用文件上传组件上传文件 */
 		$File = D('File');
@@ -25,7 +26,7 @@ class FileController extends AdminController {
 			C('DOWNLOAD_UPLOAD_DRIVER'),
 			C("UPLOAD_{$file_driver}_CONFIG")
 		);
-
+		//print_r($info);die();
         /* 记录附件信息 */
         if($info){
             $return['data'] = think_encrypt(json_encode($info['download']));

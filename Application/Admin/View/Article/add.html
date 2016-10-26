@@ -46,7 +46,7 @@
 				<!--top-alert-->
 					<div class="page-content">
 						<div class="page-header">
-
+							<h1>新增{$info.model_id|get_document_model='title'} </h1>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -129,6 +129,19 @@
 									                                </label>
 									                            </case>
 									                            <case value="picture">
+								                            		<div class="col-sm-4" style="padding-left: 0;">			
+																		<input type="hidden" name="{$field.name}" id="cover_id_{$field.name}" value="{$data[$field['name']]}"/>
+																		<input type="text" id="img_url" class="col-xs-12"  value="{$data[$field['name']]|get_cover='path'}" />								
+																	</div>
+																	<div class="col-sm-8">	
+																		<input type="file" id="upload_picture_{$field.name}">	
+																	</div>
+																	<div class="upload-img-box" >
+																		<notempty name="data[$field['name']]">
+																			<div class="upload-pre-item" ><img src="{$data[$field['name']]|get_cover='path'}"/></div>
+																		</notempty>
+																	</div>	
+																	<!--
 									                                <div class="controls">
 																		<input type="file" id="upload_picture_{$field.name}">
 																		<input type="hidden" name="{$field.name}" id="cover_id_{$field.name}"/>
@@ -137,44 +150,46 @@
 																			<div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
 																		</notempty>
 																		</div>
-																	</div>
+																	</div>-->
 																	<script type="text/javascript">
-																	//上传图片
-																    /* 初始化上传插件 */
-																	$("#upload_picture_{$field.name}").uploadify({
-																        "height"          : 30,
-																        "swf"             : "__STATIC__/uploadify/uploadify.swf",
-																        "fileObjName"     : "download",
-																        "buttonText"      : "上传图片",
-																        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
-																        "width"           : 120,
-																        'removeTimeout'	  : 1,
-																        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
-																        "onUploadSuccess" : uploadPicture{$field.name},
-																        'onFallback' : function() {
-																            alert('未检测到兼容版本的Flash.');
-																        }
-																    });
-																	function uploadPicture{$field.name}(file, data){
-																    	var data = $.parseJSON(data);
-																    	var src = '';
-																        if(data.status){
-																        	$("#cover_id_{$field.name}").val(data.id);
-																        	src = data.url || '__ROOT__' + data.path
-																        	$("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
-																        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
-																        	);
-																        } else {
-																        	updateAlert(data.info);
-																        	setTimeout(function(){
-																                $('#top-alert').find('button').click();
-																                $(that).removeClass('disabled').prop('disabled',false);
-																            },1500);
-																        }
-																    }
+																		//上传图片
+																	    /* 初始化上传插件 */
+																		$("#upload_picture_{$field.name}").uploadify({
+																	        "height"          : 30,
+																	        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+																	        "fileObjName"     : "download",
+																	        "buttonText"      : "上传图片",
+																	        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+																	        "width"           : 120,
+																	        'removeTimeout'	  : 1,
+																	        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+																	        "onUploadSuccess" : uploadPicture{$field.name},
+																	        'onFallback' : function() {
+																	            alert('未检测到兼容版本的Flash.');
+																	        }
+																	    });
+																		function uploadPicture{$field.name}(file, data){
+																			
+																	    	var data = $.parseJSON(data);
+																	    	var src = '';
+																	        if(data.status){
+																	        	$("#cover_id_{$field.name}").val(data.id);
+																	        	src = data.url || '__ROOT__' + data.path;
+																				$("#img_url").attr('value', src);
+																	        	$("#cover_id_{$field.name}").parent().parent().find('.upload-img-box').html(
+																	        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+																	        	);
+																	        } else {
+																	        	updateAlert(data.info);
+																	        	setTimeout(function(){
+																	                $('#top-alert').find('button').click();
+																	                $(that).removeClass('disabled').prop('disabled',false);
+																	            },1500);
+																	        }
+																	    }
 																	</script>
 									                            </case>
-									                            <case value="file">
+ 															    <case value="file">
 																	<div class="controls">
 																		<input type="file" id="upload_file_{$field.name}">
 																		<input type="hidden" name="{$field.name}" value="{$data[$field['name']]}"/>
@@ -201,7 +216,8 @@
 									                                    }
 																    });
 																	function uploadFile{$field.name}(file, data){
-																		var data = $.parseJSON(data);
+																		//return alert(data);
+																		var data = $.parseJSON(data);		
 																        if(data.status){
 																        	var name = "{$field.name}";
 																        	$("input[name="+name+"]").val(data.data);
@@ -217,7 +233,7 @@
 																        }
 																    }
 																	</script>
-									                            </case>																							   
+									                            </case>																									   
 															 <default/>
 														<input type="text" class="text input-large col-xs-10 col-sm-5" name="{$field.name}" value="{$field.value}">
 														</switch>
