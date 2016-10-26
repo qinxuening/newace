@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-24 15:01:58
+Date: 2016-10-26 16:19:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `tp_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of tp_action_log
@@ -176,6 +176,23 @@ INSERT INTO `tp_action_log` VALUES ('103', '10', '1', '2130706433', 'Menu', '125
 INSERT INTO `tp_action_log` VALUES ('104', '10', '1', '2130706433', 'Menu', '126', '操作url：/admin.php?s=/Menu/add.html', '1', '1477292211');
 INSERT INTO `tp_action_log` VALUES ('105', '10', '1', '2130706433', 'Menu', '127', '操作url：/admin.php?s=/Menu/add.html', '1', '1477292260');
 INSERT INTO `tp_action_log` VALUES ('106', '10', '1', '2130706433', 'Menu', '128', '操作url：/admin.php?s=/Menu/add.html', '1', '1477292290');
+INSERT INTO `tp_action_log` VALUES ('107', '1', '1', '2130706433', 'member', '1', 'admin在2016-10-25 08:52登录了后台', '1', '1477356769');
+INSERT INTO `tp_action_log` VALUES ('108', '11', '1', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1477365553');
+INSERT INTO `tp_action_log` VALUES ('109', '11', '1', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1477370265');
+INSERT INTO `tp_action_log` VALUES ('110', '11', '1', '2130706433', 'category', '41', '操作url：/admin.php?s=/Category/edit.html', '1', '1477370277');
+INSERT INTO `tp_action_log` VALUES ('111', '11', '1', '2130706433', 'category', '41', '操作url：/admin.php?s=/Category/edit.html', '1', '1477371157');
+INSERT INTO `tp_action_log` VALUES ('112', '11', '1', '2130706433', 'category', '43', '操作url：/admin.php?s=/Category/edit.html', '1', '1477373559');
+INSERT INTO `tp_action_log` VALUES ('113', '11', '1', '2130706433', 'category', '42', '操作url：/admin.php?s=/Category/edit.html', '1', '1477373577');
+INSERT INTO `tp_action_log` VALUES ('114', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1477373592');
+INSERT INTO `tp_action_log` VALUES ('115', '11', '1', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1477453387');
+INSERT INTO `tp_action_log` VALUES ('116', '8', '1', '2130706433', 'attribute', '33', '操作url：/admin.php?s=/Attribute/update.html', '1', '1477468694');
+INSERT INTO `tp_action_log` VALUES ('117', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469194');
+INSERT INTO `tp_action_log` VALUES ('118', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469212');
+INSERT INTO `tp_action_log` VALUES ('119', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469243');
+INSERT INTO `tp_action_log` VALUES ('120', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469283');
+INSERT INTO `tp_action_log` VALUES ('121', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469331');
+INSERT INTO `tp_action_log` VALUES ('122', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1477469616');
+INSERT INTO `tp_action_log` VALUES ('123', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1477469676');
 
 -- ----------------------------
 -- Table structure for tp_addons
@@ -262,7 +279,7 @@ CREATE TABLE `tp_attribute` (
   `auto_type` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `model_id` (`model_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
 
 -- ----------------------------
 -- Records of tp_attribute
@@ -299,6 +316,7 @@ INSERT INTO `tp_attribute` VALUES ('29', 'template', '详情页显示模板', 'v
 INSERT INTO `tp_attribute` VALUES ('30', 'file_id', '文件ID', 'int(10) unsigned NOT NULL ', 'file', '0', '需要函数处理', '1', '', '3', '0', '1', '1383896415', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `tp_attribute` VALUES ('31', 'download', '下载次数', 'int(10) unsigned NOT NULL ', 'num', '0', '', '1', '', '3', '0', '1', '1383896380', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `tp_attribute` VALUES ('32', 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', '1', '', '3', '0', '1', '1383896371', '1383891252', '', '0', '', '', '', '0', '');
+INSERT INTO `tp_attribute` VALUES ('33', 'editor', '产品内容', 'text NOT NULL', 'editor', '', '', '1', '0:html\r\n1:ubb\r\n2:markdown', '4', '0', '1', '1477468694', '1477468694', '', '3', '', 'regex', '', '3', 'function');
 
 -- ----------------------------
 -- Table structure for tp_auth_extend
@@ -649,11 +667,11 @@ CREATE TABLE `tp_category` (
 -- ----------------------------
 -- Records of tp_category
 -- ----------------------------
-INSERT INTO `tp_category` VALUES ('42', 'anfang', '安防类', '41', '3', '10', '', '安防类', '安防类', '', 'list.html', 'list.html', '', '2', '2', '1', '0', '2', '1', '0', '1', '', '', '1474526797', '1476760586', '1', '0', '安防类');
-INSERT INTO `tp_category` VALUES ('41', 'products', '产品展示', '0', '6', '10', '', '产品展示', '产品展示', '', '', '', '', '2,3', '2,3,4', '1', '0', '2', '1', '0', '1', '', '', '1474524724', '1476760577', '1', '/Uploads/Picture/2016-09-23/57e486223ae02.png', '产品展示');
-INSERT INTO `tp_category` VALUES ('40', 'home', '家居类', '0', '2', '10', '', '家居类', '家居类|家居类|家居类', '', '', '', '', '', '', '2', '0', '2', '1', '0', '0', '', '', '1474524627', '1476951190', '1', '/Uploads/Picture/2016-09-22/57e3a57de55a6.png', '家居类');
-INSERT INTO `tp_category` VALUES ('43', 'alarm', '报警器', '42', '8', '10', '', '煤气报警器|水浸报警器', '煤气报警器|水浸报警器', '', '', '', '', '', '', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474526885', '1476760592', '1', '0', '煤气报警器|水浸报警器');
-INSERT INTO `tp_category` VALUES ('44', 'home_', '医疗类', '41', '4', '10', '', '家居类', '家居类', 'list.html', 'list_index.html', 'list_body.html', 'article.html', '4', '2', '1', '0', '1', '1', '0', '0', '', '', '1474527014', '1476944190', '1', '0', '空调|电视|机顶盒');
+INSERT INTO `tp_category` VALUES ('42', 'anfang', '安防类', '41', '3', '10', '', '安防类', '安防类', '', 'list.html', 'list.html', '', '2', '2', '1', '0', '2', '1', '0', '1', '', '', '1474526797', '1477373577', '1', '24', '安防类');
+INSERT INTO `tp_category` VALUES ('41', 'products', '产品展示', '0', '6', '10', '', '产品展示', '产品展示', '', '', '', '', '2,3', '2,3,4', '1', '0', '2', '1', '0', '1', '', '', '1474524724', '1477371157', '1', '22', '产品展示');
+INSERT INTO `tp_category` VALUES ('40', 'home', '家居类', '0', '2', '10', '', '家居类', '家居类|家居类|家居类', '', '', '', '', '2,3', '2,3', '2', '0', '2', '1', '0', '0', '', '', '1474524627', '1477453387', '1', '21', '家居类');
+INSERT INTO `tp_category` VALUES ('43', 'alarm', '报警器', '42', '8', '10', '', '煤气报警器|水浸报警器', '煤气报警器|水浸报警器', '', '', '', '', '', '', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474526885', '1477373559', '1', '23', '煤气报警器|水浸报警器');
+INSERT INTO `tp_category` VALUES ('44', 'home_', '医疗类', '41', '4', '10', '', '家居类', '家居类', 'list.html', 'list_index.html', 'list_body.html', 'article.html', '4', '2,4', '2,1,3', '0', '1', '1', '0', '1', '', '', '1474527014', '1477469676', '1', '25', '空调|电视|机顶盒');
 
 -- ----------------------------
 -- Table structure for tp_channel
@@ -766,14 +784,14 @@ CREATE TABLE `tp_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of tp_document
 -- ----------------------------
 INSERT INTO `tp_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1476955723', '1');
 INSERT INTO `tp_document` VALUES ('2', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1476773441', '-1');
-INSERT INTO `tp_document` VALUES ('3', '1', '', '文章管理3', '41', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '1546300800', '0', '8', '0', '0', '0', '1401854160', '1476954051', '1');
+INSERT INTO `tp_document` VALUES ('3', '1', '', '文章管理3', '41', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '1546300800', '0', '8', '0', '0', '0', '1401854160', '1477457230', '1');
 INSERT INTO `tp_document` VALUES ('4', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
 INSERT INTO `tp_document` VALUES ('5', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1406001413', '1');
 INSERT INTO `tp_document` VALUES ('6', '1', '', 'OneThink1.1开发版发布', '42', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
@@ -781,6 +799,11 @@ INSERT INTO `tp_document` VALUES ('7', '1', '', 'OneThink1.1开发版发布', '4
 INSERT INTO `tp_document` VALUES ('8', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
 INSERT INTO `tp_document` VALUES ('9', '1', '', 'OneThink1.1开发版发布', '44', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
 INSERT INTO `tp_document` VALUES ('10', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
+INSERT INTO `tp_document` VALUES ('11', '1', '', '上传文件测试', '40', '0', '', '0', '0', '3', '2', '0', '0', '26', '1', '0', '0', '0', '0', '0', '0', '1477452960', '1477462427', '1');
+INSERT INTO `tp_document` VALUES ('12', '1', '', '下载测试2', '40', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477462687', '1477462687', '3');
+INSERT INTO `tp_document` VALUES ('13', '1', '', '下载测试2', '40', '0', '', '0', '0', '3', '2', '0', '0', '27', '1', '0', '0', '0', '0', '0', '0', '1477462800', '1477467476', '1');
+INSERT INTO `tp_document` VALUES ('14', '1', 'hospital', '医疗', '44', '0', '', '0', '0', '4', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477469520', '1477469552', '1');
+INSERT INTO `tp_document` VALUES ('15', '1', 'hospital1', 'hospital1', '44', '0', '', '0', '0', '4', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477469687', '1477469687', '2');
 
 -- ----------------------------
 -- Table structure for tp_document_article
@@ -798,7 +821,7 @@ CREATE TABLE `tp_document_article` (
 -- ----------------------------
 -- Records of tp_document_article
 -- ----------------------------
-INSERT INTO `tp_document_article` VALUES ('3', '0', '<img src=\"/Public/static/kindeditor/plugins/emoticons/images/10.gif\" alt=\"\" border=\"0\" /> \r\n<h1>\r\n	OneThink1.1开发版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<img src=\"/Public/static/kindeditor/plugins/emoticons/images/10.gif\" alt=\"\" border=\"0\" /> \r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013~2014</strong> \r\n</p>', '', '0');
+INSERT INTO `tp_document_article` VALUES ('3', '0', '<img src=\"/Public/static/kindeditor/plugins/emoticons/images/10.gif\" alt=\"\" border=\"0\" /> \r\n<h1>\r\n	OneThink1.1开发版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<img src=\"/Public/static/kindeditor/plugins/emoticons/images/10.gif\" alt=\"\" border=\"0\" /> \r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原11\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013~2014</strong> \r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('2', '0', '<h1>\r\n	OneThink1.1开发版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013~2014</strong> \r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('1', '0', '<h1>\r\n	OneThink1.1开发版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013~2014</strong> \r\n</p>', '', '0');
 
@@ -820,6 +843,9 @@ CREATE TABLE `tp_document_download` (
 -- ----------------------------
 -- Records of tp_document_download
 -- ----------------------------
+INSERT INTO `tp_document_download` VALUES ('11', '0', '上传文件测试', '', '19', '0', '1260440');
+INSERT INTO `tp_document_download` VALUES ('12', '0', '', '', '0', '0', '0');
+INSERT INTO `tp_document_download` VALUES ('13', '0', '下载测试2', '', '25', '0', '1142954');
 
 -- ----------------------------
 -- Table structure for tp_document_goods
@@ -828,12 +854,15 @@ DROP TABLE IF EXISTS `tp_document_goods`;
 CREATE TABLE `tp_document_goods` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `code` int(10) unsigned NOT NULL COMMENT 'code总数',
+  `editor` text NOT NULL COMMENT '产品内容',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of tp_document_goods
 -- ----------------------------
+INSERT INTO `tp_document_goods` VALUES ('14', '0', '医疗');
+INSERT INTO `tp_document_goods` VALUES ('15', '0', 'hospital1');
 
 -- ----------------------------
 -- Table structure for tp_file
@@ -853,12 +882,37 @@ CREATE TABLE `tp_file` (
   `url` varchar(255) NOT NULL DEFAULT '' COMMENT '远程地址',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上传时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_md5` (`md5`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文件表';
+  KEY `uk_md5` (`md5`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='文件表';
 
 -- ----------------------------
 -- Records of tp_file
 -- ----------------------------
+INSERT INTO `tp_file` VALUES ('1', '3年单域名.pdf', '581022d29a296.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477452498');
+INSERT INTO `tp_file` VALUES ('2', '3年单域名.pdf', '5810245c12c96.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477452892');
+INSERT INTO `tp_file` VALUES ('3', '3年单域名.pdf', '581024cba9c26.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477453003');
+INSERT INTO `tp_file` VALUES ('4', 'img-151110111301.pdf', '581024d7a7bac.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1260440', 'bd52b16345e4d2136643a28051705002', 'b54aefd136d0a6fe2a0792bd1d599d28c8cb50b8', '0', '', '1477453015');
+INSERT INTO `tp_file` VALUES ('5', 'img-151110111301.pdf', '581024efa4a58.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1260440', 'bd52b16345e4d2136643a28051705002', 'b54aefd136d0a6fe2a0792bd1d599d28c8cb50b8', '0', '', '1477453039');
+INSERT INTO `tp_file` VALUES ('6', 'SSL证书购买合同1.1.pdf', '581043906027f.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '160225', '268435e6cc9737778df67c99854d8b12', '9f1f448e3295a523ae47046007f6dd1841c9c573', '0', '', '1477460880');
+INSERT INTO `tp_file` VALUES ('7', 'SSL证书购买合同1.2.pdf', '581043b81e8c8.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '161725', '6ac35ff24c7b4e25bc196d42fd6143ab', 'd610e12efeec386795f9e118aef70e5879608c6b', '0', '', '1477460920');
+INSERT INTO `tp_file` VALUES ('8', '3年单域名.pdf', '581043fc6b2fb.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477460988');
+INSERT INTO `tp_file` VALUES ('9', '3年单域名.pdf', '58104417359af.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477461015');
+INSERT INTO `tp_file` VALUES ('10', 'SSL证书购买合同1.1.pdf', '5810458c798fd.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '160225', '268435e6cc9737778df67c99854d8b12', '9f1f448e3295a523ae47046007f6dd1841c9c573', '0', '', '1477461388');
+INSERT INTO `tp_file` VALUES ('11', 'SSL证书购买合同1.1.pdf', '581045ed07eb7.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '160225', '268435e6cc9737778df67c99854d8b12', '9f1f448e3295a523ae47046007f6dd1841c9c573', '0', '', '1477461484');
+INSERT INTO `tp_file` VALUES ('12', '3年单域名.pdf', '581046210e816.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477461537');
+INSERT INTO `tp_file` VALUES ('13', 'SSL证书购买合同1.1.pdf', '581046ac55c95.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '160225', '268435e6cc9737778df67c99854d8b12', '9f1f448e3295a523ae47046007f6dd1841c9c573', '0', '', '1477461676');
+INSERT INTO `tp_file` VALUES ('14', '3年单域名.pdf', '581046e8ab1a1.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477461736');
+INSERT INTO `tp_file` VALUES ('15', '3年单域名.pdf', '581046f5be53d.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477461749');
+INSERT INTO `tp_file` VALUES ('16', '3年单域名.pdf', '58104851827c8.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477462097');
+INSERT INTO `tp_file` VALUES ('17', '3年单域名.pdf', '581048bcad3e2.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477462204');
+INSERT INTO `tp_file` VALUES ('18', '3年单域名.pdf', '581048e63287f.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '155234', '1c37f3a9d7ebeb66df46f6d89c419245', 'ae7b833b7474631e454347dacc4131fb826b4e72', '0', '', '1477462246');
+INSERT INTO `tp_file` VALUES ('19', 'img-151110111301.pdf', '5810499811dbd.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1260440', 'bd52b16345e4d2136643a28051705002', 'b54aefd136d0a6fe2a0792bd1d599d28c8cb50b8', '0', '', '1477462424');
+INSERT INTO `tp_file` VALUES ('20', '闭门器.pdf', '58104aff20a36.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1403429', '19bffd6e7e38295ff217fc2774a86835', '2f4f8b6624e4e5430c71a5cc80cf91e42f7fe0b7', '0', '', '1477462783');
+INSERT INTO `tp_file` VALUES ('21', '单火触摸开关.pdf', '58104b20d8b40.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1493100', 'b546155e6368a4654d21e41c1e63446b', '863cfd8b427104c87981a0d49f7e474ffb4ea035', '0', '', '1477462816');
+INSERT INTO `tp_file` VALUES ('22', '闭门器.pdf', '58104b92b56d8.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1403429', '19bffd6e7e38295ff217fc2774a86835', '2f4f8b6624e4e5430c71a5cc80cf91e42f7fe0b7', '0', '', '1477462930');
+INSERT INTO `tp_file` VALUES ('23', '七彩灯.pdf', '58104dd9ea017.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1603194', 'c5e77da19898bf82d1625b4518507a0c', '8b2601184af152370b0e9c138d171626c1db1272', '0', '', '1477463513');
+INSERT INTO `tp_file` VALUES ('24', '水浸报警.pdf', '58104e54e5219.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1864265', '68231b52c93aa3812d8236a2d1cbd1b9', '44ada7f2fe9ee2713726783180c23f9cdcab9663', '0', '', '1477463636');
+INSERT INTO `tp_file` VALUES ('25', '智能插座（万能）.pdf', '58104f3f11500.pdf', '2016-10-26/', 'pdf', 'application/octet-stream', '1142954', 'aa14e306f05ab1d1e3a14c5a24311499', '3191b60bc95ababbf2248010db4592458f543e24', '0', '', '1477463871');
 
 -- ----------------------------
 -- Table structure for tp_hooks
@@ -916,7 +970,7 @@ CREATE TABLE `tp_member` (
 -- ----------------------------
 -- Records of tp_member
 -- ----------------------------
-INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '90', '37', '0', '1472733337', '2130706433', '1477270904', '1');
+INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '90', '38', '0', '1472733337', '2130706433', '1477356769', '1');
 INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `tp_member` VALUES ('3', 'cym', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '0');
 
@@ -1094,7 +1148,7 @@ CREATE TABLE `tp_model` (
 INSERT INTO `tp_model` VALUES ('1', 'document', '基础文档', '0', '', '1', '{\"1\":[\"2\",\"3\",\"5\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"16\",\"17\",\"19\",\"20\"]}', '1:基础', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891233', '1476667488', '1', 'MyISAM');
 INSERT INTO `tp_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"24\",\"2\",\"5\"],\"2\":[\"9\",\"13\",\"19\",\"10\",\"12\",\"16\",\"17\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础,2:扩展', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891243', '1475984788', '1', 'MyISAM');
 INSERT INTO `tp_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":[\"3\",\"28\",\"30\",\"32\",\"2\",\"5\",\"31\"],\"2\":[\"13\",\"10\",\"27\",\"9\",\"12\",\"16\",\"17\",\"19\",\"11\",\"20\",\"14\",\"29\"]}', '1:基础,2:扩展', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891252', '1387260449', '1', 'MyISAM');
-INSERT INTO `tp_model` VALUES ('4', 'goods', '产品', '1', '', '1', '', '1:基础', '21,7,8', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '10', '', '', '1457341183', '1476928026', '1', 'MyISAM');
+INSERT INTO `tp_model` VALUES ('4', 'goods', '产品', '1', '', '1', '{\"1\":[\"2\",\"3\",\"33\",\"5\"],\"2\":[\"9\",\"16\",\"14\",\"13\",\"17\",\"20\",\"19\",\"12\",\"11\",\"10\"]}', '1:基础,2:扩展', '21,8,15,16,18,7,22,4,6,2,1,14,3,13,5,17,33,20,9,19,12,11,10', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '10', '', '', '1457341183', '1477469331', '1', 'MyISAM');
 
 -- ----------------------------
 -- Table structure for tp_picture
@@ -1109,12 +1163,35 @@ CREATE TABLE `tp_picture` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_picture
 -- ----------------------------
 INSERT INTO `tp_picture` VALUES ('3', '/Uploads/Picture/2016-09-22/57e39ebedbe29.png', '', '322cc2f79b4b483426af0d5318a6f5d5', '03426e18e8e2a1ae113c799924825a0c2208508e', '1', '1474535102');
+INSERT INTO `tp_picture` VALUES ('4', '/Uploads/Picture/2016-10-25/580eb0d4bad24.jpg', '', 'ddc0b01aec0318befc07f011016330be', '213c78c54c3e84b3f9b70b8f9f56267c03438a39', '1', '1477357780');
+INSERT INTO `tp_picture` VALUES ('7', '/Uploads/Picture/2016-10-25/580ec56147cd9.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477363041');
+INSERT INTO `tp_picture` VALUES ('6', '/Uploads/Picture/2016-10-25/580ec4bdb93df.png', '', 'e568e50d93351fa81f36c1b7efe2eb0a', '75386ac375cdb096a3574c03d3aac6033795631d', '1', '1477362877');
+INSERT INTO `tp_picture` VALUES ('8', '/Uploads/Picture/2016-10-25/580ec58854ccb.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477363080');
+INSERT INTO `tp_picture` VALUES ('9', '/Uploads/Picture/2016-10-25/580ecdf599be0.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365237');
+INSERT INTO `tp_picture` VALUES ('10', '/Uploads/Picture/2016-10-25/580ece3742c4b.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365303');
+INSERT INTO `tp_picture` VALUES ('11', '/Uploads/Picture/2016-10-25/580ece439ad4e.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365315');
+INSERT INTO `tp_picture` VALUES ('12', '/Uploads/Picture/2016-10-25/580ece4f52f93.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365327');
+INSERT INTO `tp_picture` VALUES ('13', '/Uploads/Picture/2016-10-25/580ece5ae9c54.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365338');
+INSERT INTO `tp_picture` VALUES ('14', '/Uploads/Picture/2016-10-25/580ed069073ad.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477365864');
+INSERT INTO `tp_picture` VALUES ('15', '/Uploads/Picture/2016-10-25/580ed63ec40ec.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477367358');
+INSERT INTO `tp_picture` VALUES ('16', '/Uploads/Picture/2016-10-25/580ed6fe3c0f2.jpg', '', '58b429a1f3c97d9aa665aa224590c9dd', '1ffe168580844219441f559ff52bbb39e7155302', '1', '1477367550');
+INSERT INTO `tp_picture` VALUES ('17', '/Uploads/Picture/2016-10-25/580ee0e5b5288.jpg', '', 'ddc0b01aec0318befc07f011016330be', '213c78c54c3e84b3f9b70b8f9f56267c03438a39', '1', '1477370085');
+INSERT INTO `tp_picture` VALUES ('18', '/Uploads/Picture/2016-10-25/580ee11181091.jpg', '', '292c629b99901693c8b9a419e4c47b29', '459c91a4c4d7b7f5a7c7682435a3d33017776f80', '1', '1477370129');
+INSERT INTO `tp_picture` VALUES ('19', '/Uploads/Picture/2016-10-25/580ee13443054.jpg', '', '292c629b99901693c8b9a419e4c47b29', '459c91a4c4d7b7f5a7c7682435a3d33017776f80', '1', '1477370164');
+INSERT INTO `tp_picture` VALUES ('20', '/Uploads/Picture/2016-10-25/580ee151242c8.jpg', '', '292c629b99901693c8b9a419e4c47b29', '459c91a4c4d7b7f5a7c7682435a3d33017776f80', '1', '1477370193');
+INSERT INTO `tp_picture` VALUES ('21', '/Uploads/Picture/2016-10-25/580ee197680cb.jpg', '', '292c629b99901693c8b9a419e4c47b29', '459c91a4c4d7b7f5a7c7682435a3d33017776f80', '1', '1477370263');
+INSERT INTO `tp_picture` VALUES ('22', '/Uploads/Picture/2016-10-25/580ee1a436e97.jpg', '', 'ddc0b01aec0318befc07f011016330be', '213c78c54c3e84b3f9b70b8f9f56267c03438a39', '1', '1477370276');
+INSERT INTO `tp_picture` VALUES ('23', '/Uploads/Picture/2016-10-25/580eee718bbd5.jpg', '', 'ec569042ce9fe24d81f40f03576f5d3a', '69edea809a62c054978d1e57053c7f9aad7cb46a', '1', '1477373553');
+INSERT INTO `tp_picture` VALUES ('24', '/Uploads/Picture/2016-10-25/580eee881c3ce.jpg', '', '3c24b48dd381b368dfeba5e8638b257c', 'd1bb5705d3ff8cbfacea94d068cb9660d5d90e3c', '1', '1477373576');
+INSERT INTO `tp_picture` VALUES ('25', '/Uploads/Picture/2016-10-25/580eee95d0d98.jpg', '', '3c8a8cf7bb02ed9baabba9c1b01b76d9', 'cb929ec7fb65ff4f8a7e1063f1975aff78660d89', '1', '1477373589');
+INSERT INTO `tp_picture` VALUES ('26', '/Uploads/Picture/2016-10-26/58102544079f1.png', '', 'a191f5c64b72e44189fef81a3475c7b7', '869b44e45b31203817c6fd31c789a9c422e53a85', '1', '1477453123');
+INSERT INTO `tp_picture` VALUES ('27', '/Uploads/Picture/2016-10-26/58105d4a7070d.png', '', '0090d59754d7f0ee15dc11d9041c2475', '62a5dc233cb3645362c006cc0d9f0143bded4ee7', '1', '1477467466');
 
 -- ----------------------------
 -- Table structure for tp_ucenter_admin
@@ -1179,7 +1256,7 @@ CREATE TABLE `tp_ucenter_member` (
 -- ----------------------------
 -- Records of tp_ucenter_member
 -- ----------------------------
-INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1477270904', '2130706433', '1472733337', '1');
+INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1477356769', '2130706433', '1472733337', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('2', 'qinxuening', '7c611e8fef136e9ae52abaeaca48f5c1', '2423859712@qq.com', '', '1476265461', '2130706433', '0', '0', '1476265461', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('3', 'cym', '7c611e8fef136e9ae52abaeaca48f5c1', '24238597134@qq.com', '', '1476412989', '2130706433', '0', '0', '1476412989', '1');
 
