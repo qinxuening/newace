@@ -707,12 +707,13 @@ class ArticleController extends AdminController {
      * 我的文档
      * @author huajie <banhuajie@163.com>
      */
-    public function mydocument($status = null, $title = null, $model_id = null){
+    public function mydocument($status = null, $title = null, $model_id = null, $cate_id = null){
     	//print_r(I(''));
         //获取左边菜单
         $this->getMenu();
 
         $Document   =   D('Document');
+        $tree = D('Category')->getTree(0,'id,title,pid');
         /* 查询条件初始化 */
         $map['uid'] = UID;
         if(isset($title)){
@@ -728,6 +729,9 @@ class ArticleController extends AdminController {
         }
         if ( isset($_GET['time-end']) ) {
             $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+        if($cate_id){
+        	$map['category_id'] = $cate_id;
         }
         if ($model_id) {
         	$map['model_id'] = $model_id;
@@ -750,8 +754,10 @@ class ArticleController extends AdminController {
         $this->assign("$modelView",'active');
         $this->assign("mydocument",'1');
         $this->assign("add",'0');
+        $this->assign('tree', $tree);
         $this->assign('status', $status);
         $this->assign('list', $list);
+        $this->assign('this_category', I('cate_id'));
         $this->meta_title = '我的文档';
         $this->display();
     }
@@ -816,6 +822,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function copy() {
+    	//print_r(I('ids'));die();
         if(empty($_POST['ids'])) {
             $this->error('请选择要复制的文档！');
         }
@@ -829,6 +836,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function paste() {
+    	//print_r(I('model_id'));die(); 
         $moveList = session('moveArticle');
         $copyList = session('copyArticle');
         if(empty($moveList) && empty($copyList)) {
