@@ -212,7 +212,8 @@
 												</ul>
 											</div>
 											<input type="text" name="title" class="search-input" value="{:I('title')}" placeholder="请输入标题文档">
-											<a class="sch-btn" href="javascript:;" id="search" url="{:U('article/mydocument','pid='.I('pid',0).'&cate_id='.$cate_id,false)}"><i class="icon-search nav-search-icon"></i></a>
+											<!--<a class="sch-btn" href="javascript:;" id="search" url="{:U('article/mydocument','pid='.I('pid',0).'&cate_id='.$cate_id,false)}"><i class="icon-search nav-search-icon"></i></a>-->
+											<a class="sch-btn" href="javascript:;" id="search" url="{:U('article/mydocument','pid='.I('pid',0).'&model_id='.$model_id,false)}"><i class="icon-search nav-search-icon"></i></a>
 										</div>
 							            <div class="btn-group-click adv-sch-pannel fl">
 							                <button class="btn btn-primary btn-sm">高 级<i class="btn-arrowdown"></i></button>

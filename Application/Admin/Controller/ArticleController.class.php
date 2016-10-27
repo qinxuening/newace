@@ -732,6 +732,7 @@ class ArticleController extends AdminController {
         if ($model_id) {
         	$map['model_id'] = $model_id;
         	$modelView = get_document_model($model_id)['name'];
+        	$this->assign('model_id', $model_id);
         	$this->assign('mydocument' , '');
         }else{
         	$this->assign('mydocument' , 'active');
@@ -742,8 +743,7 @@ class ArticleController extends AdminController {
         $map['pid'] = 0;
         $list = $this->lists($Document,$map,'update_time desc');
         int_to_string($list);
-        $list = $this->parseDocumentList($list,1);
-		//print_r($list);
+        $list = $this->parseDocumentList($list,$model_id?$model_id:1);
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign("$modelView.'_index'",'active open');
