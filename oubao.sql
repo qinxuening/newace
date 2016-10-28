@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-26 16:19:56
+Date: 2016-10-28 14:31:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `tp_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of tp_action_log
@@ -193,6 +193,7 @@ INSERT INTO `tp_action_log` VALUES ('120', '7', '1', '2130706433', 'model', '4',
 INSERT INTO `tp_action_log` VALUES ('121', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1477469331');
 INSERT INTO `tp_action_log` VALUES ('122', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1477469616');
 INSERT INTO `tp_action_log` VALUES ('123', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1477469676');
+INSERT INTO `tp_action_log` VALUES ('124', '1', '1', '2130706433', 'member', '1', 'admin在2016-10-27 09:12登录了后台', '1', '1477530747');
 
 -- ----------------------------
 -- Table structure for tp_addons
@@ -210,20 +211,20 @@ CREATE TABLE `tp_addons` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '安装时间',
   `has_adminlist` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否有后台列表',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='插件表';
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='插件表';
 
 -- ----------------------------
 -- Records of tp_addons
 -- ----------------------------
 INSERT INTO `tp_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"500px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
-INSERT INTO `tp_addons` VALUES ('2', 'SiteStat', '站点统计信息', '统计站点的基础信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"1\",\"display\":\"1\",\"status\":\"0\"}', 'thinkphp', '0.1', '1379512015', '0');
-INSERT INTO `tp_addons` VALUES ('3', 'DevTeam', '开发团队信息', '开发团队成员信息', '1', '{\"title\":\"OneThink\\u5f00\\u53d1\\u56e2\\u961f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512022', '0');
-INSERT INTO `tp_addons` VALUES ('4', 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512036', '0');
+INSERT INTO `tp_addons` VALUES ('31', 'DevTeam', '开发团队信息', '开发团队成员信息', '1', '{\"title\":\"\\u5f00\\u53d1\\u56e2\\u961f\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1477549346', '0');
+INSERT INTO `tp_addons` VALUES ('4', 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"4\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512036', '0');
 INSERT INTO `tp_addons` VALUES ('5', 'Editor', '前台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"300px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1379830910', '0');
 INSERT INTO `tp_addons` VALUES ('25', 'SocialComment', '通用社交化评论', '集成了各种社交化评论插件，轻松集成到系统中。', '1', '{\"comment_type\":\"1\",\"comment_uid_youyan\":\"90040\",\"comment_short_name_duoshuo\":\"\",\"comment_form_pos_duoshuo\":\"buttom\",\"comment_data_list_duoshuo\":\"10\",\"comment_data_order_duoshuo\":\"asc\"}', 'thinkphp', '0.1', '1476150605', '0');
-INSERT INTO `tp_addons` VALUES ('27', 'Attachment', '附件', '用于文档模型上传附件', '1', 'null', 'thinkphp', '0.1', '1476178372', '1');
+INSERT INTO `tp_addons` VALUES ('30', 'SiteStat', '站点统计信息', '统计站点的基础信息', '1', '{\"title\":\"\\u7ad9\\u70b9\\u7edf\\u8ba1\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1477549343', '0');
 INSERT INTO `tp_addons` VALUES ('28', 'Example', '示列', '这是一个临时描述', '0', '{\"random\":\"1\"}', '无名', '0.1', '1476253306', '1');
 INSERT INTO `tp_addons` VALUES ('29', 'addons', '插件测试', '这是一个临时描述', '1', '{\"random\":\"1\"}', 'qxn', '0.1', '1476253547', '1');
+INSERT INTO `tp_addons` VALUES ('33', 'Attachment', '附件', '用于文档模型上传附件', '1', 'null', 'thinkphp', '0.1', '1477549575', '1');
 
 -- ----------------------------
 -- Table structure for tp_attachment
@@ -405,16 +406,16 @@ CREATE TABLE `tp_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
   PRIMARY KEY (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=219 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=223 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_auth_rule
 -- ----------------------------
-INSERT INTO `tp_auth_rule` VALUES ('1', 'admin', '2', 'Admin/Index/index', '首页', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('2', 'admin', '2', 'Admin/Article/index', '内容', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('3', 'admin', '2', 'Admin/User/index', '用户', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('1', 'admin', '2', 'Admin/Index/index', '控制台', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('2', 'admin', '2', 'Admin/Article/index', '内容管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('3', 'admin', '2', 'Admin/User/index', '管理员管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('4', 'admin', '2', 'Admin/Addons/index', '扩展', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '系统', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '设置', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('7', 'admin', '1', 'Admin/article/add', '新增', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('8', 'admin', '1', 'Admin/article/edit', '编辑', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('9', 'admin', '1', 'Admin/article/setStatus', '改变状态', '1', '');
@@ -528,7 +529,7 @@ INSERT INTO `tp_auth_rule` VALUES ('117', 'admin', '2', 'Admin/article/move', '�
 INSERT INTO `tp_auth_rule` VALUES ('118', 'admin', '2', 'Admin/article/copy', '复制', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('119', 'admin', '2', 'Admin/article/paste', '粘贴', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('120', 'admin', '2', 'Admin/article/batchOperate', '导入', '-1', '');
-INSERT INTO `tp_auth_rule` VALUES ('121', 'admin', '2', 'Admin/article/recycle', '回收站', '-1', '');
+INSERT INTO `tp_auth_rule` VALUES ('121', 'admin', '2', 'Admin/Article/recycle', '回收站', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('122', 'admin', '2', 'Admin/article/permit', '还原', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('123', 'admin', '2', 'Admin/article/clear', '清空', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('124', 'admin', '2', 'Admin/User/add', '新增用户', '-1', '');
@@ -602,7 +603,7 @@ INSERT INTO `tp_auth_rule` VALUES ('191', 'admin', '2', 'Admin/Database/repair',
 INSERT INTO `tp_auth_rule` VALUES ('192', 'admin', '2', 'Admin/Database/index?type=import', '还原数据库', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('193', 'admin', '2', 'Admin/Database/import', '恢复', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('194', 'admin', '2', 'Admin/Database/del', '删除', '-1', '');
-INSERT INTO `tp_auth_rule` VALUES ('195', 'admin', '2', 'Admin/other', '其他', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('195', 'admin', '2', 'Admin/other', '其他', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('196', 'admin', '2', 'Admin/Menu/add', '新增', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('197', 'admin', '2', 'Admin/Menu/edit', '编辑', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('198', 'admin', '2', 'Admin/Think/lists?model=article', '应用', '-1', '');
@@ -625,6 +626,10 @@ INSERT INTO `tp_auth_rule` VALUES ('215', 'admin', '1', 'Admin/Category/operate/
 INSERT INTO `tp_auth_rule` VALUES ('216', 'admin', '1', 'Admin/Category/operate/type/merge', '合并', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('217', 'admin', '1', 'Admin/article/index', '文档列表', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('218', 'admin', '1', 'Admin/think/lists', '数据列表', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('219', 'admin', '2', 'Admin/Category', '栏目管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('220', 'admin', '2', 'Admin/Model', '频道管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('221', 'admin', '2', 'Admin/User', '行为管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('222', 'admin', '2', 'Admin/Database', '数据备份', '1', '');
 
 -- ----------------------------
 -- Table structure for tp_category
@@ -750,7 +755,7 @@ INSERT INTO `tp_config` VALUES ('33', 'ALLOW_VISIT', '3', '不受限控制器方
 INSERT INTO `tp_config` VALUES ('34', 'DENY_VISIT', '3', '超管专限控制器方法', '0', '', '仅超级管理员可访问的控制器方法', '1386644141', '1386644659', '1', '0:Addons/addhook\r\n1:Addons/edithook\r\n2:Addons/delhook\r\n3:Addons/updateHook\r\n4:Admin/getMenus\r\n5:Admin/recordList\r\n6:AuthManager/updateRules\r\n7:AuthManager/tree', '0');
 INSERT INTO `tp_config` VALUES ('35', 'REPLY_LIST_ROWS', '0', '回复列表每页条数', '2', '', '', '1386645376', '1476002742', '1', '10', '0');
 INSERT INTO `tp_config` VALUES ('36', 'ADMIN_ALLOW_IP', '2', '后台允许访问IP', '4', '', '多个用逗号分隔，如果不配置表示不限制IP访问', '1387165454', '1387165553', '1', '', '12');
-INSERT INTO `tp_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页面Trace', '4', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '1387165685', '1387165685', '1', '0', '1');
+INSERT INTO `tp_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页面Trace', '4', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '1387165685', '1387165685', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for tp_document
@@ -793,17 +798,17 @@ INSERT INTO `tp_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '4
 INSERT INTO `tp_document` VALUES ('2', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1476773441', '-1');
 INSERT INTO `tp_document` VALUES ('3', '1', '', '文章管理3', '41', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '1546300800', '0', '8', '0', '0', '0', '1401854160', '1477457230', '1');
 INSERT INTO `tp_document` VALUES ('4', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
-INSERT INTO `tp_document` VALUES ('5', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1406001413', '1');
-INSERT INTO `tp_document` VALUES ('6', '1', '', 'OneThink1.1开发版发布', '42', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `tp_document` VALUES ('7', '1', '', 'OneThink1.1开发版发布', '43', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `tp_document` VALUES ('8', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `tp_document` VALUES ('9', '1', '', 'OneThink1.1开发版发布', '44', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `tp_document` VALUES ('10', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '1');
+INSERT INTO `tp_document` VALUES ('5', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1406001413', '-1');
+INSERT INTO `tp_document` VALUES ('6', '1', '', 'OneThink1.1开发版发布', '42', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
+INSERT INTO `tp_document` VALUES ('7', '1', '', 'OneThink1.1开发版发布', '43', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
+INSERT INTO `tp_document` VALUES ('8', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
+INSERT INTO `tp_document` VALUES ('9', '1', '', 'OneThink1.1开发版发布', '44', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
+INSERT INTO `tp_document` VALUES ('10', '1', '', 'OneThink1.1开发版发布', '40', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1406001413', '1406001413', '-1');
 INSERT INTO `tp_document` VALUES ('11', '1', '', '上传文件测试', '40', '0', '', '0', '0', '3', '2', '0', '0', '26', '1', '0', '0', '0', '0', '0', '0', '1477452960', '1477462427', '1');
 INSERT INTO `tp_document` VALUES ('12', '1', '', '下载测试2', '40', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477462687', '1477462687', '3');
 INSERT INTO `tp_document` VALUES ('13', '1', '', '下载测试2', '40', '0', '', '0', '0', '3', '2', '0', '0', '27', '1', '0', '0', '0', '0', '0', '0', '1477462800', '1477467476', '1');
 INSERT INTO `tp_document` VALUES ('14', '1', 'hospital', '医疗', '44', '0', '', '0', '0', '4', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477469520', '1477469552', '1');
-INSERT INTO `tp_document` VALUES ('15', '1', 'hospital1', 'hospital1', '44', '0', '', '0', '0', '4', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477469687', '1477469687', '2');
+INSERT INTO `tp_document` VALUES ('15', '1', 'hospital1', 'hospital1', '44', '0', '', '0', '0', '4', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1477469687', '1477469687', '1');
 
 -- ----------------------------
 -- Table structure for tp_document_article
@@ -935,13 +940,13 @@ CREATE TABLE `tp_hooks` (
 -- ----------------------------
 INSERT INTO `tp_hooks` VALUES ('1', 'pageHeader', '页面header钩子，一般用于加载插件CSS文件和代码', '1', '1476066523', '', '1');
 INSERT INTO `tp_hooks` VALUES ('2', 'pageFooter', '页面footer钩子，一般用于加载插件JS文件和JS代码', '1', '0', 'ReturnTop', '1');
-INSERT INTO `tp_hooks` VALUES ('3', 'documentEditForm', '添加编辑表单的 扩展内容钩子', '1', '1476066302', 'Attachment,addons', '1');
-INSERT INTO `tp_hooks` VALUES ('4', 'documentDetailAfter', '文档末尾显示', '1', '1476087527', 'SocialComment,Attachment,addons', '1');
+INSERT INTO `tp_hooks` VALUES ('3', 'documentEditForm', '添加编辑表单的 扩展内容钩子', '1', '1476066302', 'addons,Attachment', '1');
+INSERT INTO `tp_hooks` VALUES ('4', 'documentDetailAfter', '文档末尾显示', '1', '1476087527', 'SocialComment,addons,Attachment', '1');
 INSERT INTO `tp_hooks` VALUES ('5', 'documentDetailBefore', '页面内容前显示用钩子', '1', '0', '', '1');
 INSERT INTO `tp_hooks` VALUES ('6', 'documentSaveComplete', '保存文档数据后的扩展钩子', '2', '0', 'Attachment', '1');
 INSERT INTO `tp_hooks` VALUES ('7', 'documentEditFormContent', '添加编辑表单的内容显示钩子', '1', '1476066833', 'Editor', '1');
 INSERT INTO `tp_hooks` VALUES ('8', 'adminArticleEdit', '后台内容编辑页编辑器', '1', '1476671282', 'EditorForAdmin', '1');
-INSERT INTO `tp_hooks` VALUES ('13', 'AdminIndex', '首页小格子个性化显示', '1', '1382596073', 'SiteStat,SystemInfo,DevTeam', '1');
+INSERT INTO `tp_hooks` VALUES ('13', 'AdminIndex', '首页小格子个性化显示', '1', '1382596073', 'SystemInfo,SiteStat,DevTeam', '1');
 INSERT INTO `tp_hooks` VALUES ('14', 'topicComment', '评论提交方式扩展钩子。', '1', '1476066251', 'Editor', '1');
 INSERT INTO `tp_hooks` VALUES ('16', 'app_begin', '应用开始', '2', '1476066018', '', '1');
 INSERT INTO `tp_hooks` VALUES ('17', 'look_header', 'header测试', '1', '1476071371', '', '1');
@@ -970,9 +975,9 @@ CREATE TABLE `tp_member` (
 -- ----------------------------
 -- Records of tp_member
 -- ----------------------------
-INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '90', '38', '0', '1472733337', '2130706433', '1477356769', '1');
+INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '100', '39', '0', '1472733337', '2130706433', '1477530747', '1');
 INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `tp_member` VALUES ('3', 'cym', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `tp_member` VALUES ('3', 'cym', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for tp_menu
@@ -1256,7 +1261,7 @@ CREATE TABLE `tp_ucenter_member` (
 -- ----------------------------
 -- Records of tp_ucenter_member
 -- ----------------------------
-INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1477356769', '2130706433', '1472733337', '1');
+INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1477530747', '2130706433', '1472733337', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('2', 'qinxuening', '7c611e8fef136e9ae52abaeaca48f5c1', '2423859712@qq.com', '', '1476265461', '2130706433', '0', '0', '1476265461', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('3', 'cym', '7c611e8fef136e9ae52abaeaca48f5c1', '24238597134@qq.com', '', '1476412989', '2130706433', '0', '0', '1476412989', '1');
 
