@@ -48,9 +48,9 @@
 								</div>
 
 								<div class="row">
-									<div class="space-6"></div>
 
-									<div class="col-sm-7 infobox-container">
+
+									<div class="col-sm-12 infobox-container">
 										<div class="infobox infobox-green  ">
 											<div class="infobox-icon">
 												<i class="icon-comments"></i>
@@ -173,91 +173,12 @@
 										</div>
 									</div>
 
-									<div class="vspace-sm"></div>
-
-									<div class="col-sm-5">
-										<div class="widget-box">
-											<div class="widget-header widget-header-flat widget-header-small">
-												<h5>
-													<i class="icon-signal"></i>
-													访问来源
-												</h5>
-
-												<div class="widget-toolbar no-border">
-													<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-														本周
-														<i class="icon-angle-down icon-on-right bigger-110"></i>
-													</button>
-
-													<ul class="dropdown-menu pull-right dropdown-125 dropdown-lighter dropdown-caret">
-														<li class="active">
-															<a href="#" class="blue">
-																<i class="icon-caret-right bigger-110">&nbsp;</i>
-																本周
-															</a>
-														</li>
-
-														<li>
-															<a href="#">
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
-																上周
-															</a>
-														</li>
-
-														<li>
-															<a href="#">
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
-																本月
-															</a>
-														</li>
-
-														<li>
-															<a href="#">
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
-																上月
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-
-											<div class="widget-body">
-												<div class="widget-main">
-													<div id="piechart-placeholder"></div>
-
-													<div class="hr hr8 hr-double"></div>
-
-													<div class="clearfix">
-														<div class="grid3">
-															<span class="grey">
-																<i class="icon-facebook-sign icon-2x blue"></i>
-																&nbsp; likes
-															</span>
-															<h4 class="bigger pull-right">1,255</h4>
-														</div>
-
-														<div class="grid3">
-															<span class="grey">
-																<i class="icon-twitter-sign icon-2x purple"></i>
-																&nbsp; tweets
-															</span>
-															<h4 class="bigger pull-right">941</h4>
-														</div>
-
-														<div class="grid3">
-															<span class="grey">
-																<i class="icon-pinterest-sign icon-2x red"></i>
-																&nbsp; pins
-															</span>
-															<h4 class="bigger pull-right">1,050</h4>
-														</div>
-													</div>
-												</div><!-- /widget-main -->
-											</div><!-- /widget-body -->
-										</div><!-- /widget-box -->
-									</div><!-- /span -->
+								
 								</div><!-- /row -->
-
+								
+								<div class="row">
+									<div class="container-span">{:hook('AdminIndex')}</div>
+								</div>
 								<div class="hr hr32 hr-dotted"></div>
 
 								<!-- PAGE CONTENT ENDS -->
@@ -489,7 +410,13 @@
 					else $(this).closest('li').removeClass('selected');
 				});
 				
-			
+			    /* 插件块关闭操作 */
+			    $(".title-opt .wm-slide").each(function(){
+			        $(this).click(function(){
+			            $(this).closest(".columns-mod").find(".bd").toggle();
+			            $(this).find("i").toggleClass("mod-up");
+			        });
+			    })
 			})
 		</script>
 </body>

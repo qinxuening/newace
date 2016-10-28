@@ -236,11 +236,12 @@ str;
     public function index(){
         $this->meta_title = '插件列表';
         $list       =   D('Addons')->getList();
+        //print_r($list);
         $request    =   (array)I('request.');
         $total      =   $list? count($list) : 1 ;
         $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
         $page       =   new \Think\Page($total, $listRows, $request);
-        $voList     =   array_slice($list, $page->firstRow, $page->listRows);
+        $voList     =   array_slice($list, $page->firstRow, $page->listRows);//array_slice() 函数在数组中根据条件取出一段值，并返回
         $p          =   $page->show();
         $this->assign('index_active','active');
         $this->assign('_list', $voList);

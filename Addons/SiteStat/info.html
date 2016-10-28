@@ -1,37 +1,22 @@
+ <div class="hr hr32 hr-dotted"></div>
  <div class="container-span top-columns cf">
-	<dl class="show-num-mod">
-		<dt><i class="count-icon user-count-icon"></i></dt>
-		<dd>
-			<strong>{$info.user}</strong>
-			<span>用户数</span>
-		</dd>
-	</dl>
-	<dl class="show-num-mod">
-		<dt><i class="count-icon user-action-icon"></i></dt>
-		<dd>
-			<strong>{$info.action}</strong>
-			<span>用户行为</span>
-		</dd>
-	</dl>
-	<dl class="show-num-mod">
-		<dt><i class="count-icon doc-count-icon"></i></dt>
-		<dd>
-			<strong>{$info.document}</strong>
-			<span>文档数</span>
-		</dd>
-	</dl>
-	<dl class="show-num-mod">
-		<dt><i class="count-icon doc-modal-icon"></i></dt>
-		<dd>
-			<strong>{$info.model}</strong>
-			<span>文档模型</span>
-		</dd>
-	</dl>
-	<dl class="show-num-mod">
-		<dt><i class="count-icon category-count-icon"></i></dt>
-		<dd>
-			<strong>{$info.category}</strong>
-			<span>分类数</span>
-		</dd>
-	</dl>
+ 	<h5 class="btn btn-success btn-lg btn-block">{$addons_config.title}</h5>
+	 <table class="table table-striped table-bordered table-hover">
+		 <thead>
+			<tr>
+				<th>用户数</th>
+				<th>用户行为</th>
+				<th>文档数</th>
+				<th>分类数</th>
+			</tr>
+		 </thead>
+		 <tbody>	
+		 	<tr>
+		 		<td>{$info.user}</td>
+				<td>{$info.action}</td>
+				<td>{$info.document}</td>
+				<td>{$info.category}</td>
+		 	</tr>
+		 </tbody>
+	</table>
 </div>

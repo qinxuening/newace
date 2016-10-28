@@ -15,9 +15,7 @@ use Common\Controller\Addon;
  * 系统环境信息插件
  * @author thinkphp
  */
-
     class SystemInfoAddon extends Addon{
-
         public $info = array(
             'name'=>'SystemInfo',
             'title'=>'系统环境信息',
@@ -38,16 +36,16 @@ use Common\Controller\Addon;
         //实现的AdminIndex钩子方法
         public function AdminIndex($param){
             $config = $this->getConfig();
-            
-            if(extension_loaded('curl')){
-                $url = 'http://www.onethink.cn/index.php?m=home&c=check_version';
+            //print_r($config);
+            if(extension_loaded('curl')){//检查一个扩展是否已经加载
+                $url = '';
                 $params = array(
-                    'version' => ONETHINK_VERSION,
+                    'version' => OUBAO_VERSION,
                     'domain'  => $_SERVER['HTTP_HOST'],
                     'auth'    => sha1(C('DATA_AUTH_KEY')),
                 );
     
-                $vars = http_build_query($params);
+                $vars = http_build_query($params);//http_build_query — 生成 URL-encode 之后的请求字符串
                 $opts = array(
                     CURLOPT_TIMEOUT        => 5,
                     CURLOPT_RETURNTRANSFER => 1,
@@ -70,6 +68,7 @@ use Common\Controller\Addon;
             }
 
             $this->assign('addons_config', $config);
+            //print_r($config);
             if($config['display']){
                 $this->display('widget');
             }
