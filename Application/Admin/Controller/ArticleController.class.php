@@ -510,7 +510,8 @@ class ArticleController extends AdminController {
             $article            =   M('Document')->field('id,title,type')->find($info['pid']);
             $this->assign('article',$article);
         }
-        $tree = D('Category')->getTree(0,'id,title,pid');
+        $tree = D('Category')->getTreeo(0,'id,title,pid');
+        //print_r($tree);
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
         $this->assign('form_wizard' , 'active');
@@ -556,7 +557,7 @@ class ArticleController extends AdminController {
         }
         // 获取当前的模型信息
         $model    =   get_document_model($data['model_id']);
-        $tree = D('Category')->getTree(0,'id,title,pid');
+        $tree = D('Category')->getTreeo(0,'id,title,pid');
         if($data['file_id']){
         	//echo $data['file_id'];
         	//$data['file_id'] = think_encrypt(json_encode($data['file_id']));

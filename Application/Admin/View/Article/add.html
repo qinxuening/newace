@@ -65,7 +65,12 @@
 											<div class="col-sm-9">
 												<select class="col-xs-10 col-sm-5" name="category_id">
 												<volist name="tree" id="list">
-													  <option value="{$list.id}">{$list.html}{$list.space}{$list.title}</option>
+													  <option value="{$list.id}" <if condition="$list['child']">disabled</if>>{$list.html}{$list.space}{$list.title}</option>
+													  <notempty name="list['child']">
+														  	<volist name="list['child']" id="child">
+														  		<option value="{$child.id}">&nbsp;&nbsp;&nbsp└─{$child.title}</option>
+														  	</volist>
+													  </notempty>
 												 </volist>
 												</select>
 											</div>

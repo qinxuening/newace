@@ -97,7 +97,34 @@ class CategoryModel extends Model{
 
         return $info;
     }
-
+    
+    /**
+     * 
+     * @param number $id
+     * @param string $field
+     * @return Ambigous <\Common\Api\Ambigous, multitype:, multitype:string , \Think\mixed, boolean, NULL, mixed, unknown, string, object>
+     */
+    public function getTreeo($id = 0, $field = true){
+    	/* 获取当前分类信息 */
+    	if($id){
+    		$info = $this->info($id);
+    		$id   = $info['id'];
+    	}
+    
+    	/* 获取所有分类 */
+    	$map  = array('status' => array('gt', -1));
+    	$list = $this->field($field)->where($map)->order('sort')->select();
+    	$list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = 'child', $root = $id);
+    
+    	/* 获取返回数据 */
+    	if(isset($info)){ //指定分类则返回当前分类极其子分类
+    		$info['_'] = $list;
+    	} else { //否则返回所有分类
+    		$info = $list;
+    	}
+    
+    	return $info;
+    }
     /**
      * 获取指定分类子分类ID
      * @param  string $cate 分类ID

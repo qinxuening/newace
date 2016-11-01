@@ -7,13 +7,6 @@
 	</head>
 
 	<body>
-		<div class="jumppage_bg" style="display:none;"></div>
-		<div class="jumppage" style="display:none;">
-			<div class="t_1">提示信息</div>
-			<div class="tx1"></div>
-			<input type="button" class="btn2" id="Jq_sure" value="确认">
-			<input type="button" class="btn3" id="Jq_no" value="取消">
-		</div>
 		<!---nav-->
 		<include file="Public/nav"/>
 		<!---nav-->
@@ -111,20 +104,6 @@
 						
 				});
 			})
-			
-			function Jq_del(id){
-				var name = $('#data_'+id).attr("dataName");
-				$('.jumppage > .tx1').html('请确认删除'+'['+name+']');
-				$('.jumppage_bg, .jumppage').show();
-				$('#Jq_sure').click(function(){
-					var url = "__URL__/remove/id/"+id;
-					window.location.href = url;	
-					$(this).attr("disabled","disabled");			
-				});
-			};
-			$('#Jq_no').click(function(){
-				$('.jumppage_bg, .jumppage').hide();	
-			});
 		</script>
 </body>
 </html>

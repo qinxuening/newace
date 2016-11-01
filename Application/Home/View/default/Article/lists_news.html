@@ -8,12 +8,12 @@
 	    <div class="container column-content">
 	        <div class="row">
 	            <div class="col-xs-3 left-colum">
-	                <span><a href="">首页</a>&gt;<a href="">新闻资讯</a>&gt;<a href="">公司新闻</a></span>
+	                <span><a href="">首页</a>&gt;<a href="">{$category['title']}</a>&gt;<a href=""><empty name="list_new_no_document">{$nowcategory.title}<else />{$maxid_no['title']}</empty></a></span>
 	                <ul>
-	                    <li><a href=""  class="act">公司新闻</a></li>
-	                    <li><a href="">行业新闻</a></li>
-	                    <li><a href="">活动专题</a></li>
-	                    <li><a href="">在线期刊</a></li>
+	                	<volist name="listnew" id="data">
+	               		     <!--<li><a href=""  class="">{$data.title}</a></li>-->
+							 <li><a href="{:U('Article/lists?category='.$category['name'].'&category_id='.$data['id'])}" class="<eq name="category_id" value="$data['id']">act</eq> <if condition="($maxid_no['id'] eq $data['id']) AND list_new_no_document">act</if>">{$data.title}</a></li>
+						</volist>
 	                </ul>
 	                <div class="left-next" style="padding:2px 0;border-bottom:1px dashed #d9d4d4;">
 	                    <p style="font-size:12px;">产品咨询 / 购买热线 <span style="color:red">400-6768-678</span></p>
@@ -29,91 +29,35 @@
 	                </div>
 	            </div>
 	            <div class="col-xs-9 solution-content">
-	                  <!-- <div class="row info-content">
-	                       <a href="news_info.html">
-							<div class="col-xs-4 col-xs-4 col-xs-4">
-								<img src="img/new2.jpg" class="img-responsive" alt="">
-							</div>
-							<div class="col-xs-8 col-xs-8 col-xs-8">
-								<h4>广电总局发布TVOS2.0 华为阿里参与研发</h4>
-								<p class="hidden-xs">TVOS2.0是在TVOS1.0与华为MediaOS及阿里巴巴YunOS融合的基础上，打造的新一代智能电视操作系统。华为主要承担开发工作，内置的电视购物商城由阿里方面负责。</p>
-								<p>admin 15 / 10 / 11</p>
-							</div>
-	                       </a>
-						</div>
-	           	      <div class="row info-content">
-	           	            <a href="news_info.html">
-	                            <div class="col-xs-4 col-xs-4 col-xs-4">
-	                                <img src="img/new3.jpg" class="img-responsive" alt="">
-	                            </div>
-	                            <div class="col-xs-8 col-xs-8 col-xs-8">
-	                                <h4>苹果四寸手机为何要配置强大的A9处理器？</h4>
-	                                <p class="hidden-xs">苹果明年初有可能对外发布一款经过升级的四英寸手机，相当于iPhone 5s。该手机将会配置苹果在2015年旗舰手机中采用的A9处理器。配置性能如此强大的应用处理器？</p>
-	                                <p>admin 15 / 10 / 11</p>
-	                            </div>
-							</a>
-					 </div>
-	           	    <div class="row info-content">
-	           	        <a href="news_info.html">
-							<div class="col-xs-4 col-xs-4 col-xs-4">
-								<img src="img/new4.jpg" class="img-responsive" alt="">
-							</div>
-							<div class="col-xs-8 col-xs-8 col-xs-8">
-								<h4>六家互联网公司发声明 抵制流量劫持等违法行为</h4>
-								<p class="hidden-xs">六家互联网公司（今日头条、美团大众点评网、360、腾讯、微博、小米科技）发布联合声明，呼吁有关运营商打击流量劫持，重视互联网公司被流量劫持，可能导致的严重后果。</p>
-								<p>admin 15 / 10 / 11</p>
-							</div>
-	                    </a>
-					 </div>
-	                -->
-	                <div class="new-list">
-	                    <a href="news_info.html"> 
-	                        <div class="date-block"> 
-	                         <span class="day">23</span>Dec<br>2015 </div>        
-	                         <div class="summary">            
-	                         <h1>瓯宝公司:研发投入出成效 智能家居进军市场</h1>          
-	                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: 364</h3>          
-	                             <p>11月25日，在瓯宝会议大厅隆重举行了智能家居新品发布盛典。
-	    会议大厅现场签约伙伴就有30多家。苏宁温州大区域总经理卢厚飞看中商机，会上卢总便邀请公司智能家居新品入驻温州电器城,并将在28日温州苏宁一年一度的品牌推介会上展示。陈董事长幽默的说：“瓯宝有望成为第二个‘阿里巴巴’”。</p>       
-	                        </div>   
-	                    </a>
-	                    <a href="news_info.html"> 
-	                        <div class="date-block"> 
-	                         <span class="day">12</span>Mar<br>2016 </div>        
-	                         <div class="summary">            
-	                         <h1>迎“三·八”瓯宝举行第四届“和谐瓯宝•魅力女性”趣味运动会</h1>          
-	                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: 364</h3>          
-	                             <p> 阳春三月，人面桃花相映红！春风扑面，瓯宝巾帼显英雄！在第106个三八国际妇女节来临之际，公司以趣味运动会的方式为广大女性同胞们进行庆祝。</p>       
-	                        </div>   
-	                    </a>
-	                    <a href="news_info.html"> 
-	                        <div class="date-block"> 
-	                         <span class="day">02</span>Mar<br>2016 </div>        
-	                         <div class="summary">            
-	                         <h1>凝心聚力 稳定质量 开拓市场 —暨2015年工作总结表彰和动员大会圆满召开</h1>          
-	                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: 364</h3>          
-	                             <p> 2016年2月27日下午，瓯宝一年一度的总结表彰暨工作动员大会在四号楼四楼会议室顺利召开。公司创始人陈恩弟先生、董事长陈晓建、常务副总张洁信、生产副总张献国技术副总姜雷、外贸副总陈谧和行政副总周海潮在主席台就座</p>       
-	                        </div>   
-	                    </a>
-	                    <a href="news_info.html"> 
-	                        <div class="date-block"> 
-	                         <span class="day">22</span>Dec<br>2015 </div>        
-	                         <div class="summary">            
-	                         <h1>瓯宝指纹锁重庆聚信名家汇直营店盛大开业</h1>          
-	                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: 364</h3>          
-	                             <p>2015年12月22日，瓯宝又一专卖店强势登陆重庆，相信随着瓯宝指纹锁重庆聚信名家汇直营店的开业，将会有更多的客户了解瓯宝指纹锁，用上瓯宝指纹锁，爱上瓯宝指纹锁，让更多人过上不用带钥匙就能开门的时尚生活。</p>       
-	                        </div>   
-	                    </a>
-	                    <a href="news_info.html"> 
-	                        <div class="date-block"> 
-	                         <span class="day">02</span>Mar<br>2016 </div>        
-	                         <div class="summary">            
-	                         <h1>凝心聚力 稳定质量 开拓市场 —暨2015年工作总结表彰和动员大会圆满召开</h1>          
-	                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: 364</h3>          
-	                             <p> 2016年2月27日下午，瓯宝一年一度的总结表彰暨工作动员大会在四号楼四楼会议室顺利召开。公司创始人陈恩弟先生、董事长陈晓建、常务副总张洁信、生产副总张献国技术副总姜雷、外贸副总陈谧和行政副总周海潮在主席台就座</p>       
-	                        </div>   
-	                    </a> 
-	                </div>
+	            	<empty name="list_new_no_document">
+		            	<volist name="list_new_document" id="list_new">
+			                <div class="new-list">
+			                    <a href="news_info.html"> 
+			                        <div class="date-block"> 
+			                         <span class="day">23</span>Dec<br>2015 </div>        
+			                         <div class="summary">            
+			                         <h1>{$list_new.title}</h1>          
+			                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new.view}</h3>          
+			                             <p>{$list_new.description}</p>       
+			                        </div>   
+			                    </a>
+			                </div>
+						</volist>
+					<else /> 
+						<volist name="list_new_no_document" id="list_new_no">
+							<div class="new-list">
+			                    <a href="news_info.html"> 
+			                        <div class="date-block"> 
+			                         <span class="day">23</span>Dec<br>2015 </div>        
+			                         <div class="summary">            
+			                         <h1>{$list_new_no.title}</h1>          
+			                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new_no.view}</h3>          
+			                             <p>{$list_new_no.description}</p>       
+			                        </div>   
+			                    </a>
+			                </div>
+						 </volist>
+					</empty>
 	                <div style="clear:both;"></div>
 	                <div class="row">
 	                   <div class="col-xs-12">
@@ -126,6 +70,8 @@
 	                        </div> 
 	                    </div>
 	                </div>
+	            </div>  
+	      		</div>
 	            </div>  
 	        </div>
 	    </div>

@@ -32,7 +32,6 @@ class ArticleController extends HomeController {
 		$active = I('category');
 		/* 分类信息 */
 		$category = $this->category();
-		//print_r($category);
 		/* 获取当前分类列表 */
 		$Document = D('Document');
 		$list = $Document->page($p, $category['list_row'])->lists($category['id'], '`id` ASC');
@@ -54,6 +53,24 @@ class ArticleController extends HomeController {
 			}
 			$this->assign('maxid', $maxid['id']);
 			$this->assign('maxinfo', $info);
+		}
+		if($category['id']){
+			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->select();
+			$this->assign('listnew', $listnew);
+			if($listnew){
+				if(!I('category_id')){
+					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->find();
+					$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
+					$this->assign('maxid_no', $maxid);
+					$this->assign('list_new_no_document', $list_new_no_document);
+				}
+			}
+		}
+		if(I('category_id')){
+			$list_new_document = $Document->page($p, $category['list_row'])->lists(I('category_id'), '`id` ASC');
+			$this->assign('category_id', I('category_id'));
+			$this->assign('list_new_document', $list_new_document);
+			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->find());
 		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
