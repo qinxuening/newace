@@ -20,13 +20,15 @@ class HomeController extends Controller {
 	public function _empty(){
 		$this->redirect('Index/index');
 	}
-
-
+	
     protected function _initialize(){
         /* 读取站点配置 */
         $config = api('Config/lists');
+        //print_r($config);
         C($config); //添加配置
-
+        $categorylist = D('Category')->getTree();
+        //print_r($category);
+        $this->assign('categorylist',$categorylist);//栏目
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }

@@ -14,7 +14,6 @@ namespace Home\Controller;
  * 文档模型列表和详情
  */
 class ArticleController extends HomeController {
-
     /* 文档模型频道页 */
 	public function index(){
 		/* 分类信息 */
@@ -29,20 +28,37 @@ class ArticleController extends HomeController {
 	}
 
 	/* 文档模型列表页 */
-	public function lists($p = 1){
+	public function lists($p = 1, $id = 0){
+		$active = I('category');
 		/* 分类信息 */
 		$category = $this->category();
-
+		//print_r($category);
 		/* 获取当前分类列表 */
 		$Document = D('Document');
-		$list = $Document->page($p, $category['list_row'])->lists($category['id']);
+		$list = $Document->page($p, $category['list_row'])->lists($category['id'], '`id` ASC');
 		if(false === $list){
 			$this->error('获取列表数据失败！');
 		}
-
+		if($id && is_numeric($id)){
+			$info = $Document->detail($id);
+			if(!$info){
+				$this->error($Document->getError());
+			}
+			$this->assign('id', I('id'));
+			$this->assign('info', $info);
+		}else{
+			$maxid = $Document->where(array('category'=>$category['id'], 'status'=>array('gt', 0)))->field('id')->find();
+			$info = $Document->detail($maxid['id']);
+			if(!$info){
+				$this->error($Document->getError());
+			}
+			$this->assign('maxid', $maxid['id']);
+			$this->assign('maxinfo', $info);
+		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
-		$this->assign('list', $list);
+		$this->assign('Documentlist', $list);
+		$this->assign('active', $active);
 		$this->display($category['template_lists']);
 	}
 

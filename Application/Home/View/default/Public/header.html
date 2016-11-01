@@ -1,47 +1,54 @@
-<!-- 导航条
-================================================== -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="{:U('index/index')}">OneThink</a>
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <think:nav name="nav">
-                    	<eq name="nav.pid" value="0">
-                        <li>
-                            <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
-                        </li>
-                        </eq>
-                    </think:nav>
-                </ul>
+<nav class="navbar-fixed-top">
+<nav class="top-header">
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-6  left_top" >
+                <p>欢迎来到瓯宝智能家居网站,
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                </p>
             </div>
-            <div class="nav-collapse collapse pull-right">
-                <if condition="is_login()">
-                    <ul class="nav" style="margin-right:0">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:0;padding-right:0">{:get_username()} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{:U('User/profile')}">修改密码</a></li>
-                                <li><a href="{:U('User/logout')}">退出</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                <else/>
-                    <ul class="nav" style="margin-right:0">
-                        <li>
-                            <a href="{:U('User/login')}">登录</a>
-                        </li>
-                        <li>
-                            <a href="{:U('User/register')}" style="padding-left:0;padding-right:0">注册</a>
-                        </li>
-                    </ul>
-                </if>
+            <div class="col-xs-6 top-header-right">
+                <p><span class="glyphicon glyphicon-earphone"></span> 0578-2199999
+                  <button type="button" class="btn btn-default btn-sm">中 文</button>
+                  <button type="button" class="btn btn-default btn-sm">E N</button>
+                </p>
+            </div>
+        </div>
+	</div>
+</nav>
+
+<nav class="top-header-tow">
+    <div class="container" style="clear:both;">
+        <div class="row" >
+            <div class="col-xs-2">
+                <a href="#" class="navbar-brand logo"><img src="__IMG__/logo.jpg" alt="瓯宝智能家居"></a>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+            <div class="col-xs-10"  style="padding:0;">
+                <ul>
+	                    <li class="dropdown">
+	                       <span><a href="/" class="main-a <empty  name="active">active</empty>">首页</a></span>
+	                    </li>
+				        <volist name="categorylist" id="list">						
+		                    <li class="dropdown">
+		                        <span><a href="{:U('Article/lists?category='.$list['name'])}" class="main-a <eq name="active" value="$list['name']">active</eq>">{$list.title}</a></span>
+								<notempty name="list['_']">
+				                        <div class="dropdown-content">
+				                        	<volist name="list['_']" id="listc">
+					                            <p><a href="#">{$listc.title}</a></p>
+											</volist>
+				                        </div>								
+								<notempty
+		                    </li>
+						</volist>
+                </ul>
             </div>
         </div>
     </div>
-</div>
+</nav>
+</nav>
