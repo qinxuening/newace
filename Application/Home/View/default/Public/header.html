@@ -32,11 +32,11 @@
             <div class="col-xs-10"  style="padding:0;">
                 <ul>
 	                    <li class="dropdown">
-	                       <span><a href="/" class="main-a <empty  name="active">active</empty>">首页</a></span>
+	                       <span><a href="/" class="main-a <empty name="active">active</empty>">首页</a></span>
 	                    </li>
 				        <volist name="categorylist" id="list">						
 		                    <li class="dropdown">
-		                        <span><a href="{:U('Article/lists?category='.$list['name'])}" class="main-a <eq name="active" value="$list['name']">active</eq>">{$list.title}</a></span>
+		                        <span><a href="{:U('Article/lists?category='.$list['name'])}" class="main-a <eq name="active" value="$list['name']">active</eq> <if condition="($detail_active) AND ($detail_active eq $list['name'])">active</if>">{$list.title}</a></span>
 								<notempty name="list['_']">
 				                        <div class="dropdown-content">
 				                        	<volist name="list['_']" id="listc">

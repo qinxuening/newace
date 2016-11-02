@@ -32,7 +32,7 @@
 	            	<empty name="list_new_no_document">
 		            	<volist name="list_new_document" id="list_new">
 			                <div class="new-list">
-			                    <a href="news_info.html"> 
+			                    <a href="{:U('Article/detail?id='.$list_new['id'])}"> 
 			                        <div class="date-block"> 
 			                         <span class="day">23</span>Dec<br>2015 </div>        
 			                         <div class="summary">            
@@ -46,7 +46,7 @@
 					<else /> 
 						<volist name="list_new_no_document" id="list_new_no">
 							<div class="new-list">
-			                    <a href="news_info.html"> 
+			                    <a href="{:U('Article/detail?id='.$list_new_no['id'])}"> 
 			                        <div class="date-block"> 
 			                         <span class="day">23</span>Dec<br>2015 </div>        
 			                         <div class="summary">            

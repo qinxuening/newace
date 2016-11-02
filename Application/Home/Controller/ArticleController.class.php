@@ -9,6 +9,7 @@
 
 namespace Home\Controller;
 
+use Common\Api\Category;
 /**
  * 文档模型控制器
  * 文档模型列表和详情
@@ -55,11 +56,11 @@ class ArticleController extends HomeController {
 			$this->assign('maxinfo', $info);
 		}
 		if($category['id']){
-			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->select();
+			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->select();//获取所有子分类
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
-					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->find();
+					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->find();//获取当前分类
 					$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
 					$this->assign('maxid_no', $maxid);
 					$this->assign('list_new_no_document', $list_new_no_document);
@@ -70,7 +71,7 @@ class ArticleController extends HomeController {
 			$list_new_document = $Document->page($p, $category['list_row'])->lists(I('category_id'), '`id` ASC');
 			$this->assign('category_id', I('category_id'));
 			$this->assign('list_new_document', $list_new_document);
-			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->find());
+			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->find());//获取当前分类
 		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
@@ -99,6 +100,9 @@ class ArticleController extends HomeController {
 
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);
+		/*获取顶级分类,限二级*/
+		$catesuper = D('category')->where(array('id' => $category['pid'], 'pid'=>0))->select();
+		$listnew =  D('Category')->where(array('pid'=>$catesuper[0]['id'], 'status'=>array('gt', 0)))->select();
 
 		/* 获取模板 */
 		if(!empty($info['template'])){//已定制模板
@@ -108,15 +112,18 @@ class ArticleController extends HomeController {
 		} else { //使用默认模板
 			$tmpl = 'Article/'. get_document_model($info['model_id'],'name') .'/detail';
 		}
-
 		/* 更新浏览数 */
 		$map = array('id' => $id);
-		$Document->where($map)->setInc('view');
+		$Document->where($map)->setInc('view');//默认view + 1
 
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
 		$this->assign('info', $info);
 		$this->assign('page', $p); //页码
+		$this->assign('listnew', $listnew);
+		$this->assign('catesuper', $catesuper);
+		$this->assign('detail_active', $catesuper[0]['name']);
+		$this->assign('active',1);
 		$this->display($tmpl);
 	}
 
