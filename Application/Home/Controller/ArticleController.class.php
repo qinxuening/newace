@@ -100,6 +100,7 @@ class ArticleController extends HomeController {
 
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);
+		
 		/*获取顶级分类,限二级*/
 		$catesuper = D('category')->where(array('id' => $category['pid'], 'pid'=>0))->select();
 		$listnew =  D('Category')->where(array('pid'=>$catesuper[0]['id'], 'status'=>array('gt', 0)))->select();
