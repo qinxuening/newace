@@ -111,6 +111,7 @@ abstract class Addon{
      */
     final public function getConfig($name=''){
         static $_config = array();
+        //print_r($_config);
         if(empty($name)){
             $name = $this->getName();
         }
@@ -120,6 +121,7 @@ abstract class Addon{
         $config =   array();
         $map['name']    =   $name;
         $map['status']  =   1;
+        //print_r($map);
         $config  =   M('Addons')->where($map)->getField('config');
         if($config){
             $config   =   json_decode($config, true);

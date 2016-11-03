@@ -107,7 +107,7 @@ class UcenterMemberModel extends Model{
 		);
 
 		//验证手机
-		if(empty($data['mobile'])) unset($data['mobile']);
+		if(empty($data['mobile'])) unset($data['mobile']);//unset() 销毁指定的变量
 
 		/* 添加用户 */
 		if($this->create($data)){

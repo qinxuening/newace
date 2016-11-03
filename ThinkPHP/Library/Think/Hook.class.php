@@ -79,12 +79,14 @@ class Hook {
      * @return void
      */
     static public function listen($tag, &$params=NULL) {
+    	//echo $tag;
         if(isset(self::$tags[$tag])) {
             if(APP_DEBUG) {
                 G($tag.'Start');
                 trace('[ '.$tag.' ] --START--','','INFO');
             }
             foreach (self::$tags[$tag] as $name) {
+            	//print_r($name);die();
                 APP_DEBUG && G($name.'_start');
                 $result =   self::exec($name, $tag,$params);
                 if(APP_DEBUG){
@@ -116,6 +118,7 @@ class Hook {
             $tag    =   'run';
         }
         $addon   = new $name();
+        //print_r($addon);
         return $addon->$tag($params);
     }
 }

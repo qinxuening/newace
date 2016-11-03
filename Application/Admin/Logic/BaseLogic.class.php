@@ -96,7 +96,6 @@ class BaseLogic extends Model {
      */
     public function checkModelAttr($model_id){
         $fields     =   get_model_attribute($model_id,false);
-        //print_r($fields);die();
         $validate   =   $auto   =   array();
         foreach($fields as $key=>$attr){
             if($attr['is_must']){// 必填字段

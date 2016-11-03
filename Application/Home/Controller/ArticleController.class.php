@@ -36,8 +36,15 @@ class ArticleController extends HomeController {
 		/* 获取当前分类列表 */
 		$Document = D('Document');
 		$list = $Document->page($p, $category['list_row'])->lists($category['id'], '`id` ASC');
-		if(false === $list){
-			$this->error('获取列表数据失败！');
+		$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->order('`sort` ASC')->select();//获取所有子分类
+		if((false == $list) && !$listnew){
+			$this->assign('maxinfo', '');
+			$this->assign('list_new_no_document', '0');
+			$this->assign('category', $category);
+			$this->assign('Documentlist', $list);
+			$this->assign('active', $active);
+			$this->display($category['template_lists']);
+			return;
 		}
 		if($id && is_numeric($id)){
 			$info = $Document->detail($id);
@@ -47,16 +54,17 @@ class ArticleController extends HomeController {
 			$this->assign('id', I('id'));
 			$this->assign('info', $info);
 		}else{
-			$maxid = $Document->where(array('category'=>$category['id'], 'status'=>array('gt', 0)))->field('id')->find();
+			$maxid = $Document->where(array('category_id'=>$category['id'], 'status'=>array('gt', 0)))->field('id')->find();
 			$info = $Document->detail($maxid['id']);
-			if(!$info){
+
+			if(!$info && !$listnew){
 				$this->error($Document->getError());
 			}
 			$this->assign('maxid', $maxid['id']);
 			$this->assign('maxinfo', $info);
 		}
 		if($category['id']){
-			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->select();//获取所有子分类
+			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->order('`sort` ASC')->select();//获取所有子分类
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
@@ -132,12 +140,14 @@ class ArticleController extends HomeController {
 	private function category($id = 0){
 		/* 标识正确性检测 */
 		$id = $id ? $id : I('get.category', 0);
+		//echo $id;die();
 		if(empty($id)){
 			$this->error('没有指定文档分类！');
 		}
 
 		/* 获取分类信息 */
 		$category = D('Category')->info($id);
+		//$listnew = D('Category')->where(array('pid'=>$id, 'status'=>array('gt', 0)))->select();//获取所有子分类
 		if($category && 1 == $category['status']){
 			switch ($category['display']) {
 				case 0:

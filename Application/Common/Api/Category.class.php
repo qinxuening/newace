@@ -62,7 +62,7 @@ class  Category{
 		foreach ($cate as $v) {
 			if ($v['id'] == $id) {
 				$arr[] = $v;
-				$arr = array_merge(self::getParent($cate, $v['parentid']), $arr);
+				$arr = array_merge(self::getParent($cate, $v['pid']), $arr);
 			}
 		}
 		return $arr;
@@ -78,7 +78,7 @@ class  Category{
 	static public function getChildsId ($cate, $pid) {
 		$arr = array();
 		foreach ($cate as $v) {
-			if ($v['parentid'] == $pid) {
+			if ($v['pid'] == $pid) {
 				$arr[] = $v['id'];
 				$arr = array_merge($arr, self::getChildsId($cate, $v['id']));
 			}
