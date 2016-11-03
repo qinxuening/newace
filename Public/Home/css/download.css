@@ -69,7 +69,7 @@
 }
 .about-content li a b{
     float: left;
-    background: url(../img/xz1.jpg) no-repeat left center;
+    background: url(../images/xz1.jpg) no-repeat left center;
     padding-left: 24px;
     width: 75%;
     overflow: hidden;
@@ -80,6 +80,35 @@
 .about-content li a span{
     float: right;
     padding-right: 20px;
+}
+.about-content .page{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    text-align: center!important;
+    margin: 40px auto;
+}
+.about-content .page a{
+    margin: 0 10px 0 0;
+    line-height: 45px;
+    display: inline-block;
+}
+.about-content .page a:hover{
+    background:none;
+    color: red;
+}
+.about-content .page a.style-page:hover{
+    border: 1px solid red;
+}
+.about-content .page a.active{
+    border: 1px solid red !important;
+    background: none;
+    color: #666 !important;
+}
+.about-content .page a.style-page{
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
 }
 
 

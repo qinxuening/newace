@@ -68,7 +68,7 @@ class ArticleController extends HomeController {
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
-					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->find();//获取当前分类
+					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->order('`sort` ASC')->find();//获取当前分类
 					$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
 					$this->assign('maxid_no', $maxid);
 					$this->assign('list_new_no_document', $list_new_no_document);
@@ -79,7 +79,7 @@ class ArticleController extends HomeController {
 			$list_new_document = $Document->page($p, $category['list_row'])->lists(I('category_id'), '`id` ASC');
 			$this->assign('category_id', I('category_id'));
 			$this->assign('list_new_document', $list_new_document);
-			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->find());//获取当前分类
+			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->order('`sort` ASC')->find());//获取当前分类
 		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);

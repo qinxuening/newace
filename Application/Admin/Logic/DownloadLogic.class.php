@@ -15,7 +15,7 @@ class DownloadLogic extends BaseLogic{
 
     /* 自动验证规则 */
     protected $_validate = array(
-        array('content', 'require', '详细内容不能为空！', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
+        //array('content', 'require', '详细内容不能为空！', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
         array('download', 'number', '下载次数请输入整数！', self::VALUE_VALIDATE , 'regex', self::MODEL_BOTH),
         array('file_id', 'require', '请上传附件！', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
     );
@@ -41,9 +41,11 @@ class DownloadLogic extends BaseLogic{
      * @param intger $id
      * @author huajie <banhuajie@163.com>
      */
-    public function update($id = 0){
+    public function update($id = 0, $logic){
         /* 获取下载数据 */ //TODO: 根据不同用户获取允许更改或添加的字段
+    	//echo 'upload';die();
         $data = $this->create();
+        //print_r($data);die();
         if(!$data){
         	$this->error = '获取上传文件信息失败！';//
             return false;

@@ -28,7 +28,6 @@ class DownloadLogic extends BaseLogic{
 		if(!$data){
 			return false;
 		}
-
 		$file = json_decode(think_decrypt(I('post.file')), true);
 		if(!empty($file)){
 			$data['file_id'] = $file['id'];
