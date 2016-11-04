@@ -21,6 +21,7 @@ class IndexController extends HomeController {
 	//系统首页
     public function index(){
         $lists    = D('Document')->lists(null);
+        $position_id = D('Document')->where(array('position'=>4, 'model_id'=>2, 'status'=>array('gt', 0)))->order('`id` DESC')->find();//首页推荐
         $this->assign('lists',$lists);//列表
         $this->assign('page',D('Document')->page);//分页
         $this->display();
