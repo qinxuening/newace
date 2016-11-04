@@ -27,7 +27,10 @@ class HomeController extends Controller {
         //print_r($config);
         C($config); //添加配置
         $categorylist = D('Category')->getTree();
-        //print_r($category);
+        /*foreach ($categorylist as $k => $v){
+        	$categorylist[$k]['model_name'] = get_model_by_id($v['model']);
+        }*/
+        //print_r($categorylist);
         $this->assign('categorylist',$categorylist);//栏目
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');

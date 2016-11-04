@@ -573,7 +573,7 @@ class ArticleController extends AdminController {
         $this->assign("$modelView",'active');
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
-        //print_r($fields);
+       //print_r($fields);
         $this->assign('fields',     $fields);
 		
 		//print_r(get_type_bycate($data['category_id']));

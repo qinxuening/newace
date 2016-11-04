@@ -9,7 +9,7 @@
 	   <div class="container">
 	        <div class="row">
 	           <div class="col-xs-12" style="">
-	               <span><a href="">首页</a>&gt;<a href="">所有产品</a>&gt;<a href=""><empty name="list_new_no_document">{$nowcategory.title}<else />{$maxid_no['title']}</empty></a></span>
+	               <span><a href="">首页</a>&gt;<a href="">所有产品</a>&gt;<a href=""><empty name="list_new_no_document">{$nowcategory.title}<else />全部</empty></a></span>
 	            </div> 
 	        </div>      
 	   </div>
@@ -19,9 +19,9 @@
 	               <div class="col-xs-12">
 	                   <dl>
 	                       <dt>分类：</dt>
-	                       <dd class="active"><a href="">全部</a></dd>
+	                       <dd class="active"><a href="{:U('Goods/lists?category='.$category['name'])}" class="<empty name="list_new_no_document"><else />act</empty>">全部</a></dd>
 						   <volist name="listnew" id="data">
-		                       <dd><a href="{:U('Article/lists?category='.$category['name'].'&category_id='.$data['id'])}">{$data.title}</a></dd>
+		                       <dd><a href="{:U('Goods/lists?category='.$category['name'].'&category_id='.$data['id'])}" class="<eq name="category_id" value="$data['id']">act</eq>">{$data.title}</a></dd>
 						   </volist>
 	                       <a href="" class="more-Category">更多<span class="glyphicon glyphicon-chevron-down"></span></a>
 	                   </dl>
@@ -30,16 +30,11 @@
 	       </div>
 	   </div>
 	    <div class="container">
-	        <!--<div class="row Category">
-	           <div class="col-xs-12">
-	               全部
-	            </div> 
-	        </div>-->
 	        <div class="row">
 	            <div class="col-xs-12">
 	                <ul>
 	                	<volist name="list_new_document" id="list_new">
-		                     <li><a href="{:U('Article/detail?id='.$list_new['id'])}"><img src="__IMG__/gas%20alarm.png" alt=""></a>
+		                     <li><a href="{:U('Goods/detail?id='.$list_new['id'])}"><img src="{$list_new['cover_id']|get_cover='path' }" alt=""></a>
 		                     <p class="img-word">煤气报警器</p>
 		                     <div class="up-content">
 		                         <p>探测精准，反馈及时</p>

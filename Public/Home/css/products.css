@@ -66,6 +66,9 @@
     text-align: center;
     cursor: pointer;
 }
+.Category a.act{
+   color:red;
+}
 .Category {
     background: #ffffff;
     margin: 10px auto;

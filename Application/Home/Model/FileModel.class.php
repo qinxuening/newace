@@ -92,6 +92,7 @@ class FileModel extends Model{
 		switch ($file['location']) {
 			case 0: //下载本地文件
 				$file['rootpath'] = $root;
+				//print_r($file);die();
 				return $this->downLocalFile($file, $callback, $args);
 			case 1: //TODO: 下载远程FTP文件
 				break;
@@ -126,19 +127,26 @@ class FileModel extends Model{
 	 */
 	private function downLocalFile($file, $callback = null, $args = null){
 		if(is_file($file['rootpath'].$file['savepath'].$file['savename'])){
+			//echo $file['rootpath'].$file['savepath'].$file['savename'];die();
+			//print_r($file);die();
 			/* 调用回调函数新增下载数 */
-			is_callable($callback) && call_user_func($callback, $args);
-
+			is_callable($callback) && call_user_func($callback, $args);//call_user_func — 把第一个参数作为回调函数调用
+			//is_callable — 检测参数是否为合法的可调用结构
+			//is_callable()可以加收另外一个参数：一个布尔值，如果将该参数设置为true，函数仅仅检查给定的方法或函数名称的语法是否正确，
+			//而不检查其是否真正存在。method_exists()函数的参数为一个对象（或类名）和一个方法名，如果给定方法在对象的类中存在，则返回true
 			/* 执行下载 */ //TODO: 大文件断点续传
 			header("Content-Description: File Transfer");
 			header('Content-type: ' . $file['type']);
 			header('Content-Length:' . $file['size']);
 			if (preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT'])) { //for IE
 				header('Content-Disposition: attachment; filename="' . rawurlencode($file['name']) . '"');
+				//string rawurldecode(string str) 将字符串编码成 URL专用格式
 			} else {
 				header('Content-Disposition: attachment; filename="' . $file['name'] . '"');
 			}
+			//Content-disposition 是 MIME 协议的扩展，MIME 协议指示 MIME 用户代理如何显示附加的文件
 			readfile($file['rootpath'].$file['savepath'].$file['savename']);
+			//readfile() 函数输出一个文件。 该函数读入一个文件并写入到输出缓冲。
 			exit;
 		} else {
 			$this->error = '文件已被删除！';

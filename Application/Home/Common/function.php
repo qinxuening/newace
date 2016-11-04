@@ -68,3 +68,7 @@ function get_nav_url($url){
     }
     return $url;
 }
+// 获取模型名称
+function get_model_by_id($id){
+	return $model = M('Model')->getFieldById($id,'name');
+}
