@@ -55,9 +55,12 @@ class GoodsController extends HomeController {
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
-					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->order('`sort` ASC')->find();//获取当前分类
-					$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
-					$this->assign('maxid_no', $maxid);
+					$AllChildsId = Category::getChildsId(D('Category')->where(array('status'=>array('gt', 0)))->select(), $category['id']);
+					//print_r($AllChildsId);
+					//$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->order('`sort` ASC')->find();//获取当前分类
+					//$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
+					//$this->assign('maxid_no', $maxid);
+					$list_new_no_document = $Document->where(array('category_id' => array('IN', implode(',', $AllChildsId)), 'status'=>array('gt', 0)))->select();
 					$this->assign('list_new_no_document', $list_new_no_document);
 				}
 			}

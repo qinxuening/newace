@@ -32,17 +32,31 @@
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-xs-12">
-	                <ul>
-	                	<volist name="list_new_document" id="list_new">
-		                     <li><a href="{:U('Goods/detail?id='.$list_new['id'])}"><img src="{$list_new['cover_id']|get_cover='path' }" alt=""></a>
-		                     <p class="img-word">煤气报警器</p>
-		                     <div class="up-content">
-		                         <p>探测精准，反馈及时</p>
-		                         <p>可手动或通过手机远程控制阀门开关</p>
-		                     </div>
-		                    </li>
-						</volist>
-	                </ul>
+	            	<empty name="list_new_no_document">
+		                <ul>
+		                	<volist name="list_new_document" id="list_new">
+			                     <li><a href="{:U('Goods/detail?id='.$list_new['id'])}"><img src="{$list_new['cover_id']|get_cover='path' }" alt=""></a>
+			                     <p class="img-word">煤气报警器</p>
+			                     <div class="up-content">
+			                         <p>探测精准，反馈及时</p>
+			                         <p>可手动或通过手机远程控制阀门开关</p>
+			                     </div>
+			                    </li>
+							</volist>
+		                </ul>
+					 <else /> 
+					 		<ul>
+			                	<volist name="list_new_no_document" id="list_new_no">
+				                     <li><a href="{:U('Goods/detail?id='.$list_new_no['id'])}"><img src="{$list_new_no['cover_id']|get_cover='path' }" alt=""></a>
+				                     <p class="img-word">煤气报警器</p>
+				                     <div class="up-content">
+				                         <p>探测精准，反馈及时</p>
+				                         <p>可手动或通过手机远程控制阀门开关</p>
+				                     </div>
+				                    </li>
+								</volist>
+		                </ul>
+					</empty>
 	            </div>
 	        </div>
 	    </div>
