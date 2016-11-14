@@ -2,6 +2,11 @@
 <block name="pageHeader">
 	 <link rel="stylesheet" href="__CSS__/download.css">
 	 <script src="__JS__/download.js"></script>
+	 <style>
+	 	.about-content .page {
+	 		margin-left: 40px;
+	 	}
+	 </style>
 </block>
 <block name="body">
 <div style="clear:both;"></div>
@@ -36,25 +41,17 @@
 			            		 <li><a href="{:U('File/download?id='.$list_new['id'])}"><b>{$list_new.title}</b><span>下载PDF</span></a></li>
 							</volist>
 						 </ul>
+						 <div style="clear:both;"></div>
+						 <article:page cate="$nowcategory['id']" listrow="$nowcategory['list_row']" />
 					<else /> 
 						<ul>
 							<volist name="list_new_no_document" id="list_new_no">
 								<li><a href="{:U('File/download?id='.$list_new_no['id'])}"><b>{$list_new_no.title}</b><span>下载PDF</span></a></li>
 							 </volist>
-						 <ul>
+						 </ul>
+						 <div style="clear:both;"></div>
+						 <article:page cate="$maxid_no['id']" listrow="$maxid_no['list_row']" />
 					</empty>
-	                <div style="clear:both;"></div>
-	                <div class="row">
-	                   <div class="col-xs-12">
-	                        <div class="page">
-	                            <a href="javascript:void(0);">上一页</a>
-	                            <a href="javascript:void(0);" class="style-page active">1</a>
-	                            <a href="javascript:void(0);" class="style-page">2</a>
-	                            <a href="javascript:void(0);" class="style-page">3</a>
-	                            <a href="javascript:void(0);">下一页</a>
-	                        </div> 
-	                    </div>
-	                </div>
 	            </div>  
 	      		</div>
 	            </div>  

@@ -57,6 +57,7 @@ class DocumentModel extends Model{
      */
     public function lists($category, $order = '`id` DESC', $status = 1, $field = true){
         $map = $this->listMap($category, $status);
+        //print_r($map);
         return $this->field($field)->where($map)->order($order)->select();
     }
 
@@ -88,9 +89,7 @@ class DocumentModel extends Model{
         }
         /* 获取模型数据 */
         $logic  = $this->logic($info['model_id']);
-        //print_r($logic);
         $detail = $logic->detail($id); //获取指定ID的数据
-        //print_r($detail);
         if(!$detail){
             $this->error = $logic->getError();
             return false;

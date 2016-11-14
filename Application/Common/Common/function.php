@@ -241,6 +241,7 @@ function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 
                     $parent[$child][] =& $list[$key];
                 }
             }
+            $list[$key]['model_name'] = get_model_by_id($data['model']);
         }
     }
     return $tree;

@@ -34,40 +34,46 @@
 			                <div class="new-list">
 			                    <a href="{:U('Article/detail?id='.$list_new['id'])}"> 
 			                        <div class="date-block"> 
-			                         <span class="day">23</span>Dec<br>2015 </div>        
+			                         <span class="day">{$list_new.create_time|date='d',###}</span>{$list_new.create_time|date='M',###}<br>{$list_new.create_time|date='Y',###}</div>        
 			                         <div class="summary">            
 			                         <h1>{$list_new.title}</h1>          
-			                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new.view}</h3>          
+			                         <h3>发布者: {$list_new.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new.view}</h3>          
 			                             <p>{$list_new.description}</p>       
 			                        </div>   
 			                    </a>
 			                </div>
 						</volist>
+						<article:page cate="$nowcategory['id']" listrow="$nowcategory['list_row']" />
 					<else /> 
 						<volist name="list_new_no_document" id="list_new_no">
 							<div class="new-list">
 			                    <a href="{:U('Article/detail?id='.$list_new_no['id'])}"> 
 			                        <div class="date-block"> 
-			                         <span class="day">23</span>Dec<br>2015 </div>        
+			                         <span class="day">{$list_new_no.create_time|date='d',###}</span>{$list_new_no.create_time|date='M',###}<br>{$list_new_no.create_time|date='Y',###}</div>        
 			                         <div class="summary">            
 			                         <h1>{$list_new_no.title}</h1>          
-			                         <h3>发布者: 瓯宝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new_no.view}</h3>          
+			                         <h3>发布者: {$list_new_no.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数: {$list_new_no.view}</h3>          
 			                             <p>{$list_new_no.description}</p>       
 			                        </div>   
 			                    </a>
 			                </div>
 						 </volist>
+						 <article:page cate="$maxid_no['id']" listrow="$maxid_no['list_row']" />
 					</empty>
 	                <div style="clear:both;"></div>
 	                <div class="row">
 	                   <div class="col-xs-12">
-	                        <div class="page">
-	                            <a href="javascript:void(0);">上一页</a>
+	                        <!--<div class="page">
+	                            <!--<a href="javascript:void(0);">上一页</a>
 	                            <a href="javascript:void(0);" class="style-page active">1</a>
 	                            <a href="javascript:void(0);" class="style-page">2</a>
 	                            <a href="javascript:void(0);" class="style-page">3</a>
 	                            <a href="javascript:void(0);">下一页</a>
-	                        </div> 
+								<empty name="list_new_no_document">
+									<article:page cate="$nowcategory['id']" listrow="$nowcategory['list_row']" />
+								<else />
+								</empty>
+	                        </div>-->
 	                    </div>
 	                </div>
 	            </div>  

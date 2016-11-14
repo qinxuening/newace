@@ -45,6 +45,35 @@
     height: 220px;
 
 }
+.products .page{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    text-align: center!important;
+    margin: 40px auto;
+}
+.products .page a{
+    margin: 0 10px 0 0;
+    line-height: 45px;
+    display: inline-block;
+}
+.products .page a:hover{
+    background:none;
+    color: red;
+}
+.products .page a.style-page:hover{
+    border: 1px solid red;
+}
+.products .page a.active{
+    border: 1px solid red !important;
+    background: none;
+    color: #666 !important;
+}
+.products .page a.style-page{
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+}
 .up-content{
     position: relative;
     font-size: 12px;

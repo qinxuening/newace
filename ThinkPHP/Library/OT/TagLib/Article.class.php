@@ -91,6 +91,7 @@ class Article extends TagLib{
 
     /* 获取上一篇文章信息 */
     public function _prev($tag, $content){
+    	//print_r($tag);die();
         $name   = $tag['name'];
         $info   = $tag['info'];
         $parse  = '<?php ';

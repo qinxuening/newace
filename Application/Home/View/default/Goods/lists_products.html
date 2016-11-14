@@ -2,6 +2,9 @@
 <block name="pageHeader">
 	 <link rel="stylesheet" href="__CSS__/products.css">
 	 <script type="text/javascript" src="__JS__/products.js"></script>
+	 	 <style>
+
+		 </style>
 </block>
 <block name="body">
 	<div style="clear:both;"></div>
@@ -35,27 +38,35 @@
 	            	<empty name="list_new_no_document">
 		                <ul>
 		                	<volist name="list_new_document" id="list_new">
-			                     <li><a href="{:U('Goods/detail?id='.$list_new['id'])}"><img src="{$list_new['cover_id']|get_cover='path' }" alt=""></a>
-			                     <p class="img-word">煤气报警器</p>
-			                     <div class="up-content">
-			                         <p>探测精准，反馈及时</p>
-			                         <p>可手动或通过手机远程控制阀门开关</p>
-			                     </div>
+			                     <li>
+			                     	<a href="{:U('Goods/detail?id='.$list_new['id'])}"><img src="{$list_new['cover_id']|get_cover='path' }" alt="">
+					                     <p class="img-word">{$list_new.title}</p>
+					                     <div class="up-content">
+					                         <p>探测精准，反馈及时</p>
+					                         <p>可手动或通过手机远程控制阀门开关</p>
+					                     </div>
+								    </a>
 			                    </li>
 							</volist>
 		                </ul>
+						 <div style="clear:both;"></div>
+					     <article:page cate="$nowcategory['id']" listrow="$nowcategory['list_row']" />
 					 <else /> 
 					 		<ul>
 			                	<volist name="list_new_no_document" id="list_new_no">
-				                     <li><a href="{:U('Goods/detail?id='.$list_new_no['id'])}"><img src="{$list_new_no['cover_id']|get_cover='path' }" alt=""></a>
-				                     <p class="img-word">煤气报警器</p>
-				                     <div class="up-content">
-				                         <p>探测精准，反馈及时</p>
-				                         <p>可手动或通过手机远程控制阀门开关</p>
-				                     </div>
+				                     <li>
+					                     <a href="{:U('Goods/detail?id='.$list_new_no['id'])}"><img src="{$list_new_no['cover_id']|get_cover='path' }" alt="">
+						                     <p class="img-word">{$list_new_no.title}</p>
+						                     <div class="up-content">
+						                         <p>探测精准，反馈及时</p>
+						                         <p>可手动或通过手机远程控制阀门开关</p>
+						                     </div>
+										 </a>
 				                    </li>
 								</volist>
-		                </ul>
+		                   </ul>
+						   <div style="clear:both;"></div>
+						   <article:page cate="$AllChildsId" listrow="$category['list_row']" />
 					</empty>
 	            </div>
 	        </div>

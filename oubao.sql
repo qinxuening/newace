@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-11-04 17:40:34
+Date: 2016-11-14 13:38:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `tp_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=188 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=214 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of tp_action_log
@@ -240,6 +240,32 @@ INSERT INTO `tp_action_log` VALUES ('174', '1', '1', '2130706433', 'member', '1'
 INSERT INTO `tp_action_log` VALUES ('175', '11', '1', '2130706433', 'category', '55', '操作url：/admin.php?s=/Category/edit.html', '1', '1478138427');
 INSERT INTO `tp_action_log` VALUES ('176', '11', '1', '2130706433', 'category', '51', '操作url：/admin.php?s=/Category/edit.html', '1', '1478140679');
 INSERT INTO `tp_action_log` VALUES ('177', '11', '1', '2130706433', 'category', '51', '操作url：/admin.php?s=/Category/edit.html', '1', '1478152544');
+INSERT INTO `tp_action_log` VALUES ('188', '8', '1', '2130706433', 'attribute', '33', '操作url：/admin.php?s=/Attribute/update.html', '1', '1478435472');
+INSERT INTO `tp_action_log` VALUES ('189', '8', '1', '2130706433', 'attribute', '33', '操作url：/admin.php?s=/Attribute/update.html', '1', '1478436041');
+INSERT INTO `tp_action_log` VALUES ('190', '8', '1', '2130706433', 'attribute', '33', '操作url：/admin.php?s=/Attribute/update.html', '1', '1478436485');
+INSERT INTO `tp_action_log` VALUES ('191', '8', '1', '2130706433', 'attribute', '34', '操作url：/admin.php?s=/Attribute/update.html', '1', '1478436914');
+INSERT INTO `tp_action_log` VALUES ('192', '8', '1', '2130706433', 'attribute', '34', '操作url：/admin.php?s=/Attribute/update.html', '1', '1478437140');
+INSERT INTO `tp_action_log` VALUES ('193', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1478437733');
+INSERT INTO `tp_action_log` VALUES ('194', '7', '1', '2130706433', 'model', '4', '操作url：/admin.php?s=/Model/update.html', '1', '1478437957');
+INSERT INTO `tp_action_log` VALUES ('195', '1', '1', '2130706433', 'member', '1', 'admin在2016-11-06 21:26登录了后台', '1', '1478438814');
+INSERT INTO `tp_action_log` VALUES ('196', '1', '1', '2130706433', 'member', '1', 'admin在2016-11-09 15:58登录了后台', '1', '1478678316');
+INSERT INTO `tp_action_log` VALUES ('197', '1', '1', '2130706433', 'member', '1', 'admin在2016-11-10 10:02登录了后台', '1', '1478743366');
+INSERT INTO `tp_action_log` VALUES ('198', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478743412');
+INSERT INTO `tp_action_log` VALUES ('199', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478743576');
+INSERT INTO `tp_action_log` VALUES ('200', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478743940');
+INSERT INTO `tp_action_log` VALUES ('201', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478749515');
+INSERT INTO `tp_action_log` VALUES ('202', '11', '1', '2130706433', 'category', '62', '操作url：/admin.php?s=/Category/edit.html', '1', '1478749634');
+INSERT INTO `tp_action_log` VALUES ('203', '11', '1', '2130706433', 'category', '62', '操作url：/admin.php?s=/Category/edit.html', '1', '1478749656');
+INSERT INTO `tp_action_log` VALUES ('204', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478751747');
+INSERT INTO `tp_action_log` VALUES ('205', '11', '1', '2130706433', 'category', '61', '操作url：/admin.php?s=/Category/edit.html', '1', '1478752177');
+INSERT INTO `tp_action_log` VALUES ('206', '11', '1', '2130706433', 'category', '62', '操作url：/admin.php?s=/Category/edit.html', '1', '1478752191');
+INSERT INTO `tp_action_log` VALUES ('207', '11', '1', '2130706433', 'category', '52', '操作url：/admin.php?s=/Category/edit.html', '1', '1478756085');
+INSERT INTO `tp_action_log` VALUES ('208', '11', '1', '2130706433', 'category', '48', '操作url：/admin.php?s=/Category/edit.html', '1', '1478758580');
+INSERT INTO `tp_action_log` VALUES ('209', '11', '1', '2130706433', 'category', '48', '操作url：/admin.php?s=/Category/edit.html', '1', '1478758664');
+INSERT INTO `tp_action_log` VALUES ('210', '11', '1', '2130706433', 'category', '46', '操作url：/admin.php?s=/Category/edit.html', '1', '1478760254');
+INSERT INTO `tp_action_log` VALUES ('211', '11', '1', '2130706433', 'category', '41', '操作url：/admin.php?s=/Category/edit.html', '1', '1478762187');
+INSERT INTO `tp_action_log` VALUES ('212', '11', '1', '2130706433', 'category', '41', '操作url：/admin.php?s=/Category/edit.html', '1', '1478762419');
+INSERT INTO `tp_action_log` VALUES ('213', '1', '1', '2130706433', 'member', '1', 'admin在2016-11-10 17:17登录了后台', '1', '1478769452');
 
 -- ----------------------------
 -- Table structure for tp_addons
@@ -326,7 +352,7 @@ CREATE TABLE `tp_attribute` (
   `auto_type` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `model_id` (`model_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
 
 -- ----------------------------
 -- Records of tp_attribute
@@ -363,7 +389,8 @@ INSERT INTO `tp_attribute` VALUES ('29', 'template', '详情页显示模板', 'v
 INSERT INTO `tp_attribute` VALUES ('30', 'file_id', '文件ID', 'int(10) unsigned NOT NULL ', 'file', '0', '需要函数处理', '1', '', '3', '0', '1', '1383896415', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `tp_attribute` VALUES ('31', 'download', '下载次数', 'int(10) unsigned NOT NULL ', 'num', '0', '', '1', '', '3', '0', '1', '1383896380', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `tp_attribute` VALUES ('32', 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', '1', '', '3', '0', '1', '1383896371', '1383891252', '', '0', '', '', '', '0', '');
-INSERT INTO `tp_attribute` VALUES ('33', 'editor', '产品内容', 'text NOT NULL', 'editor', '', '', '1', '0:html\r\n1:ubb\r\n2:markdown', '4', '0', '1', '1477468694', '1477468694', '', '3', '', 'regex', '', '3', 'function');
+INSERT INTO `tp_attribute` VALUES ('33', 'character', '产品特点', 'text NOT NULL', 'editor', '', '', '1', '0:html\r\n1:ubb\r\n2:markdown', '4', '0', '1', '1478436486', '1477468694', '', '3', '', 'regex', '', '3', 'function');
+INSERT INTO `tp_attribute` VALUES ('34', 'instruction', '说明书', 'text NOT NULL', 'editor', '', '', '1', '0:html\r\n1:ubb\r\n2:markdown', '4', '0', '1', '1478437141', '1478436916', '', '3', '', 'regex', '', '3', 'function');
 
 -- ----------------------------
 -- Table structure for tp_auth_extend
@@ -719,21 +746,21 @@ CREATE TABLE `tp_category` (
 -- Records of tp_category
 -- ----------------------------
 INSERT INTO `tp_category` VALUES ('42', 'anfang', '安防类', '41', '3', '10', '', '安防类', '安防类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474526797', '1478223913', '1', '24', '安防类');
-INSERT INTO `tp_category` VALUES ('41', 'products', '产品展示', '0', '2', '10', '', '产品展示', '产品展示', '', 'lists_products', '', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524724', '1478222764', '1', '22', '产品展示');
+INSERT INTO `tp_category` VALUES ('41', 'products', '产品展示', '0', '2', '8', '', '产品展示', '产品展示', '', 'lists_products', '', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524724', '1478762419', '1', '22', '产品展示');
 INSERT INTO `tp_category` VALUES ('40', 'solution', '解决方案', '0', '1', '10', '', '解决方案', '解决方案', '', 'lists_solution', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524627', '1477899950', '1', '21', '解决方案');
-INSERT INTO `tp_category` VALUES ('46', 'home', '家居类', '41', '0', '10', '', '家居类', '家居类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477639810', '1478223899', '1', '', '家居类');
+INSERT INTO `tp_category` VALUES ('46', 'home', '家居类', '41', '0', '4', '', '家居类', '家居类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477639810', '1478760254', '1', '', '家居类');
 INSERT INTO `tp_category` VALUES ('47', 'download', '应用下载', '0', '3', '10', '', '应用下载', '应用下载', '', 'lists_download', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477639925', '1478156088', '1', '', '应用下载');
 INSERT INTO `tp_category` VALUES ('44', 'hospital', '医疗类', '41', '4', '10', '', '医疗类', '医疗类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474527014', '1478223925', '1', '25', '空调|电视|机顶盒');
-INSERT INTO `tp_category` VALUES ('48', 'specification', '说明书下载', '47', '0', '10', '', '说明书下载', '说明书下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640096', '1477640096', '1', '', '说明书下载');
+INSERT INTO `tp_category` VALUES ('48', 'specification', '说明书下载', '47', '0', '4', '', '说明书下载', '说明书下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640096', '1478758664', '1', '', '说明书下载');
 INSERT INTO `tp_category` VALUES ('49', 'APP', 'APP下载', '47', '0', '10', '', 'APP下载', 'APP下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '0', '', null, '1477640148', '1477640148', '1', '', 'APP下载');
 INSERT INTO `tp_category` VALUES ('50', 'album', '画册下载', '47', '0', '10', '', '画册下载', '画册下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640281', '1477640281', '1', '', '画册下载');
 INSERT INTO `tp_category` VALUES ('51', 'support', '服务支持', '0', '4', '10', '', '服务支持', '服务支持', '', 'lists_help', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640525', '1478152544', '1', '', '服务支持');
-INSERT INTO `tp_category` VALUES ('52', 'after-sale', '售后服务', '51', '52', '10', '', '售后服务', '售后服务', '', '', 'detail_help', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640903', '1478154276', '1', '', '售后服务');
+INSERT INTO `tp_category` VALUES ('52', 'after-sale', '售后服务', '51', '52', '2', '', '售后服务', '售后服务', '', '', 'detail_help', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477640903', '1478756085', '1', '', '售后服务');
 INSERT INTO `tp_category` VALUES ('53', 'problem', '常见问题', '51', '53', '10', '', '常见问题', '常见问题', '', '', 'detail_help', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477641011', '1478154284', '1', '', '常见问题');
 INSERT INTO `tp_category` VALUES ('54', 'join', '代理加盟', '0', '5', '10', '', '代理加盟', '代理加盟', '', 'lists_join', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477642122', '1477905409', '1', '', '代理加盟');
 INSERT INTO `tp_category` VALUES ('55', 'about_us', '关于我们', '0', '7', '10', '', '关于我们', '关于我们', '', 'lists_join', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477642250', '1478138427', '1', '', '关于我们');
-INSERT INTO `tp_category` VALUES ('61', 'news', '新闻资讯', '0', '6', '10', '', '', '', '', 'lists_news', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477903528', '1477903528', '1', '', '新闻资讯');
-INSERT INTO `tp_category` VALUES ('62', 'company_news', '公司新闻', '61', '0', '2', '', '', '', '', 'lists_news', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477903590', '1478065987', '1', '', '公司新闻');
+INSERT INTO `tp_category` VALUES ('61', 'news', '新闻资讯', '0', '6', '10', '', '', '', '', 'lists_news', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477903528', '1478752177', '1', '', '新闻资讯');
+INSERT INTO `tp_category` VALUES ('62', 'company_news', '公司新闻', '61', '0', '2', '', '', '', '', 'lists_news', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477903590', '1478752191', '1', '', '公司新闻');
 INSERT INTO `tp_category` VALUES ('63', 'profession_news', '行业新闻', '61', '0', '10', '', '', '', '', '', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477903685', '1478056230', '1', '', '行业新闻');
 INSERT INTO `tp_category` VALUES ('64', 'activity', '活动专题', '61', '0', '10', '', '', '', '', '', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', null, '1477981529', '1478056242', '1', '', '活动专题');
 
@@ -848,7 +875,7 @@ CREATE TABLE `tp_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of tp_document
@@ -870,14 +897,14 @@ INSERT INTO `tp_document` VALUES ('14', '1', 'hospital', '医疗', '44', '0', ''
 INSERT INTO `tp_document` VALUES ('15', '1', 'hospital1', 'hospital1', '44', '0', '', '0', '0', '4', '2', '0', '0', '28', '1', '0', '0', '1', '0', '0', '0', '1477469640', '1478166748', '-1');
 INSERT INTO `tp_document` VALUES ('17', '1', '', '智能酒店', '40', '0', '', '0', '0', '2', '3', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1477907400', '1477966512', '1');
 INSERT INTO `tp_document` VALUES ('18', '1', '', '智能办公', '40', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '3', '0', '0', '0', '1477907460', '1477966498', '1');
-INSERT INTO `tp_document` VALUES ('19', '1', '', '瓯宝公司:研发投入出成效 智能家居进军市场', '62', '0', '11月25日，在瓯宝会议大厅隆重举行了智能家居新品发布盛典。\r\n    会议大厅现场签约伙伴就有30多家。苏宁温州大区域总经理卢厚飞看中商机，会上卢总便邀请公司智能家居新品入驻温州电器城,并将在28日温州苏宁一年一度的品牌推介会上展示。陈董事长幽默的说：“瓯宝有望成为第二个‘阿里', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '167', '0', '0', '0', '1477971883', '1477971883', '1');
-INSERT INTO `tp_document` VALUES ('20', '1', '', '迎“三·八”瓯宝举行第四届“和谐瓯宝•魅力女性”趣味运动会', '62', '0', '阳春三月，人面桃花相映红！春风扑面，瓯宝巾帼显英雄！在第106个三八国际妇女节来临之际，公司以趣味运动会的方式为广大女性同胞们进行庆祝。', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '47', '0', '0', '0', '1477972128', '1477972128', '1');
-INSERT INTO `tp_document` VALUES ('21', '1', '', '凝心聚力 稳定质量 开拓市场 —暨2015年工作总结表彰和动员大会圆满召开', '63', '0', '2016年2月27日下午，瓯宝一年一度的总结表彰暨工作动员大会在四号楼四楼会议室顺利召开。公司创始人陈恩弟先生、董事长陈晓建、常务副总张洁信、生产副总张献国技术副总姜雷、外贸副总陈谧和行政副总周海潮在主席台就座', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '31', '0', '0', '0', '1477985000', '1477985000', '1');
-INSERT INTO `tp_document` VALUES ('22', '1', '', '瓯宝指纹锁重庆聚信名家汇直营店盛大开业', '62', '0', '2015年12月22日，瓯宝又一专卖店强势登陆重庆，相信随着瓯宝指纹锁重庆聚信名家汇直营店的开业，将会有更多的客户了解瓯宝指纹锁，用上瓯宝指纹锁，爱上瓯宝指纹锁，让更多人过上不用带钥匙就能开门的时尚生活。', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '23', '0', '0', '0', '1477985040', '1478065544', '1');
+INSERT INTO `tp_document` VALUES ('19', '1', '', '瓯宝公司:研发投入出成效 智能家居进军市场', '62', '0', '11月25日，在瓯宝会议大厅隆重举行了智能家居新品发布盛典。\r\n    会议大厅现场签约伙伴就有30多家。苏宁温州大区域总经理卢厚飞看中商机，会上卢总便邀请公司智能家居新品入驻温州电器城,并将在28日温州苏宁一年一度的品牌推介会上展示。陈董事长幽默的说：“瓯宝有望成为第二个‘阿里', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '284', '0', '0', '0', '1477971883', '1477971883', '1');
+INSERT INTO `tp_document` VALUES ('20', '1', '', '迎“三·八”瓯宝举行第四届“和谐瓯宝•魅力女性”趣味运动会', '62', '0', '阳春三月，人面桃花相映红！春风扑面，瓯宝巾帼显英雄！在第106个三八国际妇女节来临之际，公司以趣味运动会的方式为广大女性同胞们进行庆祝。', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '117', '0', '0', '0', '1477972128', '1477972128', '1');
+INSERT INTO `tp_document` VALUES ('21', '1', '', '凝心聚力 稳定质量 开拓市场 —暨2015年工作总结表彰和动员大会圆满召开', '63', '0', '2016年2月27日下午，瓯宝一年一度的总结表彰暨工作动员大会在四号楼四楼会议室顺利召开。公司创始人陈恩弟先生、董事长陈晓建、常务副总张洁信、生产副总张献国技术副总姜雷、外贸副总陈谧和行政副总周海潮在主席台就座', '0', '0', '2', '2', '1', '0', '0', '1', '0', '0', '51', '0', '0', '0', '1477984980', '1478435552', '1');
+INSERT INTO `tp_document` VALUES ('22', '1', '', '瓯宝指纹锁重庆聚信名家汇直营店盛大开业', '62', '0', '2015年12月22日，瓯宝又一专卖店强势登陆重庆，相信随着瓯宝指纹锁重庆聚信名家汇直营店的开业，将会有更多的客户了解瓯宝指纹锁，用上瓯宝指纹锁，爱上瓯宝指纹锁，让更多人过上不用带钥匙就能开门的时尚生活。', '0', '0', '2', '2', '1', '0', '0', '1', '0', '0', '33', '0', '0', '0', '1477985040', '1478435531', '1');
 INSERT INTO `tp_document` VALUES ('23', '1', '', '公司介绍', '55', '0', '', '0', '0', '2', '2', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478138280', '1478251111', '1');
 INSERT INTO `tp_document` VALUES ('24', '1', '', '荣誉奖项', '55', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478139757', '1478139757', '1');
-INSERT INTO `tp_document` VALUES ('26', '1', '', '保障期', '52', '0', '保障期', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1478151725', '1478151725', '1');
-INSERT INTO `tp_document` VALUES ('27', '1', '', '指纹识别传感器', '52', '0', '目前应用于民用市场主要有三种类型的指纹传感器，即：光学传感器、半导体传感器、射频传感器。 光学指纹识别传感器是通过在光学镜头上进行物体挤压或是手指滚动获得指纹图片。传感器屏幕一般是由工业金刚石制作而成。 半导体指纹识别传感器是由手指对传感器产生的压力或者热冲击，使电荷产生变化后通', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '16', '0', '0', '0', '1478152448', '1478152448', '1');
+INSERT INTO `tp_document` VALUES ('26', '1', '', '保障期', '52', '0', '保障期', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '9', '0', '0', '0', '1478151725', '1478151725', '1');
+INSERT INTO `tp_document` VALUES ('27', '1', '', '指纹识别传感器', '52', '0', '目前应用于民用市场主要有三种类型的指纹传感器，即：光学传感器、半导体传感器、射频传感器。 光学指纹识别传感器是通过在光学镜头上进行物体挤压或是手指滚动获得指纹图片。传感器屏幕一般是由工业金刚石制作而成。 半导体指纹识别传感器是由手指对传感器产生的压力或者热冲击，使电荷产生变化后通', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '19', '0', '0', '0', '1478152448', '1478152448', '1');
 INSERT INTO `tp_document` VALUES ('28', '1', '', '智能遥控', '40', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478157000', '1478157072', '-1');
 INSERT INTO `tp_document` VALUES ('32', '1', '', '七彩灯', '48', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '3', '0', '0', '0', '1478157420', '1478161590', '1');
 INSERT INTO `tp_document` VALUES ('33', '1', '', '智能遥控', '48', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '4', '0', '0', '0', '1478160060', '1478161732', '1');
@@ -886,13 +913,14 @@ INSERT INTO `tp_document` VALUES ('35', '1', '', '单火触摸开关', '48', '0'
 INSERT INTO `tp_document` VALUES ('36', '1', '', '红外人体感应', '48', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478163601', '1478163601', '1');
 INSERT INTO `tp_document` VALUES ('37', '1', '', '招商政策', '54', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478164306', '1478164306', '1');
 INSERT INTO `tp_document` VALUES ('39', '1', '', '加盟优势', '54', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1478164362', '1478164362', '1');
-INSERT INTO `tp_document` VALUES ('40', '1', '', '煤气报警器', '42', '0', '', '0', '0', '4', '2', '0', '0', '29', '1', '0', '0', '5', '0', '0', '0', '1478222580', '1478222636', '1');
-INSERT INTO `tp_document` VALUES ('41', '1', '', '水浸报警器', '42', '0', '', '0', '0', '4', '1', '0', '0', '30', '1', '0', '0', '2', '0', '0', '0', '1478222819', '1478222819', '1');
-INSERT INTO `tp_document` VALUES ('42', '1', '', '移动插座', '46', '0', '', '0', '0', '4', '2', '0', '0', '31', '1', '0', '0', '27', '0', '0', '0', '1478222868', '1478222868', '1');
-INSERT INTO `tp_document` VALUES ('43', '1', '', '智能插座', '46', '0', '', '0', '0', '4', '2', '0', '0', '32', '1', '0', '0', '8', '0', '0', '0', '1478222909', '1478222909', '1');
-INSERT INTO `tp_document` VALUES ('44', '1', '', '智能遥控', '46', '0', '', '0', '0', '4', '2', '0', '0', '33', '1', '0', '0', '2', '0', '0', '0', '1478222944', '1478222944', '1');
-INSERT INTO `tp_document` VALUES ('45', '1', '', '触摸开关', '46', '0', '', '0', '0', '4', '2', '0', '0', '34', '1', '0', '0', '1', '0', '0', '0', '1478222989', '1478222989', '1');
-INSERT INTO `tp_document` VALUES ('46', '1', '', '平移窗', '46', '0', '', '0', '0', '4', '2', '0', '0', '35', '1', '0', '0', '3', '0', '0', '0', '1478223030', '1478223030', '1');
+INSERT INTO `tp_document` VALUES ('40', '1', '', '煤气报警器', '42', '0', '', '0', '0', '4', '2', '0', '0', '29', '1', '0', '0', '25', '0', '0', '0', '1478222580', '1478222636', '1');
+INSERT INTO `tp_document` VALUES ('41', '1', '', '水浸报警器', '42', '0', '', '0', '0', '4', '1', '0', '0', '30', '1', '0', '0', '15', '0', '0', '0', '1478222819', '1478222819', '1');
+INSERT INTO `tp_document` VALUES ('42', '1', '', '移动插座', '46', '0', '', '0', '0', '4', '2', '0', '0', '31', '1', '0', '0', '40', '0', '0', '0', '1478222868', '1478222868', '1');
+INSERT INTO `tp_document` VALUES ('43', '1', '', '智能插座', '46', '0', '', '0', '0', '4', '2', '0', '0', '32', '1', '0', '0', '11', '0', '0', '0', '1478222909', '1478222909', '1');
+INSERT INTO `tp_document` VALUES ('44', '1', '', '智能遥控', '46', '0', '', '0', '0', '4', '2', '0', '0', '33', '1', '0', '0', '8', '0', '0', '0', '1478222944', '1478222944', '1');
+INSERT INTO `tp_document` VALUES ('45', '1', '', '触摸开关', '46', '0', '', '0', '0', '4', '2', '0', '0', '34', '1', '0', '0', '9', '0', '0', '0', '1478222989', '1478222989', '1');
+INSERT INTO `tp_document` VALUES ('46', '1', '', '平移窗', '46', '0', '', '0', '0', '4', '2', '0', '0', '35', '1', '0', '0', '11', '0', '0', '0', '1478223000', '1478437903', '1');
+INSERT INTO `tp_document` VALUES ('47', '1', '', '空调默认温度设置', '52', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '0', '1478755980', '1478756030', '1');
 
 -- ----------------------------
 -- Table structure for tp_document_article
@@ -926,6 +954,7 @@ INSERT INTO `tp_document_article` VALUES ('26', '0', '保障期', '', '0');
 INSERT INTO `tp_document_article` VALUES ('27', '0', '<p>\r\n	目前应用于民用市场主要有三种类型的指纹传感器，即：光学传感器、半导体传感器、射频传感器。 光学指纹识别传感器是通过在光学镜头上进行物体挤压或是手指滚动获得指纹图片。传感器屏幕一般是由工业金刚石制作而成。 半导体指纹识别传感器是由手指对传感器产生的压力或者热冲击，使电荷产生变化后通过识读电荷变化获取图像，这类传感器的屏幕是一块薄薄的胶片。 射频指纹识别传感器是利用由传感器发出一段电磁场或超声波，碰到阻碍物后换回，通过试读返回的电波的所携带的信号而转换成图像。\r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('37', '0', '<h3>\r\n	瓯宝智能家居产品招商模式\r\n</h3>\r\n<p>\r\n	瓯宝智能家居，以简单、方便、独特为载体，开启了国内智能市场先河。率先进入市场销售，从研发到生产再到销售，形成一条龙的自主智能新产品，从功能到应用再到系统，是引领智能家居的全新产品。\r\n</p>\r\n<p>\r\n	1、产品无需布线，安装方便快捷；\r\n</p>\r\n<p>\r\n	2、手机智能操作，使用简单易学；\r\n</p>\r\n<p>\r\n	3、多模式选择，一键式操作；\r\n</p>\r\n<p>\r\n	4、3年质保保修承诺；\r\n</p>\r\n<h3>\r\n	政策支持\r\n</h3>\r\n<span>营销费用</span> \r\n<p>\r\n	返利：每季超额销售额以10%返利，每季度进行返利结算，用于货款抵扣；\r\n</p>\r\n<p>\r\n	累计销额每超过100万，公司提取5%做为区域营销经费支持，由公司协助进行市场推广和消费者活动。\r\n</p>\r\n<h3>\r\n	营销渠道\r\n</h3>\r\n<span>电商合作</span> \r\n<p>\r\n	公司与苏宁、天猫等合作，所在区域的经销商负责配送、安装、维修，管理费用按照销额的8%提取；\r\n</p>\r\n<p>\r\n	经销商直接与苏宁等合作，由经销商承担营运成本，负责产品的供应、安装、维护，经销商享受全部营销成果。\r\n</p>\r\n<span>工程项目</span> \r\n<p>\r\n	由经销商洽谈的工程项目，销售价格和出厂价格经公司核准后，由经销商负责维护安装，并由经销商享受两者的差额；\r\n</p>\r\n<p>\r\n	工程项目由公司直管，由当地/就近的经销商负责安装、维护，管理费用依据实际销额进行协商。\r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('39', '0', '<p>\r\n	加盟优势\r\n</p>', '', '0');
+INSERT INTO `tp_document_article` VALUES ('47', '0', '<p>\r\n	1、登陆APP，进入“管理平台”，选择“我的设备”，点击空调类设备如“会议室空调”进入“编辑”界面，设置空调默认温度，如“模式：制冷25℃”后保存。\r\n</p>\r\n<p>\r\n	2、可根据需要，在“我的模式”或者“添加模式”中设置相应模式，如在“设备开”中勾选“会议室空调”，在“我的时间”或者“添加时间”添加定时功能，如勾选“会议室空调”并设置“设备状态”为开后保存，退出管理平台，在APP设置界面点击“更新模式信息”和“更新设备信息”，或者点击一键更新。\r\n</p>\r\n<p>\r\n	3、当设定的场景模式或定时功能启用时，”会议室空调“的温度即为默认温度值：25℃。\r\n</p>', '', '0');
 
 -- ----------------------------
 -- Table structure for tp_document_download
@@ -952,7 +981,7 @@ INSERT INTO `tp_document_download` VALUES ('28', '0', '', '', '26', '0', '115663
 INSERT INTO `tp_document_download` VALUES ('32', '0', '七彩灯', '', '29', '24', '1560388');
 INSERT INTO `tp_document_download` VALUES ('33', '0', '', '', '32', '1', '2134146');
 INSERT INTO `tp_document_download` VALUES ('34', '0', '', '', '33', '5', '1358753');
-INSERT INTO `tp_document_download` VALUES ('35', '0', '', '', '34', '6', '1684030');
+INSERT INTO `tp_document_download` VALUES ('35', '0', '', '', '34', '7', '1684030');
 INSERT INTO `tp_document_download` VALUES ('36', '0', '', '', '35', '2', '1876741');
 
 -- ----------------------------
@@ -962,22 +991,23 @@ DROP TABLE IF EXISTS `tp_document_goods`;
 CREATE TABLE `tp_document_goods` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `code` int(10) unsigned NOT NULL COMMENT 'code总数',
-  `editor` text NOT NULL COMMENT '产品内容',
+  `character` text NOT NULL COMMENT '产品特点',
+  `instruction` text NOT NULL COMMENT '说明书',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of tp_document_goods
 -- ----------------------------
-INSERT INTO `tp_document_goods` VALUES ('14', '0', '医疗');
-INSERT INTO `tp_document_goods` VALUES ('15', '0', 'hospital1');
-INSERT INTO `tp_document_goods` VALUES ('40', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('41', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('42', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('43', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('44', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('45', '0', '');
-INSERT INTO `tp_document_goods` VALUES ('46', '0', '');
+INSERT INTO `tp_document_goods` VALUES ('14', '0', '医疗', '');
+INSERT INTO `tp_document_goods` VALUES ('15', '0', 'hospital1', '');
+INSERT INTO `tp_document_goods` VALUES ('40', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('41', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('42', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('43', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('44', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('45', '0', '', '');
+INSERT INTO `tp_document_goods` VALUES ('46', '0', '', '说明书');
 
 -- ----------------------------
 -- Table structure for tp_file
@@ -1095,8 +1125,8 @@ CREATE TABLE `tp_member` (
 -- ----------------------------
 -- Records of tp_member
 -- ----------------------------
-INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '120', '43', '0', '1472733337', '2130706433', '1478221323', '1');
-INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '140', '47', '0', '1472733337', '2130706433', '1478769452', '1');
+INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `tp_member` VALUES ('3', 'cym', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1');
 
 -- ----------------------------
@@ -1273,7 +1303,7 @@ CREATE TABLE `tp_model` (
 INSERT INTO `tp_model` VALUES ('1', 'document', '基础文档', '0', '', '1', '{\"1\":[\"2\",\"3\",\"5\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"16\",\"17\",\"19\",\"20\"]}', '1:基础', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891233', '1476667488', '1', 'MyISAM');
 INSERT INTO `tp_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"24\",\"2\",\"5\"],\"2\":[\"9\",\"13\",\"19\",\"10\",\"12\",\"16\",\"17\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础,2:扩展', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891243', '1475984788', '1', 'MyISAM');
 INSERT INTO `tp_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":[\"3\",\"28\",\"30\",\"32\",\"2\",\"5\",\"31\"],\"2\":[\"13\",\"10\",\"27\",\"9\",\"12\",\"16\",\"17\",\"19\",\"11\",\"20\",\"14\",\"29\"]}', '1:基础,2:扩展', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891252', '1387260449', '1', 'MyISAM');
-INSERT INTO `tp_model` VALUES ('4', 'goods', '产品', '1', '', '1', '{\"1\":[\"2\",\"3\",\"33\",\"5\"],\"2\":[\"9\",\"16\",\"14\",\"13\",\"17\",\"20\",\"19\",\"12\",\"11\",\"10\"]}', '1:基础,2:扩展', '21,8,15,16,18,7,22,4,6,2,1,14,3,13,5,17,33,20,9,19,12,11,10', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '10', '', '', '1457341183', '1477469331', '1', 'MyISAM');
+INSERT INTO `tp_model` VALUES ('4', 'goods', '产品', '1', '', '1', '{\"1\":[\"2\",\"3\",\"33\",\"5\"],\"2\":[\"9\",\"16\",\"14\",\"13\",\"34\",\"17\",\"20\",\"19\",\"12\",\"11\",\"10\"]}', '1:基础,2:扩展', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '10', '', '', '1457341183', '1478437957', '1', 'MyISAM');
 
 -- ----------------------------
 -- Table structure for tp_picture
@@ -1389,7 +1419,7 @@ CREATE TABLE `tp_ucenter_member` (
 -- ----------------------------
 -- Records of tp_ucenter_member
 -- ----------------------------
-INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1478221323', '2130706433', '1472733337', '1');
+INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1478769452', '2130706433', '1472733337', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('2', 'qinxuening', '7c611e8fef136e9ae52abaeaca48f5c1', '2423859712@qq.com', '', '1476265461', '2130706433', '0', '0', '1476265461', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('3', 'cym', '7c611e8fef136e9ae52abaeaca48f5c1', '24238597134@qq.com', '', '1476412989', '2130706433', '0', '0', '1476412989', '1');
 

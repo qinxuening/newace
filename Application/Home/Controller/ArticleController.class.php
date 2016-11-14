@@ -36,6 +36,7 @@ class ArticleController extends HomeController {
 		/* 获取当前分类列表 */
 		$Document = D('Document');
 		$list = $Document->page($p, $category['list_row'])->lists($category['id'], '`id` ASC');
+		//print_r($list);
 		$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->order('`sort` ASC')->select();//获取所有子分类
 		if((false == $list) && !$listnew){
 			$this->assign('maxinfo', '');
@@ -68,19 +69,22 @@ class ArticleController extends HomeController {
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
-					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->order('`sort` ASC')->find();//获取当前分类
-					$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
+					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title, list_row')->order('`sort` ASC')->find();//获取当前分类
+					$list_new_no_document = $Document->page($p, $maxid['list_row'])->lists($maxid['id'], '`id` ASC');
 					$this->assign('maxid_no', $maxid);
+					//print_r($list_new_no_document);
+					//echo date('Y', '1477971883');
 					$this->assign('list_new_no_document', $list_new_no_document);
 				}
 			}
 		}
 		if(I('category_id')){
-			$list_new_document = $Document->page($p, $category['list_row'])->lists(I('category_id'), '`id` ASC');
-			//print_r($list_new_document);
+			$nowcategory = D('Category')->where(array('id'=>I('category_id')))->field('id, title, list_row')->order('`sort` ASC')->find();
+			$this->assign('nowcategory', $nowcategory);//获取当前分类
+			$list_new_document = $Document->page($p, $nowcategory['list_row'])->lists(I('category_id'), '`id` ASC');
 			$this->assign('category_id', I('category_id'));
 			$this->assign('list_new_document', $list_new_document);
-			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->order('`sort` ASC')->find());//获取当前分类
+			
 		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
@@ -106,7 +110,7 @@ class ArticleController extends HomeController {
 		if(!$info){
 			$this->error($Document->getError());
 		}
-
+		//print_r($info);
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);
 		

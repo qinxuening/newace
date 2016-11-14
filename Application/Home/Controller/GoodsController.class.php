@@ -56,21 +56,18 @@ class GoodsController extends HomeController {
 			if($listnew){
 				if(!I('category_id')){
 					$AllChildsId = Category::getChildsId(D('Category')->where(array('status'=>array('gt', 0)))->select(), $category['id']);
-					//print_r($AllChildsId);
-					//$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title')->order('`sort` ASC')->find();//获取当前分类
-					//$list_new_no_document = $Document->page($p, $category['list_row'])->lists($maxid['id'], '`id` ASC');
-					//$this->assign('maxid_no', $maxid);
-					$list_new_no_document = $Document->where(array('category_id' => array('IN', implode(',', $AllChildsId)), 'status'=>array('gt', 0)))->select();
+					$list_new_no_document = $Document->page($p, $category['list_row'])->lists(implode(',', $AllChildsId), '`id` ASC');
 					$this->assign('list_new_no_document', $list_new_no_document);
+					$this->assign('AllChildsId', implode(',', $AllChildsId));
 				}
 			}
 		}
 		if(I('category_id')){
-			$list_new_document = $Document->page($p, $category['list_row'])->lists(I('category_id'), '`id` ASC');
-			//print_r($list_new_document);
+			$nowcategory = D('Category')->where(array('id'=>I('category_id')))->field('id, title, list_row')->order('`sort` ASC')->find();
+			$this->assign('nowcategory', $nowcategory);//获取当前分类
+			$list_new_document = $Document->page($p, $nowcategory['list_row'])->lists(I('category_id'), '`id` ASC');
 			$this->assign('category_id', I('category_id'));
 			$this->assign('list_new_document', $list_new_document);
-			$this->assign('nowcategory', D('Category')->where(array('id'=>I('category_id')))->field('id, title')->order('`sort` ASC')->find());//获取当前分类
 		}
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
@@ -78,7 +75,7 @@ class GoodsController extends HomeController {
 		$this->assign('active', $active);
 		$this->display($category['template_lists']);
 	}
-	
+
 	/* 文档模型详情页 */
 	public function detail($id = 0, $p = 1){
 		/* 标识正确性检测 */
