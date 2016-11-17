@@ -64,10 +64,11 @@ class CategoryController extends AdminController {
                     $this->error('指定的上级分类不存在或被禁用！');
                 }
             }
-
+            $tree = D('Category')->getTree(0,'id,title,pid');
+            $this->assign('tree', $tree);
             /* 获取分类信息 */
             $info = $id ? $Category->info($id) : '';
-            //print_r($info);
+            //print_r($tree);
             $this->assign('table_index','active');
             $this->assign('info',       $info);
             $this->assign('category',   $cate);
@@ -88,6 +89,7 @@ class CategoryController extends AdminController {
         $Category = D('Category');
 
         if(IS_POST){ //提交表单
+        	//print_r($_POST);die();
             if(false !== $Category->update()){
                 $this->success('新增成功！', U('index'));
             } else {
@@ -98,12 +100,14 @@ class CategoryController extends AdminController {
             $cate = array();
             if($pid){
                 /* 获取上级分类信息 */
-                $cate = $Category->info($pid, 'id,name,title,status');
+                $cate = $Category->info($pid, 'id,name,title,status,pid');
                 if(!($cate && 1 == $cate['status'])){
                     $this->error('指定的上级分类不存在或被禁用！');
                 }
             }
-
+            $tree = D('Category')->getTree(0,'id,title,pid');
+            //print_r($cate);
+            $this->assign('tree', $tree);
             /* 获取分类信息 */
             $this->assign('category_add','active');
             $this->assign('info',null);

@@ -63,9 +63,26 @@
 											<fieldset>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right">上级栏目：</label>
-													<div class="col-sm-9">
-														<input type="text"  disabled="disabled" value="{$category['title']|default='作为顶级栏目'}" class="col-xs-10 col-sm-5">
-													</div>
+													<!--<div class="col-sm-9">
+														disabled="disabled"
+														<input type="text"   value="{$category['title']|default='作为顶级栏目'}" class="col-xs-10 col-sm-5">
+													</div>-->
+													   <div class="col-sm-9">
+															<select class="col-xs-10 col-sm-5" name="pid">
+															<option value="0" <eq name="info.pid" value="0">selected</eq>>作为顶级栏目</option>
+															<volist name="tree" id="list">
+																  <option value="{$list.id}" <eq name="info.pid" value="$list.id">selected</eq> <eq name="category.id" value="$list.id">selected</eq> <eq name="info.id" value="$list.id">disabled</eq>>{$list.html}{$list.space}{$list.title}</option>
+																  <!--
+																  <eq name="info.pid" value="$list.id">selected</eq> 
+																  <notempty name="list['child']">
+																	  	<volist name="list['child']" id="child">
+																	  		<option value="{$child.id}" <eq name="info.pid" value="$child.id">selected</eq>>&nbsp;&nbsp;&nbsp└─{$child.title}</option>
+																	  	</volist>
+																  </notempty>
+																  -->
+															 </volist>
+															</select>
+														</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right">栏目名称：</label>
@@ -287,7 +304,7 @@
 							    </div>
 							    <div class="form-actions text-center">
 							    	<input type="hidden" name="id" value="{$info.id|default=''}">
-									<input type="hidden" name="pid" value="{:isset($category['id'])?$category['id']:$info['pid']}">
+									<!--<input type="hidden" name="pid" value="{:isset($category['id'])?$category['id']:$info['pid']}">-->
 							     	<button class="btn btn-primary btn-sm js-ajax-submit ajax-post" type="submit" id="submit" target-form="form-horizontal">提交</button>
 							      	<button class="btn btn-default btn-sm" onclick="javascript:history.back(-1);return false;">返 回</button>
 							    </div>
