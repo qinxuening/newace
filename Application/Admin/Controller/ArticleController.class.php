@@ -688,7 +688,7 @@ class ArticleController extends AdminController {
      * 草稿箱
      * @author huajie <banhuajie@163.com>
      */
-    public function draftBox(){
+    public function draftbox(){
         //获取左边菜单
         $this->getMenu();
 
