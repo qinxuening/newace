@@ -736,9 +736,9 @@ class ArticleController extends AdminController {
         if($cate_id){
         	//$map['category_id'] = $cate_id;
         	$pids = Category::getChildsId(M('category')->where(array('status'=>array('gt',0)))->select(), $cate_id);
-        	$map['category_id'] = array('in', $pids?implode(",", $pids):$cate_id);
+        	$map['category_id'] = array('in', $pids?implode(",", $pids).','.$cate_id:$cate_id);
         	//echo $map['category_id'];
-        	//print_r($pids);
+        	//echo implode(",", $pids).','.$cate_id;
         }
         if ($model_id) {
         	$map['model_id'] = $model_id;
