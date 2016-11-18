@@ -7,13 +7,6 @@
 	</head>
 
 	<body>
-		<div class="jumppage_bg" style="display:none;"></div>
-		<div class="jumppage" style="display:none;">
-			<div class="t_1">提示信息</div>
-			<div class="tx1"></div>
-			<input type="button" class="btn2" id="Jq_sure" value="确认">
-			<input type="button" class="btn3" id="Jq_no" value="取消">
-		</div>
 		<!---nav-->
 		<include file="Public/nav"/>
 		<!---nav-->
@@ -31,24 +24,24 @@
 				<!---head-->
 					<include file="Public/sidebar"/>
 				<!---head-->
-				<!--Search-->
-					<div class="nav-search search-form" id="nav-search">
-							<span class="input-icon">
-								<input type="text" name="{$model['search_key']|default='title'}" value="{:I('title')}" placeholder="请输入关键字" class="nav-search-input" id="nav-search-input" autocomplete="off" />
-								<i class="icon-search nav-search-icon" href="javascript:;" id="search" url="{:U('Think/lists','model='.$model['name'],false)}"></i>
-							</span>
-					</div><!-- #nav-search -->
+
 					</div>
 				<!--Search-->	
 				<!--top-alert-->
 					<include file="Public/top-alert"/>
 				<!--top-alert-->
 					<div class="page-content">
-						<div class="page-header">
- 								<h1>[{$model['title']}] 列表</h1>
-						</div><!-- /.page-header -->
-
-
+							<!--<div class="page-header">
+	 								<h1>[{$model['title']}] 列表</h1>
+									<!--Search-->
+									<!-- #nav-search -->
+							<!--</div><!-- /.page-header -->
+							<div class="nav-search search-form" id="nav-search">
+								<span class="input-icon">
+									<input type="text" name="{$model['search_key']|default='title'}" value="{:I('title')}" placeholder="请输入关键字" class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon" href="javascript:;" id="search" url="{:U('Think/lists','model='.$model['name'],false)}"></i>
+								</span>
+							</div>
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-12">
@@ -58,10 +51,7 @@
 												<thead>
 													<tr>
 														<th class="center">
-															<label>
-																<input class="check-all" type="checkbox"/>
-																<span class="lbl"></span>
-															</label>
+															<input class="check-all" type="checkbox"/>
 														</th>
 								                        <volist name="list_grids" id="field">
 								                            <th>{$field.title}</th>
@@ -79,7 +69,7 @@
 								                    </volist>
 												</tbody>
 											</table>
-											    <div class="page">
+											    <div class="badoo">
 											        {$_page|default=''}
 											    </div>
 											<button class="btn btn-default btn-sm ajax-post confirm" target-form="ids" url="{:U('setStatus?status=-1')}">删 除</button>
