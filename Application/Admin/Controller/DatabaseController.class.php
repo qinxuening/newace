@@ -153,10 +153,20 @@ class DatabaseController extends AdminController{
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function del($time = 0){
+    	if(IS_POST){
+    		$ids = I('ids');
+    		foreach ($ids as $k => $v){
+    			$path  = realpath(C('DATA_BACKUP_PATH')) . DIRECTORY_SEPARATOR . date('Ymd-His', $v) . '-*.sql*';
+    			array_map("unlink", glob($path));
+    		}
+    		$this->success('备份文件删除成功！');
+    	}
         if($time){
             $name  = date('Ymd-His', $time) . '-*.sql*';
+            //echo $name;die();
             $path  = realpath(C('DATA_BACKUP_PATH')) . DIRECTORY_SEPARATOR . $name;
-            array_map("unlink", glob($path));
+            array_map("unlink", glob($path));//glob() 函数返回匹配指定模式的文件名或目录。
+            //array_map() 函数将用户自定义函数作用到数组中的每个值上，并返回用户自定义函数作用后的带有新值的数组。
             if(count(glob($path))){
                 $this->error('备份文件删除失败，请检查权限！');
             } else {
