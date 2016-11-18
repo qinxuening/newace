@@ -41,10 +41,7 @@
 												<thead>
 													<tr>
 														<th class="center">
-															<label>
-																<input class="check-all" type="checkbox" />
-																<span class="lbl"></span>
-															</label>
+															<input class="check-all" type="checkbox" />
 														</th>
 														<th class="">编号</th>
 														<th class="">标题</th>
@@ -79,7 +76,7 @@
 										        {$_page}
 										    </div>						
 											<button class="btn btn-primary btn-sm ajax-post" target-form="ids" url="{:U('article/permit')}">还原</button>
-											<button class="btn btn-default btn-sm ajax-get" target-form="ids" url="{:U('article/clear')}">删 除</button>
+											<button class="btn btn-default btn-sm ajax-post" target-form="ids" url="{:U('article/clear')}">删 除</button>
 										</div><!-- /.table-responsive -->
 									</div><!-- /span -->
 								</div><!-- /row -->	
