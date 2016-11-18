@@ -5,7 +5,46 @@
 		<include file="Public/head"/>
 		<!---head-->
 	</head>
-
+	<style>
+		.search{
+			float:right;
+			border-bottom:none;
+			padding-bottom: 0;
+		}
+		.btn-search {
+		    display: inline-block;
+		    margin-top: 5px;
+		    width: 16px;
+		    height: 16px;
+	
+		}
+		.search-form .sleft {
+		    border-color: #ebebeb;
+		    background-color: #fff;
+			margin-right: 10px;
+		    float: left;
+		    border: 1px solid #ebebeb;
+		}
+		.search-form .search-input {
+		    float: left;
+		    padding: 2px 4px;
+		    width: 180px;
+		    height: 24px;
+		    line-height: 26px;
+		    border: 0 none;
+		}
+		.search-form .sch-btn {
+		    float: left;
+		    margin: 2px 2px 0 0;
+		    padding: 0 10px;
+		    height: 26px;
+		    line-height: 26px;
+		    vertical-align: middle;
+		}
+		.search-form a{
+			text-decoration:none;
+		}
+	</style>
 	<body>
 		<!---nav-->
 		<include file="Public/nav"/>
@@ -31,16 +70,13 @@
 					<include file="Public/top-alert"/>
 				<!--top-alert-->
 					<div class="page-content">
-							<!--<div class="page-header">
-	 								<h1>[{$model['title']}] 列表</h1>
-									<!--Search-->
-									<!-- #nav-search -->
-							<!--</div><!-- /.page-header -->
-							<div class="nav-search search-form" id="nav-search">
-								<span class="input-icon">
-									<input type="text" name="{$model['search_key']|default='title'}" value="{:I('title')}" placeholder="请输入关键字" class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="icon-search nav-search-icon" href="javascript:;" id="search" url="{:U('Think/lists','model='.$model['name'],false)}"></i>
-								</span>
+							<div class="page-header search">
+								<div class="search-form fr cf right" id="nav-search">
+									<div class="sleft">
+										<input type="text" name="{$model['search_key']|default='title'}" value="{:I('title')}" placeholder="请输入关键字" class="nav-search-input search-input" id="nav-search-input" autocomplete="off" />
+										<a class="icon-search nav-search-icon sch-btn" href="javascript:;" id="search" url="{:U('Think/lists','model='.$model['name'],false)}"></a>
+									</div>
+								</div>
 							</div>
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
