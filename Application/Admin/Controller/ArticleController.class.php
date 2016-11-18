@@ -9,6 +9,7 @@
 namespace Admin\Controller;
 use Admin\Model\AuthGroupModel;
 use Think\Page;
+use Common\Api\Category;
 
 /**
  * 后台内容控制器
@@ -732,7 +733,11 @@ class ArticleController extends AdminController {
             $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
         }
         if($cate_id){
-        	$map['category_id'] = $cate_id;
+        	//$map['category_id'] = $cate_id;
+        	$pids = Category::getChildsId(M('category')->where(array('status'=>array('gt',0)))->select(), $cate_id);
+        	$map['category_id'] = array('in', $pids?implode(",", $pids):$cate_id);
+        	//echo $map['category_id'];
+        	//print_r($pids);
         }
         if ($model_id) {
         	$map['model_id'] = $model_id;
@@ -743,9 +748,11 @@ class ArticleController extends AdminController {
         	$this->assign('mydocument' , 'active');
         }
         
+        
         //print_r($map);
         //只查询pid为0的文章
-        $map['pid'] = 0;
+        //$map['pid'] = 0;
+        //print_r($map);
         $list = $this->lists($Document,$map,'update_time desc');
         int_to_string($list);
         $list = $this->parseDocumentList($list,$model_id?$model_id:1);

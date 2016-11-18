@@ -426,6 +426,7 @@ class AdminController extends Controller {
             $options['where']   =   $where;
         }
         $options      =   array_merge( (array)$OPT->getValue($model), $options );
+        //print_r($options);
         $total        =   $model->where($options['where'])->count();
 
         if( isset($REQUEST['r']) ){
