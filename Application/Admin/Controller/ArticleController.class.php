@@ -382,6 +382,7 @@ class ArticleController extends AdminController {
         
         $this->assign('model_id',$model_id);
 		$this->assign('group_id',$group_id);
+		$this->assign('cate_id',$cate_id);
         $this->assign('position',$position);
         $this->assign('groups', $groups);
         $this->assign('list',   $list);
@@ -844,7 +845,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function paste() {
-    	//print_r(I('model_id'));die(); 
+    	//print_r(I(''));die(); 
         $moveList = session('moveArticle');
         $copyList = session('copyArticle');
         if(empty($moveList) && empty($copyList)) {

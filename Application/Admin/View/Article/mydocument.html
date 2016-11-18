@@ -293,6 +293,7 @@
 											     {$_page}
 											</div>
 											<input type="hidden" class="hide-data" name="model_id" value="{$model_id}"/>
+											<input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
 											<button class="btn btn-primary btn-sm js-ajax-submit ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
 											<button class="btn btn-primary btn-sm ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>
 											<button class="btn btn-primary btn-sm ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>
