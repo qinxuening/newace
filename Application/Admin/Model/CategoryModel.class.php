@@ -79,7 +79,7 @@ class CategoryModel extends Model{
         $map  = array('status' => array('gt', -1));
         $list = $this->field($field)->where($map)->order('sort')->select();
         //$list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = 'child', $root = $id);
-		$list = Category::unlimitedForLevel($list , '&nbsp;&nbsp;&nbsp' , 0 , 0 , 'pid');
+		$list = Category::unlimitedForLevel($list , '&nbsp;&nbsp;&nbsp;' , 0 , 0 , 'pid');
 		//$list = Category::unlimiteForLayer($list , 'child' , 0 , 'pid');
 
         /* 获取返回数据 */

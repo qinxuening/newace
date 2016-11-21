@@ -77,8 +77,7 @@ class CategoryController extends AdminController {
         }
     }
 
-    public function add_display(){
-    	
+    public function add_display(){  	
     	$this->assign('category_add','active');
     	$this->meta_title = '添加栏目';
     	$this->display();
@@ -87,7 +86,6 @@ class CategoryController extends AdminController {
     /* 新增分类 */
     public function add($pid = 0){
         $Category = D('Category');
-
         if(IS_POST){ //提交表单
         	//print_r($_POST);die();
             if(false !== $Category->update()){

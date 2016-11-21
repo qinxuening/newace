@@ -1,4 +1,26 @@
 @charset "utf-8";
+.video {
+    height: 500px;
+    margin: 160px auto 20px auto;
+}
+.box{
+    width:955px;height:543px;
+    margin: 0 auto;
+    background: #ffffff url("img/video2.png") no-repeat 0px 0px;
+}
+.box img{
+    cursor: pointer;
+}
+#media0{
+    cursor: pointer;
+    width:860px;height:485px;
+    display: block;
+    border: none;
+    margin:0 auto;
+}
+video {
+    object-fit: contain;
+}
 .content .first-red{
     text-transform:capitalize;
     color: red;

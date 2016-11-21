@@ -65,7 +65,7 @@ class CategoryModel extends Model{
         }
 
         /* 获取所有分类 */
-        $map  = array('status' => 1);
+        $map  = array('status' => 1, 'allow_publish'=>2);
         $list = $this->field($field)->where($map)->order('sort')->select();
         $list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = '_', $root = $id);
         
