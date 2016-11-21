@@ -12,7 +12,7 @@
 	   <div class="container">
 	        <div class="row">
 	           <div class="col-xs-12" style="">
-	               <span><a href="">首页</a>&gt;<a href="">所有产品</a>&gt;<a href=""><empty name="list_new_no_document">{$nowcategory.title}<else />全部</empty></a></span>
+	               <span><a href="">首页</a>&gt;<a href="">所有产品</a>&gt;<a href=""><empty name="AllChildsId">{$nowcategory.title}<else />全部</empty></a></span>
 	            </div> 
 	        </div>      
 	   </div>
@@ -22,7 +22,7 @@
 	               <div class="col-xs-12">
 	                   <dl>
 	                       <dt>分类：</dt>
-	                       <dd class="active"><a href="{:U('Goods/lists?category='.$category['name'])}" class="<empty name="list_new_no_document"><else />act</empty>">全部</a></dd>
+	                       <dd class="active"><a href="{:U('Goods/lists?category='.$category['name'])}" class="<empty name="AllChildsId"><else />act</empty>">全部</a></dd>
 						   <volist name="listnew" id="data">
 		                       <dd><a href="{:U('Goods/lists?category='.$category['name'].'&category_id='.$data['id'])}" class="<eq name="category_id" value="$data['id']">act</eq>">{$data.title}</a></dd>
 						   </volist>
@@ -35,7 +35,7 @@
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-xs-12">
-	            	<empty name="list_new_no_document">
+	            	<empty name="AllChildsId">
 		                <ul>
 		                	<volist name="list_new_document" id="list_new">
 			                     <li>

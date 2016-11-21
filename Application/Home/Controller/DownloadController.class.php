@@ -23,7 +23,7 @@ class DownloadController extends HomeController {
 		/* 获取当前分类列表 */
 		$Document = D('Document');
 		$list = $Document->page($p, $category['list_row'])->lists($category['id'], '`id` ASC');
-		$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->order('`sort` ASC')->select();//获取所有子分类
+		$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0), 'allow_publish'=>2))->order('`id` ASC')->select();//获取所有子分类
 		if((false == $list) && !$listnew){
 			$this->assign('maxinfo', '');
 			$this->assign('list_new_no_document', '0');
@@ -51,20 +51,19 @@ class DownloadController extends HomeController {
 			$this->assign('maxinfo', $info);
 		}
 			if($category['id']){
-			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->order('`sort` ASC')->select();//获取所有子分类
+			$listnew = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0), 'allow_publish'=>2))->order('`id` ASC')->select();//获取所有子分类
 			$this->assign('listnew', $listnew);
 			if($listnew){
 				if(!I('category_id')){
-					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0)))->field('id, title, list_row')->order('`sort` ASC')->find();//获取当前分类
+					$maxid = D('Category')->where(array('pid'=>$category['id'], 'status'=>array('gt', 0), 'allow_publish'=>2))->field('id, title, list_row')->order('`id` ASC')->find();//获取当前分类
 					$list_new_no_document = $Document->page($p, $maxid['list_row'])->lists($maxid['id'], '`id` ASC');
 					$this->assign('maxid_no', $maxid);
-					//print_r($list_new_no_document);
 					$this->assign('list_new_no_document', $list_new_no_document);
 				}
 			}
 		}
 		if(I('category_id')){
-			$nowcategory = D('Category')->where(array('id'=>I('category_id')))->field('id, title, list_row')->order('`sort` ASC')->find();
+			$nowcategory = D('Category')->where(array('id'=>I('category_id'), 'status'=>array('gt', 0), 'allow_publish'=>2))->field('id, title, list_row')->order('`id` ASC')->find();
 			$this->assign('nowcategory', $nowcategory);//获取当前分类
 			$list_new_document = $Document->page($p, $nowcategory['list_row'])->lists(I('category_id'), '`id` ASC');
 			$this->assign('category_id', I('category_id'));

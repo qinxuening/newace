@@ -8,11 +8,11 @@
 	    <div class="container column-content">
 	        <div class="row">
 	            <div class="col-xs-3 left-colum">
-	                <span><a href="">首页</a>&gt;<a href="">{$category['title']}</a>&gt;<a href=""><empty name="list_new_no_document">{$nowcategory.title}<else />{$maxid_no['title']}</empty></a></span>
+	                <span><a href="">首页</a>&gt;<a href="">{$category['title']}</a>&gt;<a href=""><empty name="maxid_no">{$nowcategory.title}<else />{$maxid_no['title']}</empty></a></span>
 	                <ul>
 	                	<volist name="listnew" id="data">
 	               		     <!--<li><a href=""  class="">{$data.title}</a></li>-->
-							 <li><a href="{:U('Article/lists?category='.$category['name'].'&category_id='.$data['id'])}" class="<eq name="category_id" value="$data['id']">act</eq> <if condition="($maxid_no['id'] eq $data['id']) AND list_new_no_document">act</if>">{$data.title}</a></li>
+							 <li><a href="{:U('Article/lists?category='.$category['name'].'&category_id='.$data['id'])}" class="<eq name="category_id" value="$data['id']">act</eq> <if condition="($maxid_no['id'] eq $data['id']) AND maxid_no">act</if>">{$data.title}</a></li>
 						</volist>
 	                </ul>
 	                <div class="left-next" style="padding:2px 0;border-bottom:1px dashed #d9d4d4;">
@@ -30,7 +30,7 @@
 	            </div>
 	            <div class="col-xs-9 services-content">
 	            	<ul>
-		            	<empty name="list_new_no_document">
+		            	<empty name="maxid_no">
 			            	<volist name="list_new_document" id="list_new">
 								<li>
 									<a href="{:U('Article/detail?id='.$list_new['id'])}">
