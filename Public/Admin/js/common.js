@@ -71,7 +71,6 @@
 
     //ajax post submit请求
     $('.ajax-post').click(function(){
-		$('.jumppage_bg, .jumppage').show();			
 		$('#Jq_no').click(function(){
 			$('.jumppage_bg, .jumppage').hide();	
 			return false;
@@ -120,10 +119,44 @@
                 }
                 query = form.find('input,select,textarea').serialize();
             }
-			//alert($(this));
+			//alert($(this).hasClass('confirm'));
 			//return false;
-
-			$('#Jq_sure').click(function(){
+			if ($(this).hasClass('confirm')) {
+				$('.jumppage_bg, .jumppage').show();
+				$('#Jq_sure').click(function(){
+					$(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
+					$('.jumppage_bg, .jumppage').hide();
+		            $.post(target,query).success(function(data){
+		                if (data.status==1) {
+		                    if (data.url) {
+		                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
+		                    }else{
+		                        updateAlert(data.info ,'alert-success');
+		                    }
+		                    setTimeout(function(){
+		                    	$(that).removeClass('disabled').prop('disabled',false);
+		                        if (data.url) {
+		                            location.href=data.url;
+		                        }else if( $(that).hasClass('no-refresh')){
+		                            $('#top-alert').find('button').click();
+		                        }else{
+		                            location.reload();
+		                        }
+		                    },1500);
+		                }else{
+		                    updateAlert(data.info);
+		                    setTimeout(function(){
+		                    	$(that).removeClass('disabled').prop('disabled',false);
+		                        if (data.url) {
+		                            location.href=data.url;
+		                        }else{
+		                            $('#top-alert').find('button').click();
+		                        }
+		                    },1500);
+		                }
+		            });
+				});					
+			}else{
 				$(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
 				$('.jumppage_bg, .jumppage').hide();
 	            $.post(target,query).success(function(data){
@@ -154,8 +187,8 @@
 	                        }
 	                    },1500);
 	                }
-	            });
-			});	
+	            });				
+			}		
         }
         return false;
     });
@@ -163,7 +196,7 @@
 	/**顶部警告栏*/
 	var content = $('#main');
 	var top_alert = $('#top-alert');
-	top_alert.find('.close').on('click', function () {
+	top_alert.find('.close').on('click', function (){
 		top_alert.removeClass('block').slideUp(200);
 		// content.animate({paddingTop:'-=55'},200);
 	});

@@ -1247,7 +1247,8 @@ blockquote,blockquote.pull-right {
 	padding-right: 0;
 	min-height: 45px;
 	position: relative;
-	background: #0b7ebf
+	background: #0b7ebf;
+	z-index: 200;
 }
 
 .navbar>.container {
