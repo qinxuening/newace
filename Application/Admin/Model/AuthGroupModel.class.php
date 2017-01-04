@@ -210,13 +210,11 @@ class AuthGroupModel extends Model {
      * @author 朱亚杰 <xcoolcc@gmail.com>
      */
     static public function addToExtend($gid,$cid,$type){
-        $gid = is_array($gid)?implode(',',$gid):trim($gid,',');
+        $gid = is_array($gid)?$gid:explode( ',',trim($gid,',') );
         $cid = is_array($cid)?$cid:explode( ',',trim($cid,',') );
-
         $Access = M(self::AUTH_EXTEND);
         $del = $Access->where( array('group_id'=>array('in',$gid),'type'=>$type) )->delete();
-
-        $gid = explode(',',$gid);
+        //$gid = explode(',',$gid);
         $add = array();
         if( $del!==false ){
             foreach ($gid as $g){
@@ -293,13 +291,11 @@ class AuthGroupModel extends Model {
             $count = count($mid);
             $ids   = $mid;
         }
-		//print_r(array('id'=>array('IN',$ids)));die();
         $s = M($modelname)->where(array('id'=>array('IN',$ids)))->getField('id',true);
-        //print_r($s);die();
         if(count($s)===$count){
             return true;
         }else{
-            $diff = implode(',',array_diff($mid,$s));
+            $diff = implode(',',array_diff($mid,$s));//array_diff() 函数返回两个数组的差集数组
             $this->error = $msg.$diff;
             return false;
         }

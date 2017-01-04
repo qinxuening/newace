@@ -32,8 +32,8 @@ class AdminController extends Controller {
             $config =   api('Config/lists');
             S('DB_CONFIG_DATA',$config);
         }
+        //print_r($config);
         C($config); //添加配置
-
         // 是否是超级管理员
         define('IS_ROOT',   is_administrator());
         if(!IS_ROOT && C('ADMIN_ALLOW_IP')){
@@ -60,7 +60,7 @@ class AdminController extends Controller {
                     }
                 }
             }
-        }        
+        }      
         $this->assign('__MENU__', $this->getMenus());
         $this->assign('getModel', $this->getModel());
     }
@@ -144,11 +144,11 @@ class AdminController extends Controller {
         $id    = is_array($id) ? implode(',',$id) : $id;
         //如存在id字段，则加入该条件
         $fields = M($model)->getDbFields();
-        //print_r($where);die();
+        //print_r($fields);die();
         if(in_array('id',$fields) && !empty($id)){
             $where = array_merge( array('id' => array('in', $id )) ,(array)$where );
         }
-
+		print_r($where);die();
         $msg   = array_merge( array( 'success'=>'操作成功！', 'error'=>'操作失败！', 'url'=>'' ,'ajax'=>IS_AJAX) , (array)$msg );//如果两个或更多个数组元素有相同的键名，则最后的元素会覆盖其他元素。
         if( M($model)->where($where)->save($data)!==false ) {
         	//echo M($model)->getLastSql();die();
@@ -259,7 +259,6 @@ class AdminController extends Controller {
             $menus['main']  =   M('Menu')->where($where)->order('sort asc')->field('id,title,url')->select();
             $menus['child'] =   array(); //设置子节点
             foreach ($menus['main'] as $key => $item) {
-                // 判断主菜单权限
                 if ( !IS_ROOT && !$this->checkRule(strtolower(MODULE_NAME.'/'.$item['url']),AuthRuleModel::RULE_MAIN,null) ) {
                     unset($menus['main'][$key]);
                     continue;//继续循环
@@ -268,7 +267,6 @@ class AdminController extends Controller {
                     $menus['main'][$key]['class']='current';
                 }
             }
-
             // 查找当前子菜单
             $pid = M('Menu')->where("pid !=0 AND url like '%{$controller}/".ACTION_NAME."%'")->getField('pid');
             if($pid){
@@ -348,23 +346,18 @@ class AdminController extends Controller {
         }
         if((int)$tree){
             $list = M('Menu')->field('id,pid,title,url,tip,hide')->order('sort asc')->select();
-            //print_r($list);
-            //echo MODULE_NAME;
             foreach ($list as $key => $value) {
-                if( stripos($value['url'],MODULE_NAME)!==0 ){//stripos() 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）
-                    $list[$key]['url'] = MODULE_NAME.'/'.$value['url'];
+                if( stripos($value['url'],MODULE_NAME)!==0 ){//stripos(string,find,start) 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）
+                	$list[$key]['url'] = MODULE_NAME.'/'.$value['url'];
                 }
             }
-            //print_r($list);
             $nodes = list_to_tree($list,$pk='id',$pid='pid',$child='operator',$root=0);
-            //print_r($nodes);
             foreach ($nodes as $key => $value) {
                 if(!empty($value['operator'])){
                     $nodes[$key]['child'] = $value['operator'];
                     unset($nodes[$key]['operator']);
                 }
             }
-            //print_r($nodes);
         }else{
             $nodes = M('Menu')->field('title,url,tip,pid')->order('sort asc')->select();
             foreach ($nodes as $key => $value) {
@@ -374,6 +367,7 @@ class AdminController extends Controller {
             }
         }
         $tree_nodes[(int)$tree]   = $nodes;
+        //print_r($nodes);
         return $nodes;
     }
 

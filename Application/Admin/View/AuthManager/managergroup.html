@@ -159,55 +159,54 @@
 		<script type="text/javascript" src="__STATIC__/qtip/jquery.qtip.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="__STATIC__/qtip/jquery.qtip.min.css" media="all">
 		<script type="text/javascript" charset="utf-8">
-		    +function($){
-		        var rules = [{$this_group.rules}];
-		        $('.auth_rules').each(function(){
-		            if( $.inArray( parseInt(this.value,10),rules )>-1 ){
-		                $(this).prop('checked',true);
-		            }
-		            if(this.value==''){
-		                $(this).closest('span').remove();
-		            }
-		        });
-		
-		        //全选节点
-		        $('.rules_all').on('change',function(){
-		            $(this).closest('dl').find('dd').find('input').prop('checked',this.checked);
-		        });
-		        $('.rules_row').on('change',function(){
-		            $(this).closest('.rule_check').find('.child_row').find('input').prop('checked',this.checked);
-		        });
-		
-		        $('.checkbox').each(function(){
-		            $(this).qtip({
-		                content: {
-		                    text: $(this).attr('title'),
-		                    title: $(this).text()
-		                },
-		                position: {
-		                    my: 'bottom center',
-		                    at: 'top center',
-		                    target: $(this)
-		                },
-		                style: {
-		                    classes: 'qtip-dark',
-		                    tip: {
-		                        corner: true,
-		                        mimic: false,
-		                        width: 10,
-		                        height: 10
-		                    }
-		                }
-		            });
-		        });
-		
-		        $('select[name=group]').change(function(){
-					//alert(this.value);
-					location.href = this.value;
-		        });
-		        //导航高亮
-		        highlight_subnav('{:U('AuthManager/index')}');
-		    }(jQuery);
+	    +function($){
+	        var rules = [{$this_group.rules}];
+	        $('.auth_rules').each(function(){
+	            if( $.inArray( parseInt(this.value,10),rules )>-1 ){
+	                $(this).prop('checked',true);
+	            }
+	            if(this.value==''){
+	                $(this).closest('span').remove();//closest() 方法获得匹配选择器的第一个祖先元素，从当前元素开始沿 DOM 树向上
+	            }
+	        });
+	
+	        //全选节点
+	        $('.rules_all').on('change',function(){
+	            $(this).closest('dl').find('dd').find('input').prop('checked',this.checked);
+	        });
+			
+			//第三节点全选
+	        $('.rules_row').on('change',function(){
+	            $(this).closest('.rule_check').find('.child_row').find('input').prop('checked',this.checked);
+	        });
+	
+	        $('.checkbox').each(function(){
+	            $(this).qtip({
+	                content: {
+	                    text: $(this).attr('title'),
+	                    title: $(this).text()
+	                },
+	                position: {
+	                    my: 'bottom center',
+	                    at: 'top center',
+	                    target: $(this)
+	                },
+	                style: {
+	                    classes: 'qtip-dark',
+	                    tip: {
+	                        corner: true,
+	                        mimic: false,
+	                        width: 10,
+	                        height: 10
+	                    }
+	                }
+	            });
+	        });
+	
+	        $('select[name=group]').change(function(){
+				location.href = this.value;
+	        });
+	    }(jQuery);
 		</script>
 </body>
 </html>

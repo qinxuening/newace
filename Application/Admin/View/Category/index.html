@@ -5,7 +5,6 @@
 		<include file="Public/head"/>
 		<!---head-->
 	</head>
-
 	<body>
 		<!---nav-->
 		<include file="Public/nav"/>
@@ -57,7 +56,7 @@
 													{:R('Category/tree', array($tree))}			
 												</tbody>
 											</table>
-											<button type="submit" id="submit" class="btn btn-primary btn-sm js-ajax-submit ajax-post" target-form="form-horizontal">提交排序</button>
+											<button type="submit" id="submit" class="btn btn-primary  btn-sm js-ajax-submit ajax-post" target-form="form-horizontal">提交排序</button>
 											<button class="btn btn-default btn-sm ajax-post confirm" target-form="ids" url="{:U("Category/removeall")}">删 除</button>
 											</form>
 										</div><!-- /.table-responsive -->
@@ -89,7 +88,7 @@
 		<!--<script src="__ASSETS_JS__/common.js"></script>-->
 		<!-- inline scripts related to this page -->
 
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			jQuery(function($) {
 				$('table th input:checkbox').on('click' , function(){
 					var that = this;
@@ -101,6 +100,6 @@
 						
 				});
 			})
-		</script>
+		</script>-->
 </body>
 </html>

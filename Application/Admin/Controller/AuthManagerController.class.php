@@ -29,12 +29,10 @@ class AuthManagerController extends AdminController{
     public function updateRules(){
         //需要新增的节点必然位于$nodes
         $nodes    = $this->returnNodes(false);
-
         $AuthRule = M('AuthRule');
         $map      = array('module'=>'admin','type'=>array('in','1,2'));//status全部取出,以进行更新
         //需要更新和删除的节点必然位于$rules
         $rules    = $AuthRule->where($map)->order('name')->select();
-
         //构建insert数据
         $data     = array();//保存需要插入和更新的新节点
         foreach ($nodes as $value){
@@ -49,7 +47,7 @@ class AuthManagerController extends AdminController{
             $temp['status']   = 1;
             $data[strtolower($temp['name'].$temp['module'].$temp['type'])] = $temp;//去除重复项
         }
-
+        
         $update = array();//保存需要更新的节点
         $ids    = array();//保存需要删除的节点的id
         foreach ($rules as $index=>$rule){
@@ -65,6 +63,8 @@ class AuthManagerController extends AdminController{
                 $ids[] = $rule['id'];
             }
         }
+
+        //更新权限表
         if ( count($update) ) {
             foreach ($update as $k=>$row){
                 if ( $row!=$diff[$row['id']] ) {
@@ -72,12 +72,16 @@ class AuthManagerController extends AdminController{
                 }
             }
         }
+       
+        //菜单不存在节点设置权限表status为-1
         if ( count($ids) ) {
             $AuthRule->where( array( 'id'=>array('IN',implode(',',$ids)) ) )->save(array('status'=>-1));
             //删除规则是否需要从每个用户组的访问授权表中移除该规则?
         }
+        
+        //新增菜单加入权限列表
         if( count($data) ){
-            $AuthRule->addAll(array_values($data));
+            $AuthRule->addAll(array_values($data));//返回数组的所有值
         }
         if ( $AuthRule->getDbError() ) {
             trace('['.__METHOD__.']:'.$AuthRule->getDbError());
@@ -95,6 +99,7 @@ class AuthManagerController extends AdminController{
     public function index(){
         $list = $this->lists('AuthGroup',array('module'=>'admin'),'id asc');
         $list = int_to_string($list);
+        //print_r($list);
         $this->assign( '_list', $list );
         $this->assign( '_use_tip', true );
         $this->assign('AuthManager_index','active');
@@ -130,20 +135,17 @@ class AuthManagerController extends AdminController{
 
     /**
      * 访问授权页面
-     * @author 朱亚杰 <zhuyajie@topthink.net>
+     * @author qxn
      */
     public function access(){
-        $this->updateRules();
+        $this->updateRules();//更新权限表
         $auth_group = M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
-                                    ->getfield('id,id,title,rules');
-        //print_r($auth_group);
-        $node_list   = $this->returnNodes();
-        //print_r($node_list);
+                                    ->getfield('id,title,rules');//用户组
+        $node_list   = $this->returnNodes();//所有节点
         $map         = array('module'=>'admin','type'=>AuthRuleModel::RULE_MAIN,'status'=>1);
-        $main_rules  = M('AuthRule')->where($map)->getField('name,id');
+        $main_rules  = M('AuthRule')->where($map)->getField('name,id');//主节点
         $map         = array('module'=>'admin','type'=>AuthRuleModel::RULE_URL,'status'=>1);
-        $child_rules = M('AuthRule')->where($map)->getField('name,id');
-        //print_r($main_rules);
+        $child_rules = M('AuthRule')->where($map)->getField('name,id');//子节点
         $this->assign('main_rules', $main_rules);
         $this->assign('auth_rules', $child_rules);
         $this->assign('node_list',  $node_list);
@@ -156,7 +158,7 @@ class AuthManagerController extends AdminController{
 
     /**
      * 管理员用户组数据写入/更新
-     * @author 朱亚杰 <zhuyajie@topthink.net>
+     * @author qxn
      */
     public function writeGroup(){
         if(isset($_POST['rules'])){
@@ -217,7 +219,6 @@ class AuthManagerController extends AdminController{
 
         $auth_group = M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
             ->getfield('id,title,rules');
-        //print_r($auth_group);
         $prefix   = C('DB_PREFIX');
         $l_table  = $prefix.(AuthGroupModel::MEMBER);
         $r_table  = $prefix.(AuthGroupModel::AUTH_GROUP_ACCESS);
@@ -241,8 +242,7 @@ class AuthManagerController extends AdminController{
         $auth_group     =   M('AuthGroup')->where( array('status'=>array('egt','0'),'module'=>'admin','type'=>AuthGroupModel::TYPE_ADMIN) )
             ->getfield('id,id,title,rules');
         $group_list     =   D('Category')->getTree();
-        //print_r($auth_group[(int)$_GET['group_id']]);
-        $authed_group   =   AuthGroupModel::getCategoryOfGroup(I('group_id'));
+        $authed_group   =   AuthGroupModel::getCategoryOfGroup(I('group_id'));//返回选中分类ID
         $list_count = count($group_list);
         $this_count = count($authed_group);
         $this->assign('authed_group',   implode(',',(array)$authed_group));

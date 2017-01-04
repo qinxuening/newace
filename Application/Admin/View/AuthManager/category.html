@@ -140,17 +140,14 @@
 		<script src="__ASSETS_JS__/ace-elements.min.js"></script>
 		<script src="__ASSETS_JS__/ace.min.js"></script>
 
-		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 		    +function($){
 		        var auth_groups = [{$authed_group}];
-				//alert(auth_groups);
 		        $('.cate_id').each(function(){
 		            if( $.inArray( parseInt(this.value,10),auth_groups )>-1 ){
 		                $(this).prop('checked',true);
 		            }
 		        });
-				//alert("{$this_count}");
 				if("{$list_count}" == "{$this_count}"){
 					$(".check-all").prop("checked", true);
 				}
@@ -159,8 +156,6 @@
 				    location.href = this.value;
 			    });
 		    }(jQuery);
-		    //导航高亮
-		    highlight_subnav('{:U('AuthManager/index')}');
 		</script>
 </body>
 </html>
