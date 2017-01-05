@@ -52,15 +52,15 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 							<ul class="nav nav-tabs">
-									<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
-										<li <eq name="id" value="$key">class="active"</eq>><a href="{:U('?id='.$key)}">{$group}配置</a></li>
-									</volist>
+								<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+									<li <eq name="id" value="$key">class="active"</eq>><a href="{:U('?id='.$key)}">{$group}配置</a></li>
+								</volist>
 						    </ul>
 							<form action="{:U('save')}" method="post" class="form-horizontal" role="form">
 							<div class="tabbable">
 						    <div class="tab-content">
-							<volist name="list" id="config">
 								<fieldset>
+								<volist name="list" id="config">									
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right">{$config.title}：</label>
 									<div class="col-sm-9">
@@ -92,9 +92,8 @@
 										</notempty>										
 									</div>
 								</div>
-								</fieldset>
 								</volist>
-
+								</fieldset>
 								</div>
 								</div>
 							<div class="form-actions text-center">

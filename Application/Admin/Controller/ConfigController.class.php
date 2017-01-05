@@ -128,10 +128,7 @@ class ConfigController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function del(){
-        //$id = array_unique((array)I('id',0));
-        //$id = array_unique((array)I('id'));
         $id = I('id');
-		//print_r($id);die();
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
@@ -151,14 +148,14 @@ class ConfigController extends AdminController {
 
     // 获取某个标签的配置参数
     public function group() {
-    	//print_r( S('DB_CONFIG_DATA'));
+    	//print_r(S('DB_CONFIG_DATA'));
         $id     =   I('get.id',1);
         $type   =   C('CONFIG_GROUP_LIST');
         $list   =   M("Config")->where(array('status'=>1,'group'=>$id))->field('id,name,title,extra,value,remark,type')->order('sort')->select();
-        //print_r($list);
         if($list) {
             $this->assign('list',$list);
         }
+        //print_r($list);
         $this->assign('id',$id);
         $this->assign('group','active');
         $this->meta_title = $type[$id].'设置';
