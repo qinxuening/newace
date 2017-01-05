@@ -166,7 +166,7 @@
 	                $(this).prop('checked',true);
 	            }
 	            if(this.value==''){
-	                $(this).closest('span').remove();//closest() 方法获得匹配选择器的第一个祖先元素，从当前元素开始沿 DOM 树向上
+	                $(this).closest('span').remove();
 	            }
 	        });
 	
@@ -174,8 +174,6 @@
 	        $('.rules_all').on('change',function(){
 	            $(this).closest('dl').find('dd').find('input').prop('checked',this.checked);
 	        });
-			
-			//第三节点全选
 	        $('.rules_row').on('change',function(){
 	            $(this).closest('.rule_check').find('.child_row').find('input').prop('checked',this.checked);
 	        });

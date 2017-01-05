@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-12-30 11:04:15
+Date: 2017-01-05 15:01:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ INSERT INTO `tp_action` VALUES ('7', 'update_model', '更新模型', '新增或�
 INSERT INTO `tp_action` VALUES ('8', 'update_attribute', '更新属性', '新增或更新或删除属性', '', '', '1', '1', '1383295963');
 INSERT INTO `tp_action` VALUES ('9', 'update_channel', '更新导航', '新增或修改或删除导航', '', '', '1', '1', '1383296301');
 INSERT INTO `tp_action` VALUES ('10', 'update_menu', '更新菜单', '新增或修改或删除菜单', '', '', '1', '1', '1476946213');
-INSERT INTO `tp_action` VALUES ('11', 'update_category', '更新分类', '新增或修改或删除分类', '', '', '1', '1', '1476842786');
+INSERT INTO `tp_action` VALUES ('11', 'update_category', '更新分类', '新增或修改或删除分类', '', '', '1', '1', '1483594525');
 
 -- ----------------------------
 -- Table structure for tp_action_log
@@ -65,7 +65,7 @@ CREATE TABLE `tp_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=245 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=322 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of tp_action_log
@@ -296,7 +296,84 @@ INSERT INTO `tp_action_log` VALUES ('240', '1', '1', '2130706433', 'member', '1'
 INSERT INTO `tp_action_log` VALUES ('241', '11', '1', '2130706433', 'category', '44', '操作url：/admin.php?s=/Category/edit.html', '1', '1482917431');
 INSERT INTO `tp_action_log` VALUES ('242', '1', '1', '2130706433', 'member', '1', 'admin在2016-12-29 09:14登录了后台', '1', '1482974070');
 INSERT INTO `tp_action_log` VALUES ('243', '11', '1', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1482990203');
-INSERT INTO `tp_action_log` VALUES ('244', '11', '1', '2130706433', 'category', '47', '操作url：/admin.php?s=/Category/edit.html', '1', '1483066352');
+INSERT INTO `tp_action_log` VALUES ('244', '11', '1', '2130706433', 'category', '66', '操作url：/admin.php?s=/Category/edit.html', '1', '1483067982');
+INSERT INTO `tp_action_log` VALUES ('245', '1', '2', '2130706433', 'member', '2', 'qinxuening在2016-12-30 11:39登录了后台', '1', '1483069170');
+INSERT INTO `tp_action_log` VALUES ('246', '1', '2', '2130706433', 'member', '2', 'qinxuening在2016-12-30 11:39登录了后台', '1', '1483069178');
+INSERT INTO `tp_action_log` VALUES ('247', '1', '1', '2130706433', 'member', '1', 'admin在2016-12-30 11:39登录了后台', '1', '1483069191');
+INSERT INTO `tp_action_log` VALUES ('248', '1', '2', '2130706433', 'member', '2', 'qinxuening在2016-12-30 11:41登录了后台', '1', '1483069282');
+INSERT INTO `tp_action_log` VALUES ('249', '1', '2', '2130706433', 'member', '2', 'qinxuening在2016-12-30 11:41登录了后台', '1', '1483069307');
+INSERT INTO `tp_action_log` VALUES ('250', '1', '1', '2130706433', 'member', '1', 'admin在2016-12-30 11:41登录了后台', '1', '1483069319');
+INSERT INTO `tp_action_log` VALUES ('251', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 09:18登录了后台', '1', '1483406321');
+INSERT INTO `tp_action_log` VALUES ('252', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-03 13:46登录了后台', '1', '1483422360');
+INSERT INTO `tp_action_log` VALUES ('253', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 13:46登录了后台', '1', '1483422388');
+INSERT INTO `tp_action_log` VALUES ('254', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 13:47登录了后台', '1', '1483422455');
+INSERT INTO `tp_action_log` VALUES ('255', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-03 13:47登录了后台', '1', '1483422463');
+INSERT INTO `tp_action_log` VALUES ('256', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 13:48登录了后台', '1', '1483422500');
+INSERT INTO `tp_action_log` VALUES ('257', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-03 13:49登录了后台', '1', '1483422542');
+INSERT INTO `tp_action_log` VALUES ('258', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 13:56登录了后台', '1', '1483423006');
+INSERT INTO `tp_action_log` VALUES ('259', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-03 14:00登录了后台', '1', '1483423241');
+INSERT INTO `tp_action_log` VALUES ('260', '10', '1', '2130706433', 'Menu', '129', '操作url：/admin.php?s=/Menu/add.html', '1', '1483424094');
+INSERT INTO `tp_action_log` VALUES ('261', '10', '1', '2130706433', 'Menu', '129', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483424170');
+INSERT INTO `tp_action_log` VALUES ('262', '10', '1', '2130706433', 'Menu', '57', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483424439');
+INSERT INTO `tp_action_log` VALUES ('263', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-03 14:22登录了后台', '1', '1483424540');
+INSERT INTO `tp_action_log` VALUES ('264', '10', '1', '2130706433', 'Menu', '57', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483426193');
+INSERT INTO `tp_action_log` VALUES ('265', '10', '1', '2130706433', 'Menu', '57', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483426216');
+INSERT INTO `tp_action_log` VALUES ('266', '10', '1', '2130706433', 'Menu', '1', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483429493');
+INSERT INTO `tp_action_log` VALUES ('267', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-03 16:05登录了后台', '1', '1483430747');
+INSERT INTO `tp_action_log` VALUES ('268', '10', '1', '2130706433', 'Menu', '129', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483432169');
+INSERT INTO `tp_action_log` VALUES ('269', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-04 09:17登录了后台', '1', '1483492665');
+INSERT INTO `tp_action_log` VALUES ('270', '10', '1', '2130706433', 'Menu', '129', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483494179');
+INSERT INTO `tp_action_log` VALUES ('271', '10', '1', '2130706433', 'Menu', '130', '操作url：/admin.php?s=/Menu/add.html', '1', '1483498371');
+INSERT INTO `tp_action_log` VALUES ('272', '10', '1', '2130706433', 'Menu', '0', '操作url：/admin.php?s=/Menu/del/id/130.html', '1', '1483498457');
+INSERT INTO `tp_action_log` VALUES ('273', '10', '1', '2130706433', 'Menu', '131', '操作url：/admin.php?s=/Menu/add.html', '1', '1483498475');
+INSERT INTO `tp_action_log` VALUES ('274', '10', '1', '2130706433', 'Menu', '1', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483520087');
+INSERT INTO `tp_action_log` VALUES ('275', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:00登录了后台', '1', '1483520420');
+INSERT INTO `tp_action_log` VALUES ('276', '10', '1', '2130706433', 'Menu', '126', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483520649');
+INSERT INTO `tp_action_log` VALUES ('277', '10', '1', '2130706433', 'Menu', '132', '操作url：/admin.php?s=/Menu/add.html', '1', '1483520779');
+INSERT INTO `tp_action_log` VALUES ('278', '10', '1', '2130706433', 'Menu', '133', '操作url：/admin.php?s=/Menu/add.html', '1', '1483520898');
+INSERT INTO `tp_action_log` VALUES ('279', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:09登录了后台', '1', '1483520980');
+INSERT INTO `tp_action_log` VALUES ('280', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:10登录了后台', '1', '1483521023');
+INSERT INTO `tp_action_log` VALUES ('281', '10', '1', '2130706433', 'Menu', '133', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483521420');
+INSERT INTO `tp_action_log` VALUES ('282', '10', '1', '2130706433', 'Menu', '132', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483521435');
+INSERT INTO `tp_action_log` VALUES ('283', '10', '1', '2130706433', 'Menu', '132', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483521527');
+INSERT INTO `tp_action_log` VALUES ('284', '10', '1', '2130706433', 'Menu', '133', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483521534');
+INSERT INTO `tp_action_log` VALUES ('285', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-04 17:19登录了后台', '1', '1483521565');
+INSERT INTO `tp_action_log` VALUES ('286', '10', '1', '2130706433', 'Menu', '0', '操作url：/admin.php?s=/Menu/del.html', '1', '1483522644');
+INSERT INTO `tp_action_log` VALUES ('287', '10', '1', '2130706433', 'Menu', '126', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483522831');
+INSERT INTO `tp_action_log` VALUES ('288', '10', '1', '2130706433', 'Menu', '0', '操作url：/admin.php?s=/Menu/del.html', '1', '1483522883');
+INSERT INTO `tp_action_log` VALUES ('289', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:43登录了后台', '1', '1483523001');
+INSERT INTO `tp_action_log` VALUES ('290', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:46登录了后台', '1', '1483523213');
+INSERT INTO `tp_action_log` VALUES ('291', '10', '1', '2130706433', 'Menu', '132', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483523378');
+INSERT INTO `tp_action_log` VALUES ('292', '10', '1', '2130706433', 'Menu', '132', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483523419');
+INSERT INTO `tp_action_log` VALUES ('293', '10', '1', '2130706433', 'Menu', '134', '操作url：/admin.php?s=/Menu/add.html', '1', '1483523467');
+INSERT INTO `tp_action_log` VALUES ('294', '10', '1', '2130706433', 'Menu', '135', '操作url：/admin.php?s=/Menu/add.html', '1', '1483523505');
+INSERT INTO `tp_action_log` VALUES ('295', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-04 17:52登录了后台', '1', '1483523536');
+INSERT INTO `tp_action_log` VALUES ('296', '11', '2', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1483523553');
+INSERT INTO `tp_action_log` VALUES ('297', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-05 09:10登录了后台', '1', '1483578647');
+INSERT INTO `tp_action_log` VALUES ('298', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 09:11登录了后台', '1', '1483578690');
+INSERT INTO `tp_action_log` VALUES ('299', '10', '1', '2130706433', 'Menu', '134', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483578982');
+INSERT INTO `tp_action_log` VALUES ('300', '11', '2', '2130706433', 'category', '40', '操作url：/admin.php?s=/Category/edit.html', '1', '1483579527');
+INSERT INTO `tp_action_log` VALUES ('301', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 09:30登录了后台', '1', '1483579837');
+INSERT INTO `tp_action_log` VALUES ('302', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-05 09:32登录了后台', '1', '1483579924');
+INSERT INTO `tp_action_log` VALUES ('303', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 09:32登录了后台', '1', '1483579973');
+INSERT INTO `tp_action_log` VALUES ('304', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 09:34登录了后台', '1', '1483580049');
+INSERT INTO `tp_action_log` VALUES ('305', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 10:09登录了后台', '1', '1483582178');
+INSERT INTO `tp_action_log` VALUES ('306', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 10:10登录了后台', '1', '1483582219');
+INSERT INTO `tp_action_log` VALUES ('307', '10', '1', '2130706433', 'Menu', '136', '操作url：/admin.php?s=/Menu/add.html', '1', '1483582648');
+INSERT INTO `tp_action_log` VALUES ('308', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 10:18登录了后台', '1', '1483582682');
+INSERT INTO `tp_action_log` VALUES ('309', '10', '1', '2130706433', 'Menu', '123', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483582837');
+INSERT INTO `tp_action_log` VALUES ('310', '10', '1', '2130706433', 'Menu', '58', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483583882');
+INSERT INTO `tp_action_log` VALUES ('311', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 10:46登录了后台', '1', '1483584365');
+INSERT INTO `tp_action_log` VALUES ('312', '1', '2', '2130706433', 'member', '2', 'qinxuening在2017-01-05 10:54登录了后台', '1', '1483584854');
+INSERT INTO `tp_action_log` VALUES ('313', '10', '1', '2130706433', 'Menu', '137', '操作url：/admin.php?s=/Menu/add.html', '1', '1483586650');
+INSERT INTO `tp_action_log` VALUES ('314', '10', '1', '2130706433', 'Menu', '93', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483588022');
+INSERT INTO `tp_action_log` VALUES ('315', '10', '1', '2130706433', 'Menu', '93', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483588072');
+INSERT INTO `tp_action_log` VALUES ('316', '1', '1', '2130706433', 'member', '1', 'admin在2017-01-05 12:40登录了后台', '1', '1483591226');
+INSERT INTO `tp_action_log` VALUES ('317', '6', '1', '2130706433', 'config', '24', '操作url：/admin.php?s=/Config/edit.html', '1', '1483599205');
+INSERT INTO `tp_action_log` VALUES ('318', '10', '1', '2130706433', 'Menu', '69', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483599280');
+INSERT INTO `tp_action_log` VALUES ('319', '10', '1', '2130706433', 'Menu', '68', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483599347');
+INSERT INTO `tp_action_log` VALUES ('320', '10', '1', '2130706433', 'Menu', '120', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483599576');
+INSERT INTO `tp_action_log` VALUES ('321', '10', '1', '2130706433', 'Menu', '119', '操作url：/admin.php?s=/Menu/edit.html', '1', '1483599647');
 
 -- ----------------------------
 -- Table structure for tp_addons
@@ -447,11 +524,6 @@ INSERT INTO `tp_auth_extend` VALUES ('1', '41', '1');
 INSERT INTO `tp_auth_extend` VALUES ('1', '42', '1');
 INSERT INTO `tp_auth_extend` VALUES ('1', '43', '1');
 INSERT INTO `tp_auth_extend` VALUES ('1', '44', '1');
-INSERT INTO `tp_auth_extend` VALUES ('3', '40', '1');
-INSERT INTO `tp_auth_extend` VALUES ('3', '41', '1');
-INSERT INTO `tp_auth_extend` VALUES ('3', '42', '1');
-INSERT INTO `tp_auth_extend` VALUES ('3', '43', '1');
-INSERT INTO `tp_auth_extend` VALUES ('3', '44', '1');
 
 -- ----------------------------
 -- Table structure for tp_auth_group
@@ -471,9 +543,9 @@ CREATE TABLE `tp_auth_group` (
 -- ----------------------------
 -- Records of tp_auth_group
 -- ----------------------------
-INSERT INTO `tp_auth_group` VALUES ('1', 'admin', '1', '默认用户组', '默认用户组', '1', '1,2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,88,89,90,91,92,93,94,95,96,97,100,102,103,105,106');
+INSERT INTO `tp_auth_group` VALUES ('1', 'admin', '1', '默认用户组', '默认用户组', '1', '1,2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,88,89,90,91,92,93,94,95,100,102,103');
 INSERT INTO `tp_auth_group` VALUES ('2', 'admin', '1', '测试用户', '测试用户', '1', '1,2,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,82,83,84,88,89,90,91,92,93,96,97,100,102,103,195');
-INSERT INTO `tp_auth_group` VALUES ('3', 'admin', '1', '测试1', '测试1 ', '1', '');
+INSERT INTO `tp_auth_group` VALUES ('3', 'admin', '1', '测试1', '测试1 ', '1', '1,4,7,10,54,55,56,60,71,72,73,74,209,210,225');
 
 -- ----------------------------
 -- Table structure for tp_auth_group_access
@@ -490,11 +562,10 @@ CREATE TABLE `tp_auth_group_access` (
 -- ----------------------------
 -- Records of tp_auth_group_access
 -- ----------------------------
-INSERT INTO `tp_auth_group_access` VALUES ('2', '1');
-INSERT INTO `tp_auth_group_access` VALUES ('2', '2');
 INSERT INTO `tp_auth_group_access` VALUES ('2', '3');
 INSERT INTO `tp_auth_group_access` VALUES ('3', '1');
 INSERT INTO `tp_auth_group_access` VALUES ('3', '2');
+INSERT INTO `tp_auth_group_access` VALUES ('3', '3');
 
 -- ----------------------------
 -- Table structure for tp_auth_rule
@@ -510,7 +581,7 @@ CREATE TABLE `tp_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
   PRIMARY KEY (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=223 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=229 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_auth_rule
@@ -519,7 +590,7 @@ INSERT INTO `tp_auth_rule` VALUES ('1', 'admin', '2', 'Admin/Index/index', '控�
 INSERT INTO `tp_auth_rule` VALUES ('2', 'admin', '2', 'Admin/Article/index', '内容管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('3', 'admin', '2', 'Admin/User/index', '管理员管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('4', 'admin', '2', 'Admin/Addons/index', '扩展', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '设置', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '设置', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('7', 'admin', '1', 'Admin/article/add', '新增', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('8', 'admin', '1', 'Admin/article/edit', '编辑', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('9', 'admin', '1', 'Admin/article/setStatus', '改变状态', '1', '');
@@ -530,7 +601,7 @@ INSERT INTO `tp_auth_rule` VALUES ('13', 'admin', '1', 'Admin/article/copy', '�
 INSERT INTO `tp_auth_rule` VALUES ('14', 'admin', '1', 'Admin/article/paste', '粘贴', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('15', 'admin', '1', 'Admin/article/permit', '还原', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('16', 'admin', '1', 'Admin/article/clear', '清空', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('17', 'admin', '1', 'Admin/Article/examine', '审核列表', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('17', 'admin', '1', 'Admin/Article/examine', '待审核', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('18', 'admin', '1', 'Admin/article/recycle', '回收站', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('19', 'admin', '1', 'Admin/User/addaction', '新增用户行为', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('20', 'admin', '1', 'Admin/User/editaction', '编辑用户行为', '1', '');
@@ -573,21 +644,21 @@ INSERT INTO `tp_auth_rule` VALUES ('56', 'admin', '1', 'Admin/model/add', '新�
 INSERT INTO `tp_auth_rule` VALUES ('57', 'admin', '1', 'Admin/model/edit', '编辑', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('58', 'admin', '1', 'Admin/model/setStatus', '改变状态', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('59', 'admin', '1', 'Admin/model/update', '保存数据', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('60', 'admin', '1', 'Admin/Model/index', '模型管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('60', 'admin', '1', 'Admin/Model/index', '频道管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('61', 'admin', '1', 'Admin/Config/edit', '编辑', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('62', 'admin', '1', 'Admin/Config/del', '删除', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('63', 'admin', '1', 'Admin/Config/add', '新增', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('64', 'admin', '1', 'Admin/Config/save', '保存', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('65', 'admin', '1', 'Admin/Config/group', '网站设置', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('65', 'admin', '1', 'Admin/Config/group', '系统设置', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('66', 'admin', '1', 'Admin/Config/index', '配置管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('67', 'admin', '1', 'Admin/Channel/add', '新增', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('68', 'admin', '1', 'Admin/Channel/edit', '编辑', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('69', 'admin', '1', 'Admin/Channel/del', '删除', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('70', 'admin', '1', 'Admin/Channel/index', '导航管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('71', 'admin', '1', 'Admin/Category/edit', '编辑', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('72', 'admin', '1', 'Admin/Category/add', '新增', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('72', 'admin', '1', 'Admin/Category/add', '添加栏目', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('73', 'admin', '1', 'Admin/Category/remove', '删除', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('74', 'admin', '1', 'Admin/Category/index', '分类管理', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('74', 'admin', '1', 'Admin/Category/index', '栏目管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('75', 'admin', '1', 'Admin/file/upload', '上传控件', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('76', 'admin', '1', 'Admin/file/uploadPicture', '上传图片', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('77', 'admin', '1', 'Admin/file/download', '下载', '-1', '');
@@ -623,7 +694,7 @@ INSERT INTO `tp_auth_rule` VALUES ('108', 'admin', '1', 'Admin/User/updatePasswo
 INSERT INTO `tp_auth_rule` VALUES ('109', 'admin', '1', 'Admin/User/updateNickname', '修改昵称', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('110', 'admin', '1', 'Admin/action/edit', '查看行为日志', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('205', 'admin', '1', 'Admin/think/add', '新增数据', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('111', 'admin', '2', 'Admin/article/index', '文档列表', '-1', '');
+INSERT INTO `tp_auth_rule` VALUES ('111', 'admin', '2', 'Admin/Article/index', '内容管理', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('112', 'admin', '2', 'Admin/article/add', '新增', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('113', 'admin', '2', 'Admin/article/edit', '编辑', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('114', 'admin', '2', 'Admin/article/setStatus', '改变状态', '-1', '');
@@ -694,7 +765,7 @@ INSERT INTO `tp_auth_rule` VALUES ('178', 'admin', '2', 'Admin/Channel/index', '
 INSERT INTO `tp_auth_rule` VALUES ('179', 'admin', '2', 'Admin/Channel/add', '新增', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('180', 'admin', '2', 'Admin/Channel/edit', '编辑', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('181', 'admin', '2', 'Admin/Channel/del', '删除', '-1', '');
-INSERT INTO `tp_auth_rule` VALUES ('182', 'admin', '2', 'Admin/Category/index', '分类管理', '-1', '');
+INSERT INTO `tp_auth_rule` VALUES ('182', 'admin', '2', 'Admin/Category/index', '栏目管理', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('183', 'admin', '2', 'Admin/Category/edit', '编辑', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('184', 'admin', '2', 'Admin/Category/add', '新增', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('185', 'admin', '2', 'Admin/Category/remove', '删除', '-1', '');
@@ -724,7 +795,7 @@ INSERT INTO `tp_auth_rule` VALUES ('209', 'admin', '1', 'Admin/Addons/addHook', 
 INSERT INTO `tp_auth_rule` VALUES ('210', 'admin', '1', 'Admin/Addons/edithook', '编辑钩子', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('211', 'admin', '1', 'Admin/Article/sort', '文档排序', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('212', 'admin', '1', 'Admin/Config/sort', '排序', '1', '');
-INSERT INTO `tp_auth_rule` VALUES ('213', 'admin', '1', 'Admin/Menu/sort', '排序', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('213', 'admin', '1', 'Admin/Menu/sort', '排序', '-1', '');
 INSERT INTO `tp_auth_rule` VALUES ('214', 'admin', '1', 'Admin/Channel/sort', '排序', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('215', 'admin', '1', 'Admin/Category/operate/type/move', '移动', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('216', 'admin', '1', 'Admin/Category/operate/type/merge', '合并', '1', '');
@@ -734,6 +805,12 @@ INSERT INTO `tp_auth_rule` VALUES ('219', 'admin', '2', 'Admin/Category', '栏�
 INSERT INTO `tp_auth_rule` VALUES ('220', 'admin', '2', 'Admin/Model', '频道管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('221', 'admin', '2', 'Admin/User', '行为管理', '1', '');
 INSERT INTO `tp_auth_rule` VALUES ('222', 'admin', '2', 'Admin/Database', '数据备份', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('223', 'admin', '1', 'Admin/Addons/hookso', '钩子列表0', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('224', 'admin', '1', 'Admin/Addons/hooks1', '权限测试', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('225', 'admin', '1', 'Admin/Category/listorders', '排序', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('226', 'admin', '1', 'Admin/Action/remove', '删除行为日志', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('227', 'admin', '2', 'Admin/Config', '设置', '1', '');
+INSERT INTO `tp_auth_rule` VALUES ('228', 'admin', '1', 'Admin/Menu/listorders', '排序', '1', '');
 
 -- ----------------------------
 -- Table structure for tp_category
@@ -778,9 +855,9 @@ CREATE TABLE `tp_category` (
 -- ----------------------------
 INSERT INTO `tp_category` VALUES ('42', 'anfang', '安防类', '41', '3', '10', '', '安防类', '安防类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474526797', '1480321491', '1', '24', '安防类');
 INSERT INTO `tp_category` VALUES ('41', 'products', '产品展示', '0', '2', '8', '', '产品展示', '产品展示', '', 'lists_products', '', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524724', '1478762419', '1', '22', '产品展示');
-INSERT INTO `tp_category` VALUES ('40', 'solution', '解决方案', '0', '1', '10', '', '解决方案', '解决方案', '', 'lists_solution', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524627', '1482990203', '1', '21', '解决方案');
+INSERT INTO `tp_category` VALUES ('40', 'solution', '解决方案', '0', '1', '10', '', '解决方案', '解决方案', '', 'lists_solution', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474524627', '1483579527', '1', '21', '解决方案');
 INSERT INTO `tp_category` VALUES ('46', 'home', '家居类', '41', '0', '8', '', '家居类', '家居类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477639810', '1479438405', '1', '', '家居类');
-INSERT INTO `tp_category` VALUES ('47', 'download', '应用下载', '0', '3', '10', '', '应用下载', '应用下载', '', 'lists_download', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477639925', '1483066352', '1', '', '应用下载');
+INSERT INTO `tp_category` VALUES ('47', 'download', '应用下载', '0', '3', '10', '', '应用下载', '应用下载', '', 'lists_download', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477639925', '1478156088', '1', '', '应用下载');
 INSERT INTO `tp_category` VALUES ('44', 'hospital', '医疗类', '41', '4', '10', '', '医疗类', '医疗类', '', '', 'detail_products', '', '4', '4', '2,1,3', '0', '2', '1', '0', '1', '', '', '1474527014', '1482917431', '1', '25', '空调|电视|机顶盒');
 INSERT INTO `tp_category` VALUES ('48', 'specification', '说明书下载', '47', '0', '8', '', '说明书下载', '说明书下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477640096', '1479435399', '1', '', '说明书下载');
 INSERT INTO `tp_category` VALUES ('49', 'APP', 'APP下载', '47', '0', '10', '', 'APP下载', 'APP下载', '', '', '', '', '3', '3', '2,1,3', '0', '2', '1', '0', '0', '', '', '1477640148', '1477640148', '1', '', 'APP下载');
@@ -794,7 +871,7 @@ INSERT INTO `tp_category` VALUES ('61', 'news', '新闻资讯', '0', '6', '10', 
 INSERT INTO `tp_category` VALUES ('62', 'company_news', '公司新闻', '61', '0', '2', '', '', '', '', 'lists_news', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477903590', '1478752191', '1', '', '公司新闻');
 INSERT INTO `tp_category` VALUES ('63', 'profession_news', '行业新闻', '61', '0', '10', '', '', '', '', '', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477903685', '1478056230', '1', '', '行业新闻');
 INSERT INTO `tp_category` VALUES ('64', 'activity', '活动专题', '61', '0', '10', '', '', '', '', '', 'detail', '', '2', '2', '2,1,3', '0', '2', '1', '0', '1', '', '', '1477981529', '1478056242', '1', '', '活动专题');
-INSERT INTO `tp_category` VALUES ('66', 'remote', '智能遥控', '46', '0', '10', '', '', '', '', '', '', '', '', '', '', '0', '0', '1', '0', '0', '', '', '1479368471', '1479368471', '1', '', '');
+INSERT INTO `tp_category` VALUES ('66', 'remote', '智能遥控', '46', '0', '10', '', '', '', '', '', '', '', '', '', '2', '0', '0', '1', '0', '0', '', '', '1479368471', '1483067982', '1', '', '');
 INSERT INTO `tp_category` VALUES ('67', 'Opener', '平移窗', '46', '0', '10', '', '', '', '', '', '', '', '', '', '', '0', '0', '1', '0', '0', '', '', '1479372378', '1479372378', '1', '', '');
 INSERT INTO `tp_category` VALUES ('68', 'forum', '论坛', '0', '7', '10', '', '', '', '', 'lists_solution', '', '', '2', '2', '2,1,3', '0', '2', '1', '0', '0', '', '', '1479372450', '1479372583', '1', '', '');
 
@@ -862,7 +939,7 @@ INSERT INTO `tp_config` VALUES ('20', 'CONFIG_GROUP_LIST', '3', '配置分组', 
 INSERT INTO `tp_config` VALUES ('21', 'HOOKS_TYPE', '3', '钩子的类型', '4', '', '类型 1-用于扩展显示内容，2-用于扩展业务处理', '1379313397', '1379313407', '1', '1:视图\r\n2:控制器', '6');
 INSERT INTO `tp_config` VALUES ('22', 'AUTH_CONFIG', '3', 'Auth配置', '4', '', '自定义Auth.class.php类配置', '1379409310', '1379409564', '1', 'AUTH_ON:1\r\nAUTH_TYPE:2', '8');
 INSERT INTO `tp_config` VALUES ('23', 'OPEN_DRAFTBOX', '4', '是否开启草稿功能', '2', '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', '1379484332', '1379484591', '1', '1', '1');
-INSERT INTO `tp_config` VALUES ('24', 'DRAFT_AOTOSAVE_INTERVAL', '0', '自动保存草稿时间', '2', '', '自动保存草稿的时间间隔，单位：秒', '1379484574', '1386143323', '1', '60', '2');
+INSERT INTO `tp_config` VALUES ('24', 'DRAFT_AOTOSAVE_INTERVAL', '0', '自动保存草稿时间', '2', '', '自动保存草稿的时间间隔，单位：秒', '1379484574', '1483599205', '1', '60', '2');
 INSERT INTO `tp_config` VALUES ('25', 'LIST_ROWS', '0', '后台每页记录数', '2', '', '后台数据每页显示记录数', '1379503896', '1380427745', '1', '10', '10');
 INSERT INTO `tp_config` VALUES ('26', 'USER_ALLOW_REGISTER', '4', '是否允许用户注册', '3', '0:关闭注册\r\n1:允许注册', '是否开放用户注册', '1379504487', '1379504580', '1', '1', '3');
 INSERT INTO `tp_config` VALUES ('27', 'CODEMIRROR_THEME', '4', '预览插件的CodeMirror主题', '4', '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', '1379814385', '1384740813', '1', 'ambiance', '3');
@@ -909,7 +986,7 @@ CREATE TABLE `tp_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of tp_document
@@ -975,6 +1052,7 @@ INSERT INTO `tp_document` VALUES ('64', '1', '', '智能插座', '46', '0', '', 
 INSERT INTO `tp_document` VALUES ('65', '1', '', '移动插座', '46', '0', '', '0', '0', '4', '2', '0', '0', '31', '1', '0', '0', '43', '0', '0', '0', '1479438378', '1479438378', '1');
 INSERT INTO `tp_document` VALUES ('66', '1', '', '平移窗', '46', '0', '', '0', '0', '4', '2', '0', '0', '35', '1', '0', '0', '11', '0', '0', '0', '1479438532', '1479438532', '1');
 INSERT INTO `tp_document` VALUES ('67', '1', '', '触摸开关', '46', '0', '', '0', '0', '4', '2', '0', '0', '34', '1', '0', '0', '10', '0', '0', '0', '1479438532', '1479438532', '1');
+INSERT INTO `tp_document` VALUES ('68', '2', '', '测试权限', '40', '0', '测试权限', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1483582250', '1483582250', '2');
 
 -- ----------------------------
 -- Table structure for tp_document_article
@@ -1013,6 +1091,7 @@ INSERT INTO `tp_document_article` VALUES ('48', '0', '<p>\r\n	阳春三月，人
 INSERT INTO `tp_document_article` VALUES ('49', '0', '<p>\r\n	1、登陆APP，进入“管理平台”，选择“我的设备”，点击空调类设备如“会议室空调”进入“编辑”界面，设置空调默认温度，如“模式：制冷25℃”后保存。\r\n</p>\r\n<p>\r\n	2、可根据需要，在“我的模式”或者“添加模式”中设置相应模式，如在“设备开”中勾选“会议室空调”，在“我的时间”或者“添加时间”添加定时功能，如勾选“会议室空调”并设置“设备状态”为开后保存，退出管理平台，在APP设置界面点击“更新模式信息”和“更新设备信息”，或者点击一键更新。\r\n</p>\r\n<p>\r\n	3、当设定的场景模式或定时功能启用时，”会议室空调“的温度即为默认温度值：25℃。\r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('50', '0', '<p>\r\n	目前应用于民用市场主要有三种类型的指纹传感器，即：光学传感器、半导体传感器、射频传感器。 光学指纹识别传感器是通过在光学镜头上进行物体挤压或是手指滚动获得指纹图片。传感器屏幕一般是由工业金刚石制作而成。 半导体指纹识别传感器是由手指对传感器产生的压力或者热冲击，使电荷产生变化后通过识读电荷变化获取图像，这类传感器的屏幕是一块薄薄的胶片。 射频指纹识别传感器是利用由传感器发出一段电磁场或超声波，碰到阻碍物后换回，通过试读返回的电波的所携带的信号而转换成图像。\r\n</p>', '', '0');
 INSERT INTO `tp_document_article` VALUES ('51', '0', '保障期', '', '0');
+INSERT INTO `tp_document_article` VALUES ('68', '0', '测试权限', '', '0');
 
 -- ----------------------------
 -- Table structure for tp_document_download
@@ -1197,8 +1276,8 @@ CREATE TABLE `tp_member` (
 -- ----------------------------
 -- Records of tp_member
 -- ----------------------------
-INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '210', '61', '0', '1472733337', '2130706433', '1482974070', '1');
-INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `tp_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '230', '74', '0', '1472733337', '2130706433', '1483591226', '1');
+INSERT INTO `tp_member` VALUES ('2', 'qinxuening', '0', '0000-00-00', '', '30', '24', '0', '0', '2130706433', '1483584854', '1');
 INSERT INTO `tp_member` VALUES ('3', 'cym', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1');
 
 -- ----------------------------
@@ -1219,13 +1298,13 @@ CREATE TABLE `tp_menu` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_menu
 -- ----------------------------
-INSERT INTO `tp_menu` VALUES ('1', '控制台', '0', '1', 'Index/index', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('2', '内容管理', '0', '2', 'Article/index', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('1', '控制台', '0', '1', 'Index/index', '0', '后台首页', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('2', '内容管理', '0', '3', 'Article/index', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('3', '文档列表', '2', '0', 'article/index', '1', '', '内容', '0', '1');
 INSERT INTO `tp_menu` VALUES ('4', '新增', '3', '0', 'article/add', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('5', '编辑', '3', '0', 'article/edit', '0', '', '', '0', '1');
@@ -1236,20 +1315,20 @@ INSERT INTO `tp_menu` VALUES ('9', '移动', '3', '0', 'article/move', '0', '', 
 INSERT INTO `tp_menu` VALUES ('10', '复制', '3', '0', 'article/copy', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('11', '粘贴', '3', '0', 'article/paste', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('12', '导入', '3', '0', 'article/batchOperate', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('13', '回收站', '2', '0', 'article/recycle', '1', '', '内容', '0', '1');
+INSERT INTO `tp_menu` VALUES ('13', '回收站', '93', '0', 'article/recycle', '1', '', '内容', '0', '1');
 INSERT INTO `tp_menu` VALUES ('14', '还原', '13', '0', 'article/permit', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('15', '清空', '13', '0', 'article/clear', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('16', '管理员管理', '0', '7', 'User/index', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('17', '用户信息', '16', '0', 'User/index', '0', '', '用户管理', '0', '1');
 INSERT INTO `tp_menu` VALUES ('18', '新增用户', '17', '0', 'User/add', '0', '添加新用户', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('19', '用户行为', '16', '0', 'User/action', '0', '', '行为管理', '0', '1');
+INSERT INTO `tp_menu` VALUES ('19', '用户行为', '125', '0', 'User/action', '0', '', '行为管理', '0', '1');
 INSERT INTO `tp_menu` VALUES ('20', '新增用户行为', '19', '0', 'User/addaction', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('21', '编辑用户行为', '19', '0', 'User/editaction', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('22', '保存用户行为', '19', '0', 'User/saveAction', '0', '\"用户->用户行为\"保存编辑和新增的用户行为', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('23', '变更行为状态', '19', '0', 'User/setStatus', '0', '\"用户->用户行为\"中的启用,禁用和删除权限', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('24', '禁用会员', '19', '0', 'User/changeStatus?method=forbidUser', '0', '\"用户->用户信息\"中的禁用', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('25', '启用会员', '19', '0', 'User/changeStatus?method=resumeUser', '0', '\"用户->用户信息\"中的启用', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('26', '删除会员', '19', '0', 'User/changeStatus?method=deleteUser', '0', '\"用户->用户信息\"中的删除', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('24', '禁用会员', '17', '0', 'User/changeStatus?method=forbidUser', '0', '\"用户->用户信息\"中的禁用', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('25', '启用会员', '17', '0', 'User/changeStatus?method=resumeUser', '0', '\"用户->用户信息\"中的启用', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('26', '删除会员', '17', '0', 'User/changeStatus?method=deleteUser', '0', '\"用户->用户信息\"中的删除', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('27', '权限管理', '16', '0', 'AuthManager/index', '0', '', '用户管理', '0', '1');
 INSERT INTO `tp_menu` VALUES ('28', '删除', '27', '0', 'AuthManager/changeStatus?method=deleteGroup', '0', '删除用户组', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('29', '禁用', '27', '0', 'AuthManager/changeStatus?method=forbidGroup', '0', '禁用用户组', '', '0', '1');
@@ -1257,7 +1336,7 @@ INSERT INTO `tp_menu` VALUES ('30', '恢复', '27', '0', 'AuthManager/changeStat
 INSERT INTO `tp_menu` VALUES ('31', '新增', '27', '0', 'AuthManager/createGroup', '0', '创建新的用户组', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('32', '编辑', '27', '0', 'AuthManager/editGroup', '0', '编辑用户组名称和描述', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('33', '保存用户组', '27', '0', 'AuthManager/writeGroup', '0', '新增和编辑用户组的\"保存\"按钮', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('34', '授权', '27', '0', 'AuthManager/group', '0', '\"后台 \\ 用户 \\ 用户信息\"列表页的\"授权\"操作按钮,用于设置用户所属用户组', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('34', '授权', '17', '0', 'AuthManager/group', '0', '\"后台 \\ 用户 \\ 用户信息\"列表页的\"授权\"操作按钮,用于设置用户所属用户组', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('35', '访问授权', '27', '0', 'AuthManager/access', '0', '\"后台 \\ 用户 \\ 权限管理\"列表页的\"访问授权\"操作按钮', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('36', '成员授权', '27', '0', 'AuthManager/user', '0', '\"后台 \\ 用户 \\ 权限管理\"列表页的\"成员授权\"操作按钮', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('37', '解除授权', '27', '0', 'AuthManager/removeFromGroup', '0', '\"成员授权\"列表页内的解除授权操作按钮', '', '0', '1');
@@ -1281,7 +1360,7 @@ INSERT INTO `tp_menu` VALUES ('54', '更新配置', '44', '0', 'Addons/saveconfi
 INSERT INTO `tp_menu` VALUES ('55', '插件后台列表', '44', '0', 'Addons/adminList', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('56', 'URL方式访问插件', '44', '0', 'Addons/execute', '0', '控制是否有权限通过url访问插件控制器方法', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('57', '钩子管理', '43', '2', 'Addons/hooks', '0', '', '扩展', '0', '1');
-INSERT INTO `tp_menu` VALUES ('58', '模型管理', '68', '3', 'Model/index', '0', '', '系统设置', '0', '1');
+INSERT INTO `tp_menu` VALUES ('58', '频道管理', '128', '3', 'Model/index', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('59', '新增', '58', '0', 'model/add', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('60', '编辑', '58', '0', 'model/edit', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('61', '改变状态', '58', '0', 'model/setStatus', '0', '', '', '0', '1');
@@ -1291,35 +1370,35 @@ INSERT INTO `tp_menu` VALUES ('64', '新增', '63', '0', 'Attribute/add', '0', '
 INSERT INTO `tp_menu` VALUES ('65', '编辑', '63', '0', 'Attribute/edit', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('66', '改变状态', '63', '0', 'Attribute/setStatus', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('67', '保存数据', '63', '0', 'Attribute/update', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('68', '设置', '0', '9', 'Config/group', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('69', '网站设置', '68', '1', 'Config/group', '0', '', '系统设置', '0', '1');
+INSERT INTO `tp_menu` VALUES ('68', '设置', '0', '9', 'Config', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('69', '系统设置', '68', '1', 'Config/group', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('70', '配置管理', '68', '4', 'Config/index', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('71', '编辑', '70', '0', 'Config/edit', '0', '新增编辑和保存配置', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('72', '删除', '70', '0', 'Config/del', '0', '删除配置', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('73', '新增', '70', '0', 'Config/add', '0', '新增配置', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('74', '保存', '70', '0', 'Config/save', '0', '保存配置', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('74', '保存', '69', '0', 'Config/save', '0', '保存配置', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('75', '菜单管理', '68', '5', 'Menu/index', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('76', '导航管理', '68', '6', 'Channel/index', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('77', '新增', '76', '0', 'Channel/add', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('78', '编辑', '76', '0', 'Channel/edit', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('79', '删除', '76', '0', 'Channel/del', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('80', '分类管理', '68', '2', 'Category/index', '0', '', '系统设置', '0', '1');
-INSERT INTO `tp_menu` VALUES ('81', '编辑', '80', '0', 'Category/edit', '0', '编辑和保存栏目分类', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('82', '新增', '80', '0', 'Category/add', '0', '新增栏目分类', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('134', '编辑', '132', '0', 'Category/edit', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('135', '删除', '132', '0', 'Category/remove', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('136', '排序', '132', '0', 'Category/listorders', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('83', '删除', '80', '0', 'Category/remove', '0', '删除栏目分类', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('84', '移动', '80', '0', 'Category/operate/type/move', '0', '移动栏目分类', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('85', '合并', '80', '0', 'Category/operate/type/merge', '0', '合并栏目分类', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('86', '备份数据库', '68', '0', 'Database/index?type=export', '0', '', '数据备份', '0', '1');
+INSERT INTO `tp_menu` VALUES ('86', '备份数据库', '127', '0', 'Database/index?type=export', '0', '', '数据备份', '0', '1');
 INSERT INTO `tp_menu` VALUES ('87', '备份', '86', '0', 'Database/export', '0', '备份数据库', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('88', '优化表', '86', '0', 'Database/optimize', '0', '优化数据表', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('89', '修复表', '86', '0', 'Database/repair', '0', '修复数据表', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('90', '还原数据库', '68', '0', 'Database/index?type=import', '0', '', '数据备份', '0', '1');
+INSERT INTO `tp_menu` VALUES ('90', '还原数据库', '127', '0', 'Database/index?type=import', '0', '', '数据备份', '0', '1');
 INSERT INTO `tp_menu` VALUES ('91', '恢复', '90', '0', 'Database/import', '0', '数据库恢复', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('92', '删除', '90', '0', 'Database/del', '0', '删除备份文件', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('93', '回收站', '0', '8', 'Article/recycle', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('96', '新增', '75', '0', 'Menu/add', '0', '', '系统设置', '0', '1');
 INSERT INTO `tp_menu` VALUES ('98', '编辑', '75', '0', 'Menu/edit', '0', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('106', '行为日志', '16', '0', 'Action/actionlog', '0', '', '行为管理', '0', '1');
+INSERT INTO `tp_menu` VALUES ('106', '行为日志', '125', '0', 'Action/actionlog', '0', '', '行为管理', '0', '1');
 INSERT INTO `tp_menu` VALUES ('108', '修改密码', '16', '0', 'User/updatePassword', '1', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('109', '修改昵称', '16', '0', 'User/updateNickname', '1', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('110', '查看行为日志', '106', '0', 'action/edit', '1', '', '', '0', '1');
@@ -1330,15 +1409,20 @@ INSERT INTO `tp_menu` VALUES ('115', '生成', '58', '0', 'Model/generate', '0',
 INSERT INTO `tp_menu` VALUES ('116', '新增钩子', '57', '0', 'Addons/addHook', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('117', '编辑钩子', '57', '0', 'Addons/edithook', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('118', '文档排序', '3', '0', 'Article/sort', '1', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('119', '排序', '70', '0', 'Config/sort', '1', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('120', '排序', '75', '0', 'Menu/sort', '1', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('119', '排序', '70', '0', 'Config/listorders', '1', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('120', '排序', '75', '0', 'Menu/listorders', '1', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('121', '排序', '76', '0', 'Channel/sort', '1', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('122', '数据列表', '58', '0', 'think/lists', '1', '', '', '0', '1');
-INSERT INTO `tp_menu` VALUES ('123', '审核列表', '3', '0', 'Article/examine', '1', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('123', '待审核', '3', '0', 'Article/examine', '1', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('125', '行为管理', '0', '6', 'User', '0', '', '', '0', '0');
 INSERT INTO `tp_menu` VALUES ('126', '栏目管理', '0', '2', 'Category', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('127', '数据备份', '0', '6', 'Database', '0', '', '', '0', '1');
 INSERT INTO `tp_menu` VALUES ('128', '频道管理', '0', '4', 'Model', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('129', '钩子列表0', '57', '0', 'Addons/hookso', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('131', '权限测试', '57', '0', 'Addons/hooks1', '0', '', '', '0', '1');
+INSERT INTO `tp_menu` VALUES ('132', '栏目管理', '126', '0', 'Category/index', '0', '', '栏目管理', '0', '1');
+INSERT INTO `tp_menu` VALUES ('133', '添加栏目', '126', '0', 'Category/add', '0', '', '栏目管理', '0', '1');
+INSERT INTO `tp_menu` VALUES ('137', '删除行为日志', '106', '0', 'Action/remove', '0', '', '', '0', '1');
 
 -- ----------------------------
 -- Table structure for tp_model
@@ -1491,8 +1575,8 @@ CREATE TABLE `tp_ucenter_member` (
 -- ----------------------------
 -- Records of tp_ucenter_member
 -- ----------------------------
-INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1482974070', '2130706433', '1472733337', '1');
-INSERT INTO `tp_ucenter_member` VALUES ('2', 'qinxuening', '7c611e8fef136e9ae52abaeaca48f5c1', '2423859712@qq.com', '', '1476265461', '2130706433', '0', '0', '1476265461', '1');
+INSERT INTO `tp_ucenter_member` VALUES ('1', 'admin', 'fb518d9f15415f3694db0d14979a8239', '2423859713@qq.com', '', '1472733337', '2130706433', '1483591226', '2130706433', '1472733337', '1');
+INSERT INTO `tp_ucenter_member` VALUES ('2', 'qinxuening', '7c611e8fef136e9ae52abaeaca48f5c1', '2423859712@qq.com', '', '1476265461', '2130706433', '1483584854', '2130706433', '1476265461', '1');
 INSERT INTO `tp_ucenter_member` VALUES ('3', 'cym', '7c611e8fef136e9ae52abaeaca48f5c1', '24238597134@qq.com', '', '1476412989', '2130706433', '0', '0', '1476412989', '1');
 
 -- ----------------------------

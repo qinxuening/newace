@@ -714,7 +714,7 @@ class ArticleController extends AdminController {
     	//print_r(I(''));
         //获取左边菜单
         $this->getMenu();
-
+		
         $Document   =   D('Document');
         $tree = D('Category')->getTree(0,'id,title,pid');
         /* 查询条件初始化 */
@@ -749,13 +749,10 @@ class ArticleController extends AdminController {
         	$this->assign('mydocument' , 'active');
         }
         
-        
-        //print_r($map);
         //只查询pid为0的文章
-        //$map['pid'] = 0;
-        //print_r($map);
         $list = $this->lists($Document,$map,'update_time desc');
         int_to_string($list);
+        //print_r($map);
         $list = $this->parseDocumentList($list,$model_id?$model_id:1);
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);

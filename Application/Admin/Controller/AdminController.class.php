@@ -148,7 +148,7 @@ class AdminController extends Controller {
         if(in_array('id',$fields) && !empty($id)){
             $where = array_merge( array('id' => array('in', $id )) ,(array)$where );
         }
-		print_r($where);die();
+		//print_r($where);die();
         $msg   = array_merge( array( 'success'=>'操作成功！', 'error'=>'操作失败！', 'url'=>'' ,'ajax'=>IS_AJAX) , (array)$msg );//如果两个或更多个数组元素有相同的键名，则最后的元素会覆盖其他元素。
         if( M($model)->where($where)->save($data)!==false ) {
         	//echo M($model)->getLastSql();die();
@@ -419,8 +419,8 @@ class AdminController extends Controller {
         if( !empty($where)){
             $options['where']   =   $where;
         }
-        $options      =   array_merge( (array)$OPT->getValue($model), $options );
         //print_r($options);
+        $options      =   array_merge( (array)$OPT->getValue($model), $options );
         $total        =   $model->where($options['where'])->count();
 
         if( isset($REQUEST['r']) ){

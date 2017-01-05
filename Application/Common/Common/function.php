@@ -222,6 +222,7 @@ function list_sort_by($list,$field, $sortby='asc') {
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 0) {
+	//print_r($list);
     // 创建Tree
     $tree = array();
     if(is_array($list)) {
@@ -867,14 +868,15 @@ function get_model_attribute($model_id, $group = true,$fields=true){
  */
 function api($name,$vars=array()){
     $array     = explode('/',$name);
-    $method    = array_pop($array);
+    $method    = array_pop($array);//删除数组中的最后一个元素[出栈]
     $classname = array_pop($array);
     $module    = $array? array_pop($array) : 'Common';
     $callback  = $module.'\\Api\\'.$classname.'Api::'.$method;
     if(is_string($vars)) {
-        parse_str($vars,$vars);
+        parse_str($vars,$vars);//把查询字符串解析到变量中：
     }
-    return call_user_func_array($callback,$vars);
+    return call_user_func_array($callback,$vars);//mixed call_user_func_array(callback $function , array $param_arr )
+    //用一个数组作为参数调用一个回调函数.返回值为回调函数执行的结果或者为false(回调函数执行有error时)
 }
 
 /**

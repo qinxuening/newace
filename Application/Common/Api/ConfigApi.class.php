@@ -18,7 +18,6 @@ class ConfigApi {
     public static function lists(){
         $map    = array('status' => 1);
         $data   = M('Config')->where($map)->field('type,name,value')->select();
-        
         $config = array();
         if($data && is_array($data)){
             foreach ($data as $value) {
@@ -36,7 +35,8 @@ class ConfigApi {
     private static function parse($type, $value){
         switch ($type) {
             case 3: //解析数组
-                $array = preg_split('/[,;\r\n]+/', trim($value, ",;\r\n"));
+            	//print_r(trim($value, ",;\r\n"));
+                $array = preg_split('/[,;\r\n]+/', trim($value, ",;\r\n"));//preg_split — 通过一个正则表达式分隔字符串,后得到的子串组成的数组。
                 if(strpos($value,':')){
                     $value  = array();
                     foreach ($array as $val) {
