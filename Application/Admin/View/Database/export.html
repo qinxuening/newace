@@ -68,8 +68,8 @@
 									                            <td>{$table.create_time}</td>
 									                            <td class="info">未备份</td>
 									                            <td class="action">
-									                                <a class="ajax-get no-refresh" href="{:U('optimize?tables='.$table['name'])}">优化表</a>&nbsp;
-									                                <a class="ajax-get no-refresh" href="{:U('repair?tables='.$table['name'])}">修复表</a>
+									                                <a class="ajax-get no-refresh confirm" href="{:U('optimize?tables='.$table['name'])}">优化表</a>&nbsp;
+									                                <a class="ajax-get no-refresh confirm" href="{:U('repair?tables='.$table['name'])}">修复表</a>
 									                            </td>
 									                        </tr>
 									                    </volist>
@@ -143,6 +143,7 @@
 	                $form.serialize(),
 	                function(data){
 	                    if(data.status){
+							//console.log(data);die();
 	                        tables = data.tables;
 	                        $export.html(data.info + "开始备份，请不要关闭本页面！");
 	                        backup(data.tab);
@@ -166,6 +167,7 @@
 	            status && showmsg(tab.id, "开始备份...(0%)");
 	            $.get($form.attr("action"), tab, function(data){
 	                if(data.status){
+						//console.log(data);die();
 	                    showmsg(tab.id, data.info);
 	
 	                    if(!$.isPlainObject(data.tab)){

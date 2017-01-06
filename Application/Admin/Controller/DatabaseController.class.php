@@ -39,17 +39,16 @@ class DatabaseController extends AdminController{
                 $path = realpath($path);
                 $flag = \FilesystemIterator::KEY_AS_FILENAME;
                 $glob = new \FilesystemIterator($path,  $flag);
-
                 $list = array();
                 foreach ($glob as $name => $file) {
                     if(preg_match('/^\d{8,8}-\d{6,6}-\d+\.sql(?:\.gz)?$/', $name)){
-                        $name = sscanf($name, '%4s%2s%2s-%2s%2s%2s-%d');
+                        $name = sscanf($name, '%4s%2s%2s-%2s%2s%2s-%d');//sscanf() 函数根据指定的格式解析来自字符串的输入
 
                         $date = "{$name[0]}-{$name[1]}-{$name[2]}";
                         $time = "{$name[3]}:{$name[4]}:{$name[5]}";
                         $part = $name[6];
 
-                        if(isset($list["{$date} {$time}"])){
+                        if(isset($list["{$date} {$time}"])){                       	
                             $info = $list["{$date} {$time}"];
                             $info['part'] = max($info['part'], $part);
                             $info['size'] = $info['size'] + $file->getSize();
@@ -57,10 +56,16 @@ class DatabaseController extends AdminController{
                             $info['part'] = $part;
                             $info['size'] = $file->getSize();
                         }
-                        $extension        = strtoupper(pathinfo($file->getFilename(), PATHINFO_EXTENSION));
+                        $extension        = strtoupper(pathinfo($file->getFilename(), PATHINFO_EXTENSION));//pathinfo() 函数以数组或字符串的形式返回关于文件路径的信息
+																											//PATHINFO_EXTENSION - 只返回 extension
+																											/*array(
+																													"dirname" =>"." ,
+																													"basename" => "20161110-153107-1.sql.gz",
+																													"extension" => "gz",
+																													"filename" => "20161110-153107-1.sql"
+																											);*/
                         $info['compress'] = ($extension === 'SQL') ? '-' : $extension;
                         $info['time']     = strtotime("{$date} {$time}");
-
                         $list["{$date} {$time}"] = $info;
                     }
                 }
@@ -72,7 +77,7 @@ class DatabaseController extends AdminController{
             case 'export':
                 $Db    = Db::getInstance();
                 $list  = $Db->query('SHOW TABLE STATUS');
-                $list  = array_map('array_change_key_case', $list);
+                $list  = array_map('array_change_key_case', $list);//array_change_key_case() 函数将数组的所有的键都转换为大写字母或小写字母 默认小写
                 $title = '数据备份';
                 $this->assign('export','active');
                 break;
@@ -98,7 +103,6 @@ class DatabaseController extends AdminController{
             if(is_array($tables)){
                 $tables = implode('`,`', $tables);
                 $list = $Db->query("OPTIMIZE TABLE `{$tables}`");
-
                 if($list){
                     $this->success("数据表优化完成！");
                 } else {
@@ -192,19 +196,19 @@ class DatabaseController extends AdminController{
             }
             //读取备份配置
             $config = array(
-                'path'     => realpath($path) . DIRECTORY_SEPARATOR,
-                'part'     => C('DATA_BACKUP_PART_SIZE'),
-                'compress' => C('DATA_BACKUP_COMPRESS'),
-                'level'    => C('DATA_BACKUP_COMPRESS_LEVEL'),
+                'path'     => realpath($path) . DIRECTORY_SEPARATOR,//realpath() 函数返回绝对路径
+                'part'     => C('DATA_BACKUP_PART_SIZE'),//数据库备份卷大小
+                'compress' => C('DATA_BACKUP_COMPRESS'),//是否启用压缩
+                'level'    => C('DATA_BACKUP_COMPRESS_LEVEL'),//压缩级别
             );
-
+            
             //检查是否有正在执行的任务
             $lock = "{$config['path']}backup.lock";
             if(is_file($lock)){
                 $this->error('检测到有一个备份任务正在执行，请稍后再试！');
             } else {
                 //创建锁文件
-                file_put_contents($lock, NOW_TIME);
+                file_put_contents($lock, NOW_TIME);//file_put_contents(file,data,mode,context) 函数把一个字符串写入文件中
             }
 
             //检查备份目录是否可写
@@ -249,7 +253,7 @@ class DatabaseController extends AdminController{
                 }
             } else {
                 $tab  = array('id' => $id, 'start' => $start[0]);
-                $rate = floor(100 * ($start[0] / $start[1]));
+                $rate = floor(100 * ($start[0] / $start[1]));//floor(x) 函数向下舍入为最接近的整数 返回不大于 x 的下一个整数，将 x 的小数部分舍去取整
                 $this->success("正在备份...({$rate}%)", '', array('tab' => $tab));
             }
 

@@ -17,7 +17,7 @@ return array(
     'DEFAULT_MODULE'     => 'Home',
     'MODULE_DENY_LIST'   => array('Common','User','Admin','Install'),
     //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
-	'SHOW_PAGE_TRACE' =>true,
+	'SHOW_PAGE_TRACE' => true,
 		
 	'DEFAULT_FILTER'=>'strip_tags,stripslashes,htmlspecialchars',
 		

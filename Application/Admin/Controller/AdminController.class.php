@@ -15,7 +15,6 @@ use Admin\Model\AuthGroupModel;
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 class AdminController extends Controller {
-
     /**
      * 后台控制器初始化
      */
@@ -32,7 +31,6 @@ class AdminController extends Controller {
             $config =   api('Config/lists');
             S('DB_CONFIG_DATA',$config);
         }
-        //print_r($config);
         C($config); //添加配置
         // 是否是超级管理员
         define('IS_ROOT',   is_administrator());
