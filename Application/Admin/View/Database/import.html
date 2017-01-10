@@ -115,9 +115,8 @@
    	   $(".db-import").click(function(){
             var self = this, status = ".";
             $.get(self.href, success, "json");
-            window.onbeforeunload = function(){ return "正在还原数据库，请不要关闭！" }
-            return false;
-        
+            window.onbeforeunload = function(){ return "正在还原数据库，请不要关闭！" }//onbeforeunload 事件在即将离开当前页面（刷新或关闭）时触发。
+            return false;       
             function success(data){
                 if(data.status){
                     if(data.gz){

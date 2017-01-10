@@ -157,7 +157,8 @@ div.badoo a{border:#f0f0f0 2px solid;padding:2px 5px;margin:0px 2px;border-left:
 div.badoo a:hover{border:#ff5a00 2px solid;color:#ff5a00;}
 div.badoo a:active{border:#ff5a00 2px solid;color:#ff5a00;}
 div.badoo span.current{border:#ff5a00 2px solid;padding:2px 5px;font-weight:bold;color:#fff;background-color:#ff6c16;}
-div.badoo span.disabled{display:none}
+div.badoo span.disabled{display:none;}
+div.badoo a.active{border: #ff5a00 2px solid;padding: 2px 5px;font-weight: bold;color: #fff;background-color: #ff6c16;}
 
 /*css manu style pagination*/
 .manu{padding:3px;margin:3px;text-align:center;}

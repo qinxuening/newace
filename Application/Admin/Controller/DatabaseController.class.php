@@ -47,8 +47,7 @@ class DatabaseController extends AdminController{
                         $date = "{$name[0]}-{$name[1]}-{$name[2]}";
                         $time = "{$name[3]}:{$name[4]}:{$name[5]}";
                         $part = $name[6];
-
-                        if(isset($list["{$date} {$time}"])){                       	
+                        if(isset($list["{$date} {$time}"])){                    	
                             $info = $list["{$date} {$time}"];
                             $info['part'] = max($info['part'], $part);
                             $info['size'] = $info['size'] + $file->getSize();
@@ -66,6 +65,7 @@ class DatabaseController extends AdminController{
 																											);*/
                         $info['compress'] = ($extension === 'SQL') ? '-' : $extension;
                         $info['time']     = strtotime("{$date} {$time}");
+                        //print_r($info);
                         $list["{$date} {$time}"] = $info;
                     }
                 }
@@ -271,18 +271,17 @@ class DatabaseController extends AdminController{
             //获取备份文件信息
             $name  = date('Ymd-His', $time) . '-*.sql*';
             $path  = realpath(C('DATA_BACKUP_PATH')) . DIRECTORY_SEPARATOR . $name;
-            $files = glob($path);
+            $files = glob($path);//glob() 函数返回匹配指定模式的文件名或目录。
             $list  = array();
             foreach($files as $name){
                 $basename = basename($name);
                 $match    = sscanf($basename, '%4s%2s%2s-%2s%2s%2s-%d');
-                $gz       = preg_match('/^\d{8,8}-\d{6,6}-\d+\.sql.gz$/', $basename);
+                $gz       = preg_match('/^\d{8,8}-\d{6,6}-\d+\.sql.gz$/', $basename);//preg_match() 函数用于进行正则表达式匹配，成功返回 1 ，否则返回 0
                 $list[$match[6]] = array($match[6], $name, $gz);
             }
             ksort($list);
-
             //检测文件正确性
-            $last = end($list);
+            $last = end($list);//end() 函数将数组内部指针指向最后一个元素，并返回该元素的值（如果成功）。
             if(count($list) === $last[0]){
                 session('backup_list', $list); //缓存备份列表
                 $this->success('初始化完成！', '', array('part' => 1, 'start' => 0));
@@ -296,7 +295,6 @@ class DatabaseController extends AdminController{
                 'compress' => $list[$part][2]));
 
             $start = $db->import($start);
-
             if(false === $start){
                 $this->error('还原数据出错！');
             } elseif(0 === $start) { //下一卷

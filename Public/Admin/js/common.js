@@ -1,6 +1,5 @@
 //dom加载完成后执行的js
 ;$(function(){
-
 	//全选的实现
 	$(".check-all").click(function(){
 		//alert(this.checked);
@@ -21,65 +20,57 @@
 		});
 	});
 
-    //ajax get请求
+ //ajax get请求
     $('.ajax-get').click(function(){
         var target;
         var that = this;
-		var $this = $(this);
-        if ($(this).hasClass('confirm')){
-			$('.jumppage_bg, .jumppage').show();			
-			$('#Jq_no').click(function(){
-				$('.jumppage_bg, .jumppage').hide();	
-				return false;
-			});
+        if ( $(this).hasClass('confirm') ) {
+            if(!confirm('确认要执行该操作吗?')){
+                return false;
+            }
         }
-		$('#Jq_sure').click(function(){
-			$('.jumppage_bg, .jumppage').hide();
-	        if ((target = $this.attr('href')) || (target = $this.attr('url'))){
-	            $.get(target).success(function(data){
-					//console.log(data);return false;
-	                if (data.status==1) {
-	                    if (data.url) {
-	                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
-	                    }else{
-	                        updateAlert(data.info,'alert-success');
-	                    }
-	                    setTimeout(function(){
-	                        if (data.url) {
-	                            location.href=data.url;
-	                        }else if($(that).hasClass('no-refresh')){
-	                            $('#top-alert').find('button').click();
-	                        }else{
-	                            location.reload();
-	                        }
-	                    },1500);
-	                }else{
-	                    updateAlert(data.info);
-	                    setTimeout(function(){
-	                        if (data.url) {
-	                            location.href=data.url;
-	                        }else{
-	                            $('#top-alert').find('button').click();
-	                        }
-	                    },1500);
-	                }
-	            });
-	        }
-		});	
+        if ( (target = $(this).attr('href')) || (target = $(this).attr('url')) ) {
+            $.get(target).success(function(data){
+                if (data.status==1) {
+                    if (data.url) {
+                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
+                    }else{
+                        updateAlert(data.info,'alert-success');
+                    }
+                    setTimeout(function(){
+                        if (data.url) {
+                            location.href=data.url;
+                        }else if( $(that).hasClass('no-refresh')){
+                            $('#top-alert').find('button').click();
+                        }else{
+                            location.reload();
+                        }
+                    },1500);
+                }else{
+                    updateAlert(data.info);
+                    setTimeout(function(){
+                        if (data.url) {
+                            location.href=data.url;
+                        }else{
+                            $('#top-alert').find('button').click();
+                        }
+                    },1500);
+                }
+            });
+
+        }
         return false;
     });
 
     //ajax post submit请求
     $('.ajax-post').click(function(){
-		//alert($(this).attr('target-form'));
-		//return false;
         var target,query,form;
         var target_form = $(this).attr('target-form');
         var that = this;
         var nead_confirm=false;
-        if(($(this).attr('type')=='submit') || (target = $(this).attr('href')) || (target = $(this).attr('url')) ){
+        if( ($(this).attr('type')=='submit') || (target = $(this).attr('href')) || (target = $(this).attr('url')) ){
             form = $('.'+target_form);
-			//alert(form.get(0).nodeName);
+
             if ($(this).attr('hide-data') === 'true'){//无数据时也可以使用的功能
             	form = $('.hide-data');
             	query = form.serialize();
@@ -117,8 +108,6 @@
                 }
                 query = form.find('input,select,textarea').serialize();
             }
-			//alert($(this));
-			//return false;
             $(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
             $.post(target,query).success(function(data){
                 if (data.status==1) {

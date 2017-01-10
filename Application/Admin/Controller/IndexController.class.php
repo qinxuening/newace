@@ -21,6 +21,10 @@ class IndexController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
+    	//$rules = parse_action('add_document', UID);
+    	//$rules = 'table:member|field:score|condition:uid={$self}|rule:score+10|cycle:24|max:5';
+    	//$rules = explode(';', $rules);
+    	//print_r($rules);
         $this->meta_title = '管理首页';
         $this->assign('index_active' , 'active open');
         $this->display();

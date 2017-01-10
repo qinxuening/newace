@@ -148,15 +148,12 @@ class ConfigController extends AdminController {
 
     // 获取某个标签的配置参数
     public function group() {
-    	//print_r(S('DB_CONFIG_DATA'));
-    	//echo C('DATA_BACKUP_PATH');
         $id     =   I('get.id',1);
         $type   =   C('CONFIG_GROUP_LIST');
         $list   =   M("Config")->where(array('status'=>1,'group'=>$id))->field('id,name,title,extra,value,remark,type')->order('sort')->select();
         if($list) {
             $this->assign('list',$list);
         }
-        //print_r($list);
         $this->assign('id',$id);
         $this->assign('group','active');
         $this->meta_title = $type[$id].'设置';

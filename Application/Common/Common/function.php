@@ -597,7 +597,8 @@ function action_log($action = null, $model = null, $record_id = null, $user_id =
 
     //解析日志规则,生成日志备注
     if(!empty($action_info['log'])){
-        if(preg_match_all('/\[(\S+?)\]/', $action_info['log'], $match)){
+        if(preg_match_all('/\[(\S+?)\]/', $action_info['log'], $match)){//$match 多维数组 作为输出参数输出所有匹配结果
+        	//Array ( [0] => Array ( [0] => [user|get_nickname] [1] => [time|time_format] ) [1] => Array ( [0] => user|get_nickname [1] => time|time_format ) ) ﻿
             $log['user']    =   $user_id;
             $log['record']  =   $record_id;
             $log['model']   =   $model;
@@ -611,7 +612,9 @@ function action_log($action = null, $model = null, $record_id = null, $user_id =
                     $replace[] = $log[$param[0]];
                 }
             }
-            $data['remark'] =   str_replace($match[0], $replace, $action_info['log']);
+            $data['remark'] =   str_replace($match[0], $replace, $action_info['log']);//str_replace(find,replace,string,count)
+            // admin在2017-01-10 09:37发表了一篇文章。表document，记录编号74
+            //str = str_replace(array('[user|get_nickname]','[time|time_format]'), array('admin','2017-01-10 09:55','document','76'), '[user|get_nickname]在[time|time_format]发表了一篇文章。');
         }else{
             $data['remark'] =   $action_info['log'];
         }
@@ -625,7 +628,7 @@ function action_log($action = null, $model = null, $record_id = null, $user_id =
     if(!empty($action_info['rule'])){
         //解析行为
         $rules = parse_action($action, $user_id);
-
+		
         //执行行为
         $res = execute_action($rules, $action_info['id'], $user_id);
     }
@@ -711,7 +714,7 @@ function execute_action($rules = false, $action_id = null, $user_id = null){
         }
 
         //执行数据库操作
-        $Model = M(ucfirst($rule['table']));
+        $Model = M(ucfirst($rule['table']));//将字符串第一个字符改大写
         $field = $rule['field'];
         $res = $Model->where($rule['condition'])->setField($field, array('exp', $rule['rule']));
 
