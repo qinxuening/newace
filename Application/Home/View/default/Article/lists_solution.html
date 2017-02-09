@@ -12,7 +12,8 @@
 		                <ul>
 		                	<volist name="Documentlist" id="data">
 		                   		 <!--<li><a href="{:U('Article/lists?category='.$category['name'].'&id='.$data['id'])}" class="<eq name="id" value="$data['id']">act</eq>">{$data.title}</a></li>-->
-								 <li><a href="{:U('Article/lists?category='.$category['name'].'&id='.$data['id'])}" class="<eq name="id" value="$data['id']">act</eq> <if condition="($maxid eq $data['id']) AND $maxinfo">act</if>">{$data.title}</a></li>
+								 <!--{:U('Article/lists?category='.$category['name'].'&id='.$data['id'])}-->
+								 <li><a href="{:U('Article/'.$data['id'])}" class="<eq name="id" value="$data['id']">act</eq> <if condition="($maxid eq $data['id']) AND $maxinfo">act</if>">{$data.title}</a></li>
 								 <!--class="act"-->
 							</volist>
 		                </ul>

@@ -555,7 +555,6 @@ str;
         $this->meta_title   =   '钩子列表';
         $map    =   $fields =   array();
         $list   =   $this->lists(D("Hooks")->field($fields),$map);
-        //print_r($list);
         //print_r(C('HOOKS_TYPE'));
         int_to_string($list, array('type'=>C('HOOKS_TYPE')));
         // 记录当前列表页的cookie

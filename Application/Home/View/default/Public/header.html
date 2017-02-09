@@ -36,7 +36,9 @@
                     </li>
 			        <volist name="categorylist" id="list">						
 	                    <li class="dropdown">
-	                        <span><a href="{:U($list['model_name'].'/lists?category='.$list['name'])}" class="main-a <eq name="active" value="$list['name']">active</eq> <if condition="($detail_active) AND ($detail_active eq $list['name'])">active</if>">{$list.title}</a></span>
+	                    	<!--{:U($list['model_name'].'/lists?category='.$list['name'])}-->
+							<!--{$Think.MODULE_NAME}/{$list['name']}-->
+	                        <span><a href="/{$Think.MODULE_NAME}/{$list['name']}" class="main-a <eq name="active" value="$list['name']">active</eq> <if condition="($detail_active) AND ($detail_active eq $list['name'])">active</if>">{$list.title}</a></span>
 							<notempty name="list['_']">
 			                        <div class="dropdown-content">
 			                        	<volist name="list['_']" id="listc">

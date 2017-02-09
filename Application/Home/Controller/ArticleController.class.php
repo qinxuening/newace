@@ -19,7 +19,6 @@ class ArticleController extends HomeController {
 	public function index(){
 		/* 分类信息 */
 		$category = $this->category();
-
 		//频道页只显示模板，默认不读取任何内容
 		//内容可以通过模板标签自行定制
 
